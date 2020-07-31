@@ -1,12 +1,11 @@
-" download vim-plug if missing
-if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
-  silent! execute 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * silent! PlugInstall
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 "------- PLUGIN START -------------------------------------------------
-call plug#begin()  
+call plug#begin('~/.local/share/nvim/site/plugged')  
 	" Snippets, syntax and more
 	Plug 'honza/vim-snippets'
 	
@@ -101,5 +100,10 @@ call plug#begin()
 	Plug 'vim-airline/vim-airline-themes', { 'as': 'vim-airline-themes' }
 	Plug 'ryanoasis/vim-devicons', { 'as': 'vim-devicons' }
 call plug#end()
-
 "------- PLUGIN END ---------------------------------------------------
+
+" Automatically install missing plugins on startup
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall --sync | q
+  \| endif

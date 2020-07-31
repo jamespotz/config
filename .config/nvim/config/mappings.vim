@@ -66,7 +66,7 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 
 " Lazygit
-nnoremap <silent> <leader>lg :call ToggleLazyGit()<CR>
+nnoremap <silent> <C-M-g> :call ToggleLazyGit()<CR>
 
 " Lazydocker
 nnoremap <silent> <leader>ld :call ToggleLazyDocker()<CR>
