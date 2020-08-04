@@ -26,3 +26,6 @@
   autosquash = true
 [diff]
   colorMoved = zebra
+[user]
+	name = James Robert Rooke
+	email = thepoltergeist23@gmail.com
