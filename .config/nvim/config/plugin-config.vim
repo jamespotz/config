@@ -254,10 +254,6 @@ let g:neovide_refresh_rate = 60
 
 " Databases
 nnoremap <leader>db :DBUI<CR>
-let g:dbs = {
-\  'swivt': 'mysql://root:prisma@172.21.0.2:3306/swivt@dev',
-\	 'starship': 'postgres://jamespotz:james143lala@localhost:54320/starship_erp_v2_development'
-\ }
 
 " vuejs
 " vim vue
