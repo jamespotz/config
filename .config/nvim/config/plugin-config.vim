@@ -91,6 +91,7 @@ let g:coc_global_extensions = [
     \ 'coc-rls',
     \ 'coc-emoji',
     \ 'coc-pairs',
+    \ 'coc-git',
 		\ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
