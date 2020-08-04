@@ -30,8 +30,11 @@ luafile $HOME/.config/nvim/config/colorizer.lua
 
 " ## Themes
 syntax on
-colorscheme gotham
-hi Comment gui=italic cterm=italic term=italic
+let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_italic=1
+let g:gruvbox_italicize_comments=1
+colorscheme gruvbox
+"hi Comment gui=italic cterm=italic term=italic
 
 
 " ## auto source when writing to init.vm alternatively you can run :source $MYVIMRC

@@ -38,7 +38,7 @@ let g:airline_right_alt_sep = "\uE0B7"
 let g:airline_section_z = airline#section#create(["\uE0A1" . '%{line(".")}' . "\uE0A3" . '%{col(".")}'])
 
 " Airline Theme
-let g:airline_theme='gotham'
+let g:airline_theme='gruvbox'
 
 
 " vim-devicons
@@ -269,19 +269,6 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " Startify config
 let g:startify_change_to_vcs_root = 1
-
-" Sneak config
-let g:sneak#label = 1
-
-" case insensitive sneak
-let g:sneak#use_ic_scs = 1
-
-" imediately move tot the next instance of search, if you move the cursor sneak is back to default behavior
-let g:sneak#s_next = 1
-
-" remap so I can use , and ; with f and t
-map gS <Plug>Sneak_,
-map gs <Plug>Sneak_;
 
 " QuickScope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']

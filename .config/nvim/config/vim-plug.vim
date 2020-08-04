@@ -17,7 +17,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 	Plug 'tpope/vim-surround', { 'as': 'surround.vim' }
 	
 	" Code completion/ Language server
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
 
 	Plug 'tpope/vim-commentary'
@@ -66,9 +66,6 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 
   " QuickScope
   Plug 'unblevable/quick-scope'
-
-  " Vim Sneak 
-  Plug 'justinmk/vim-sneak'
 
   " Syntax highlighting for most languages
   Plug 'sheerun/vim-polyglot'
