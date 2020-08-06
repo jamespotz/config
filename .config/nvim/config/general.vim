@@ -126,21 +126,14 @@ endfunction
 " Split separator
 set fillchars=vert:\▏,fold:-
 
-" Font
-set guifont=Operator\ Mono\ Lig:h16
-
 " html
 " for html files, 2 spaces
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 
 " Highlight trailing white spaces
-highlight RedundantSpaces ctermbg=red guibg=red
-match RedundantSpaces /\s\+$/
-
-" Title bar
-set title
-set titleold="Terminal"
-set titlestring=%F
+highlight default ExtraWhitespace ctermbg=darkred guibg=darkred
+autocmd ColorScheme * highlight default ExtraWhitespace ctermbg=darkred guibg=darkred
+match ExtraWhitespace /\\\@<![\u3000[:space:]]\+$/
 
 " Keep the cursor on the same column
 set nostartofline
@@ -157,7 +150,7 @@ endif
 autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee,*.rb :call TrimSpaces()
 
 " MatchParen with differenct color
-highlight MatchParen guibg=red ctermbg=red
+autocmd ColorScheme * highlight MatchParen guibg=darkred ctermbg=darkred
 
 " Command to close tab to the right
 command! -nargs=0 Tabr :.+1,$tabdo :q
