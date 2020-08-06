@@ -158,5 +158,8 @@ command! -nargs=0 Tabr :.+1,$tabdo :q
 " CD to root directory
 command! -nargs=0 Root call Root()
 
+" JS folding
+autocmd FileType javascript :call JavascriptFold()
+
 " Pyhton3
 let g:python3_host_prog='/usr/bin/python3'
