@@ -58,6 +58,10 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   " QuickScope
   Plug 'unblevable/quick-scope'
 
+  " Javascript better syntax
+  Plug 'yuezk/vim-js'
+  Plug 'maxmellon/vim-jsx-pretty'
+
   " Syntax highlighting for most languages
   Plug 'sheerun/vim-polyglot'
 
@@ -70,11 +74,12 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   " Markdown
   Plug 'godlygeek/tabular' | Plug 'tpope/vim-markdown'
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+  
 
   " UI, themes and icons
   Plug 'cocopon/iceberg.vim'
   Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-	Plug 'morhetz/gruvbox'
+  Plug 'morhetz/gruvbox'
   Plug 'joshdick/onedark.vim'
   Plug 'whatyouhide/vim-gotham'
   Plug 'dracula/vim', { 'name': 'dracula' }

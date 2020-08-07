@@ -6,6 +6,7 @@ endif
 let g:ale_fixers = {
  \  'css':        ['prettier'],
  \  'javascript': ['prettier', 'eslint'],
+ \  'javascriptreact': ['prettier', 'eslint'],
  \  'json':       ['prettier'],
  \  'scss':       ['prettier'],
  \  'yml':        ['prettier'],
@@ -13,16 +14,18 @@ let g:ale_fixers = {
 let g:ale_linters = {
  \  'css':        ['csslint'],
  \  'javascript': ['prettier', 'eslint'],
+ \  'javascriptreact': ['prettier', 'eslint'],
  \  'json':       ['jsonlint'],
  \  'markdown':   ['mdl'],
  \  'scss':       ['sasslint'],
  \  'yaml':       ['yamllint'],
  \}
+
 let g:ale_completion_enabled       = 0
 let g:ale_fix_on_save              = 1
-let g:ale_sign_error               = '✖'
-let g:ale_sign_info                = '✖'
-let g:ale_sign_warning             = '✖'
+let g:ale_sign_error               = ''
+let g:ale_sign_info                = ''
+let g:ale_sign_warning             = ''
 if has("nvim")
     let g:ale_echo_cursor          = 0
     let g:ale_virtualtext_cursor   = 1
