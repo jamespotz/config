@@ -9,17 +9,19 @@
 "                                                                       "   
 " =======================================================================
 
-" ## Plugins
-source $HOME/.config/nvim/config/vim-plug.vim
-
 " ## General Settings
 source $HOME/.config/nvim/config/general.vim
+
+" ## Plugins
+source $HOME/.config/nvim/config/vim-plug.vim
 
 " ## Mappings
 source $HOME/.config/nvim/config/mappings.vim
 
-" ## Plugins Config
-source $HOME/.config/nvim/config/plugin-config.vim
+" ## Source all thePlugins Config
+for s:fpath in split(globpath('~/.config/nvim/config/plugins', '*.vim'), '\n')
+  execute 'source' s:fpath
+endfor
 
 " ## Functions
 source $HOME/.config/nvim/config/functions.vim

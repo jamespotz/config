@@ -5,10 +5,7 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 "------- PLUGIN START -------------------------------------------------
-call plug#begin('~/.local/share/nvim/site/plugged')  
-	" Snippets, syntax and more
-	Plug 'honza/vim-snippets'
-	
+call plug#begin('~/.local/share/nvim/site/plugged')	
 	" GIT Integration
 	Plug 'mhinz/vim-signify'
 	Plug 'tpope/vim-fugitive', { 'as': 'fugitive.vim' }
@@ -17,13 +14,23 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 	Plug 'tpope/vim-surround', { 'as': 'surround.vim' }
 	
 	" Code completion/ Language server
-	Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-
-
+	Plug 'hrsh7th/vim-vsnip'
+  Plug 'hrsh7th/vim-vsnip-integ'
+	Plug 'ajh17/VimCompletesMe'
+  Plug 'natebosch/vim-lsc'
+  Plug 'dense-analysis/ale'
+  
 	Plug 'tpope/vim-commentary'
 	Plug 'pantharshit00/vim-prisma'
 	Plug 'tpope/vim-dotenv'
 	
+	" Auto Close {[(
+  Plug 'tmsvg/pear-tree'
+
+  " File Explorer
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'kristijanhusak/defx-icons'
+  Plug 'kristijanhusak/defx-git'
 	
 	" Fuzzy searching
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -32,28 +39,12 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 	" Database
 	Plug 'tpope/vim-dadbod'
   Plug 'kristijanhusak/vim-dadbod-ui'
-
-  " Javascript
-  Plug 'yuezk/vim-js'
-  Plug 'maxmellon/vim-jsx-pretty'
-  
-  " vuejs
-	Plug 'posva/vim-vue'
-	Plug 'leafOfTree/vim-vue-plugin'
-	
-	" CSS3
-	Plug 'hail2u/vim-css3-syntax'
-	
-	" HTML
-	Plug 'mattn/emmet-vim'
   
   " Colorizer
 	Plug 'norcalli/nvim-colorizer.lua'	
 
   " Undotree
 	Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
-  let g:undotree_WindowLayout = 2
-  nnoremap U :UndotreeToggle<CR>
   
   " [Do]cumentation [GE]nerator
   Plug 'kkoomen/vim-doge'

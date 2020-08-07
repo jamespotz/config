@@ -13,7 +13,7 @@ let maplocalleader=","
 set autoread
 set autowrite
 set complete+=kspell
-set completeopt=menuone,longest
+set completeopt=menu,menuone,noinsert,noselect
 set colorcolumn=81
 set cursorline
 set matchpairs+=<:> 										" Use % to jump between pairs
@@ -63,7 +63,7 @@ set cmdheight=2
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set updatetime=50
+set updatetime=100
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
@@ -160,6 +160,9 @@ command! -nargs=0 Root call Root()
 
 " JS folding
 autocmd FileType javascript :call JavascriptFold()
+
+" <TAB>: completion.
+"inoremap <silent> <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Pyhton3
 let g:python3_host_prog='/usr/bin/python3'
