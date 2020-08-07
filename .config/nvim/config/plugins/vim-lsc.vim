@@ -18,8 +18,8 @@ let g:lsc_auto_map = {
  \  'FindCodeActions': 'ga',
  \  'Completion': 'omnifunc',
  \}
-let g:lsc_enable_diagnostics   = v:false
-let g:lsc_reference_highlights = v:true
-let g:lsc_enable_diagnostics   = v:false
-set completeopt-=preview
-set shortmess-=F
+
+let g:lsc_enable_autocomplete    = v:true
+let g:lsc_enable_diagnostics     = v:false
+let g:lsc_reference_highlights   = v:false
+let g:lsc_enable_snippet_support = v:true
