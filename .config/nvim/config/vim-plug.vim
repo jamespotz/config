@@ -27,11 +27,6 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 	" Auto Close {[(
   Plug 'tmsvg/pear-tree'
 
-  " File Explorer
-  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'kristijanhusak/defx-icons'
-  Plug 'kristijanhusak/defx-git'
-	
 	" Fuzzy searching
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
@@ -75,6 +70,8 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'godlygeek/tabular' | Plug 'tpope/vim-markdown'
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
   
+  " File Tree Explorer
+  Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 
   " UI, themes and icons
   Plug 'cocopon/iceberg.vim'
