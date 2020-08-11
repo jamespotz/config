@@ -49,6 +49,11 @@ set scrolloff=3
 set iskeyword+=-                      	" treat dash separated words as a word text object"
 set fileformats=unix,dos
 
+if strlen(exepath('rg'))
+  set grepprg=rg\ --vimgrep
+  set grepformat^=%f:%l:%c:%m
+endif
+
 " Searching
 set hlsearch
 set ignorecase
@@ -176,3 +181,6 @@ augroup syntaxSyncMinLines
     autocmd!
     autocmd Syntax * syntax sync minlines=2000
 augroup END
+
+" Grep
+command! -nargs=+ Grep execute 'silent grep! <args>' | cwindow
