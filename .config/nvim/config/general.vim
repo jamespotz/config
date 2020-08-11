@@ -52,6 +52,7 @@ set fileformats=unix,dos
 " Searching
 set hlsearch
 set ignorecase
+set infercase
 set incsearch
 set inccommand=nosplit
 
@@ -172,3 +173,9 @@ set timeoutlen=1500
 
 " Terminal timeout
 set ttimeoutlen=10
+
+" Improve scroll performance
+augroup syntaxSyncMinLines
+    autocmd!
+    autocmd Syntax * syntax sync minlines=2000
+augroup END
