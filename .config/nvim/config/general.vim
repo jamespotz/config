@@ -159,9 +159,6 @@ command! -nargs=0 Tabr :.+1,$tabdo :q
 " CD to root directory
 command! -nargs=0 Root call Root()
 
-" JS folding
-autocmd FileType javascript :call JavascriptFold()
-
 " <TAB>: completion.
 "inoremap <silent> <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
