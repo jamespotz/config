@@ -24,6 +24,8 @@ runtime config/functions.vim
 " ## Colorizer
 luafile $HOME/.config/nvim/config/colorizer.lua
 
+" ## Theme Config
+runtime config/gruvbox.vim
 
 " ## Themes
 colorscheme gruvbox
