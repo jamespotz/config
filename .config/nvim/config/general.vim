@@ -1,5 +1,5 @@
-" Required:
-filetype plugin indent on
+" Enable Syntax highlighting
+syntax on
 
 " UTF-8 Encoding
 set encoding=utf-8
@@ -12,7 +12,7 @@ let maplocalleader=","
 " General settings
 set autoread
 set autowrite
-set complete+=kspell
+set complete=.,w,b
 set completeopt=menu,menuone,noinsert,noselect
 set colorcolumn=81
 set cursorline
@@ -22,7 +22,8 @@ set noerrorbells
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set expandtab smarttab
+set expandtab
+set smarttab
 set nospell
 set smartcase
 set spelllang=en_us
@@ -39,15 +40,17 @@ set pumblend=10 												" 10% transparency pmen
 set winblend=10 											 	" 10% transparency floating window
 set clipboard+=unnamedplus
 set smartcase
-set smartindent
 set nu
 set nowrap
 silent! set cryptmethod=blowfish2
 set synmaxcol=200
-set formatoptions=tcqrn1
+set formatoptions=cqj
 set scrolloff=3
 set iskeyword+=-                      	" treat dash separated words as a word text object"
 set fileformats=unix,dos
+set foldlevelstart=20
+set foldmethod=indent " Simple and fast
+set foldtext=""
 
 if strlen(exepath('rg'))
   set grepprg=rg\ --vimgrep
