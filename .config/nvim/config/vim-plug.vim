@@ -73,6 +73,9 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   " File Tree Explorer
   Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 
+  " Git lens for vim
+  Plug 'APZelos/blamer.nvim'
+
   " UI, themes and icons
   Plug 'cocopon/iceberg.vim'
   Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }

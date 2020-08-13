@@ -187,3 +187,7 @@ augroup END
 
 " Grep
 command! -nargs=+ Grep execute 'silent grep! <args>' | cwindow
+
+" Terminal title
+set title
+set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:~:.:h\")})%)%(\ %a%)

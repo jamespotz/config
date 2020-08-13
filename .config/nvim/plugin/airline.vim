@@ -37,3 +37,6 @@ let g:airline_section_z = airline#section#create(["\uE0A1" . '%{line(".")}' . "\
 " Airline Theme
 let g:airline_theme='gruvbox'
 
+" Truncate long branch name
+let g:airline#extensions#branch#displayed_head_limit = 20
+let g:airline#extensions#branch#format = 1
