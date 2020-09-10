@@ -21,7 +21,6 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'dense-analysis/ale'
   
 	Plug 'tpope/vim-commentary'
-	Plug 'pantharshit00/vim-prisma'
 	Plug 'tpope/vim-dotenv'
 	
 	" Auto Close {[(
@@ -67,7 +66,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'janko/vim-test'
 
   " Markdown
-  Plug 'godlygeek/tabular' | Plug 'tpope/vim-markdown'
+  Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
   
   " File Tree Explorer

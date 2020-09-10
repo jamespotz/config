@@ -115,23 +115,6 @@ augroup SpellGroup
 	autocmd InsertLeave * set nospell
 augroup END
 
-" Toggle Syntax Concealing
-command! ConcealToggle call ConcealToggle()
-let s:concealed=0
-function! ConcealToggle()
-	" If syntax is already being concealed,
-	if s:concealed
-		" Unconceal it.
-		set conceallevel=0
-	" If syntax is NOT already being conealed,
-	else
-		" Conceal it.
-		set conceallevel=2
-	endif
-	" Mark concealing as having been reversed.
-	let s:concealed = !s:concealed
-endfunction
-
 " Split separator
 set fillchars=vert:\▏,fold:-
 
