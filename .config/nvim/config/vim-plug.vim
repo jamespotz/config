@@ -14,10 +14,9 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 	Plug 'tpope/vim-surround', { 'as': 'surround.vim' }
 	
 	" Code completion/ Language server
-	Plug 'hrsh7th/vim-vsnip'
-  Plug 'hrsh7th/vim-vsnip-integ'
 	Plug 'ajh17/VimCompletesMe'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'honza/vim-snippets'
   
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-dotenv'
