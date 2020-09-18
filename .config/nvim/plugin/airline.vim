@@ -12,7 +12,7 @@ let g:airline_extensions = [
 \	'term',
 \	'whitespace',
 \	'wordcount',
-\ 'ale'
+\ 'coc'
 \]
 
 " Tabline
@@ -40,3 +40,9 @@ let g:airline_theme='gruvbox'
 " Truncate long branch name
 let g:airline#extensions#branch#displayed_head_limit = 20
 let g:airline#extensions#branch#format = 1
+
+" COC integration
+let airline#extensions#coc#error_symbol = 'E:'
+let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
+let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
+let airline#extensions#coc#warning_symbol = 'W:'

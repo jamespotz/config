@@ -17,8 +17,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 	Plug 'hrsh7th/vim-vsnip'
   Plug 'hrsh7th/vim-vsnip-integ'
 	Plug 'ajh17/VimCompletesMe'
-  Plug 'natebosch/vim-lsc'
-  Plug 'dense-analysis/ale'
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
   
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-dotenv'
