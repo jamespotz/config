@@ -8,8 +8,7 @@
     "typescript.tsx",
     "graphql"
   ],
-  "prettier.eslintIntegration": true,
-  "eslint.autoFixOnSave": true,
+  "eslint.autoFiddxOnSave": false,
   "diagnostic.warningSign": "⚠",
   "diagnostic.errorSign": "",
   "diagnostic.hintSign": "⚠",
