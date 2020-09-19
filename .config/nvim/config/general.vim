@@ -139,7 +139,7 @@ if has("gui_running")
 endif
 
 " Trim White Spaces
-autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee,*.rb :call TrimSpaces()
+autocmd BufWritePre * :call TrimSpaces()
 
 " MatchParen with differenct color
 autocmd ColorScheme * highlight MatchParen guibg=darkred ctermbg=darkred
@@ -149,9 +149,6 @@ command! -nargs=0 Tabr :.+1,$tabdo :q
 
 " CD to root directory
 command! -nargs=0 Root call Root()
-
-" <TAB>: completion.
-"inoremap <silent> <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Pyhton3
 let g:python3_host_prog='/usr/bin/python3'

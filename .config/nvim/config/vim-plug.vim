@@ -5,45 +5,45 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 "------- PLUGIN START -------------------------------------------------
-call plug#begin('~/.local/share/nvim/site/plugged')	
+call plug#begin('~/.local/share/nvim/site/plugged')
 	" GIT Integration
 	Plug 'mhinz/vim-signify'
 	Plug 'tpope/vim-fugitive', { 'as': 'fugitive.vim' }
 
   " for change " to ' and others
 	Plug 'tpope/vim-surround', { 'as': 'surround.vim' }
-	
+
 	" Code completion/ Language server
 	Plug 'ajh17/VimCompletesMe'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'honza/vim-snippets'
-  
+
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-dotenv'
-	
+
 	" Auto Close {[(
   Plug 'tmsvg/pear-tree'
 
 	" Fuzzy searching
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
-	
+
 	" Database
 	Plug 'tpope/vim-dadbod'
   Plug 'kristijanhusak/vim-dadbod-ui'
-  
+
   " Colorizer
-	Plug 'norcalli/nvim-colorizer.lua'	
+	Plug 'norcalli/nvim-colorizer.lua'
 
   " Undotree
 	Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
-  
+
   " [Do]cumentation [GE]nerator
   Plug 'kkoomen/vim-doge'
-  
+
   " Editorconfig Support
   Plug 'editorconfig/editorconfig-vim'
-  
+
   " Better Comments
   Plug 'jbgutierrez/vim-better-comments'
 
@@ -59,14 +59,14 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 
   " Python
   Plug 'Vimjas/vim-python-pep8-indent'
-  
+
   " Test
   Plug 'janko/vim-test'
 
   " Markdown
   Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
-  
+
   " File Tree Explorer
   Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
 
