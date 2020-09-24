@@ -54,3 +54,11 @@ alias fd="fdfind"
 alias myip="curl http://ipecho.net/plain; echo"
 alias config="nvim $HOME/.zshrc"
 alias reload="source $HOME/.zshrc"
+alias work="sudo cp ~/work-resolv.conf /etc/resolv.conf && echo 'Time to work!'"
+alias home="sudo cp ~/home-resolv.conf /etc/resolv.conf && echo 'Default set!'"
+
+# WSL 2 specific settings.
+if grep -q "microsoft" /proc/version &>/dev/null; then
+    # Requires: https://sourceforge.net/projects/vcxsrv/ (or alternative)
+    export DISPLAY="$(/sbin/ip route | awk '/default/ { print $3 }'):0"
+fi
