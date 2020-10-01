@@ -136,5 +136,6 @@ let g:coc_global_extensions = [
 \ 'coc-prettier',
 \ 'coc-json',
 \ 'coc-css',
-\ 'coc-html'
+\ 'coc-html',
+\ 'coc-styled-components'
 \ ]
