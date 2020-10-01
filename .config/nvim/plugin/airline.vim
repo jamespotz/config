@@ -35,7 +35,7 @@ let g:airline_right_alt_sep = "\uE0B7"
 let g:airline_section_z = airline#section#create(["\uE0A1" . '%{line(".")}' . "\uE0A3" . '%{col(".")}'])
 
 " Airline Theme
-let g:airline_theme='gruvbox'
+let g:airline_theme='nord'
 
 " Truncate long branch name
 let g:airline#extensions#branch#displayed_head_limit = 20

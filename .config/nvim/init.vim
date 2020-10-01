@@ -1,14 +1,14 @@
 "
 " ▄▄▄██▀▀▀ ▄▄▄       ███▄ ▄███▓▓█████   ██████  ██▓███   ▒█████  ▄▄▄█████▓▒███████▒
 "   ▒██   ▒████▄    ▓██▒▀█▀ ██▒▓█   ▀ ▒██    ▒ ▓██░  ██▒▒██▒  ██▒▓  ██▒ ▓▒▒ ▒ ▒ ▄▀░
-"   ░██   ▒██  ▀█▄  ▓██    ▓██░▒███   ░ ▓██▄   ▓██░ ██▓▒▒██░  ██▒▒ ▓██░ ▒░░ ▒ ▄▀▒░ 
+"   ░██   ▒██  ▀█▄  ▓██    ▓██░▒███   ░ ▓██▄   ▓██░ ██▓▒▒██░  ██▒▒ ▓██░ ▒░░ ▒ ▄▀▒░
 "▓██▄██▓  ░██▄▄▄▄██ ▒██    ▒██ ▒▓█  ▄   ▒   ██▒▒██▄█▓▒ ▒▒██   ██░░ ▓██▓ ░   ▄▀▒   ░
 " ▓███▒    ▓█   ▓██▒▒██▒   ░██▒░▒████▒▒██████▒▒▒██▒ ░  ░░ ████▓▒░  ▒██▒ ░ ▒███████▒
 " ▒▓▒▒░    ▒▒   ▓▒█░░ ▒░   ░  ░░░ ▒░ ░▒ ▒▓▒ ▒ ░▒▓▒░ ░  ░░ ▒░▒░▒░   ▒ ░░   ░▒▒ ▓░▒░▒
 " ▒ ░▒░     ▒   ▒▒ ░░  ░      ░ ░ ░  ░░ ░▒  ░ ░░▒ ░       ░ ▒ ▒░     ░    ░░▒ ▒ ░ ▒
 " ░ ░ ░     ░   ▒   ░      ░      ░   ░  ░  ░  ░░       ░ ░ ░ ▒    ░      ░ ░ ░ ░ ░
-" ░   ░         ░  ░       ░      ░  ░      ░               ░ ░             ░ ░    
-"                                                                         ░        
+" ░   ░         ░  ░       ░      ░  ░      ░               ░ ░             ░ ░
+"                                                                         ░
 
 " ## General Settings
 runtime config/general.vim
@@ -26,10 +26,10 @@ runtime config/functions.vim
 luafile $HOME/.config/nvim/config/colorizer.lua
 
 " ## Theme Config
-runtime config/gruvbox.vim
+runtime config/nord.vim
 
 " ## Themes
-colorscheme gruvbox
+colorscheme nord
 
 
 " ## auto source when writing to init.vm alternatively you can run :source $MYVIMRC
