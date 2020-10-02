@@ -43,7 +43,6 @@ set smartcase
 set nu
 set nowrap
 silent! set cryptmethod=blowfish2
-set synmaxcol=200
 set formatoptions=cqj
 set scrolloff=3
 set iskeyword+=-                      	" treat dash separated words as a word text object"
@@ -131,6 +130,7 @@ match ExtraWhitespace /\\\@<![\u3000[:space:]]\+$/
 set nostartofline
 
 " Set extra options when running in GUI mode
+set guifont=Liga\ OperatorMono\ Nerd\ Font:h16
 if has("gui_running")
     set guioptions-=T
     set guioptions-=e
@@ -171,3 +171,7 @@ command! -nargs=+ Grep execute 'silent grep! <args>' | cwindow
 " Terminal title
 set title
 set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:~:.:h\")})%)%(\ %a%)
+
+" JS and TypeScript out of sync fix
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear

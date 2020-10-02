@@ -61,4 +61,5 @@ alias home="sudo cp ~/home-resolv.conf /etc/resolv.conf && echo 'Default set!'"
 if grep -q "microsoft" /proc/version &>/dev/null; then
     # Requires: https://sourceforge.net/projects/vcxsrv/ (or alternative)
     export DISPLAY="$(/sbin/ip route | awk '/default/ { print $3 }'):0"
+    alias neovide="neovide.exe --wsl"
 fi
