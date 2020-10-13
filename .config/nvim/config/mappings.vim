@@ -79,6 +79,9 @@ noremap YY "+y<CR>
 noremap PP "+gP<CR>
 noremap XX "+x<CR>
 
+" Delete without registry
+noremap DD "_dd<CR>
+
 " Open terminal
 nnoremap <silent> <leader>T :call ToggleScratchTerm()<CR>
 
@@ -101,7 +104,7 @@ vnoremap > >gv
 " Select All
 map <leader>sa ggVG$
 
-" Visually select the characters that are wanted in the search, 
+" Visually select the characters that are wanted in the search,
 " then type // to search for the next occurrence of the selected text.
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
