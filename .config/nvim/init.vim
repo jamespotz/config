@@ -26,10 +26,10 @@ runtime config/functions.vim
 luafile $HOME/.config/nvim/config/colorizer.lua
 
 " ## Theme Config
-runtime config/gruvbox.vim
+runtime config/theme.vim
 
 " ## Themes
-colorscheme gruvbox
+colorscheme sonokai
 
 
 " ## auto source when writing to init.vm alternatively you can run :source $MYVIMRC

@@ -85,6 +85,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 	Plug 'mhinz/vim-startify'
 	Plug 'dracula/vim', { 'as': 'dracula' }
   Plug 'skbolton/embark'
+  Plug 'sainnhe/sonokai'
 	Plug 'Yggdroot/indentLine'
 	Plug 'vim-airline/vim-airline', { 'as': 'vim-airline' }
 	Plug 'vim-airline/vim-airline-themes', { 'as': 'vim-airline-themes' }
