@@ -8,7 +8,7 @@
     "typescript.tsx",
     "graphql"
   ],
-  "eslint.autoFiddxOnSave": false,
+  "eslint.autoFixOnSave": true,
   "diagnostic.warningSign": "⚠",
   "diagnostic.errorSign": "",
   "diagnostic.hintSign": "⚠",

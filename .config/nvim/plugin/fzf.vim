@@ -1,5 +1,5 @@
 " FZF
-let $FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore-vcs -g "!{node_modules,.git}"'
+let $FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!{node_modules,.git}"'
 "Let the input go up and the search list go down
 let $FZF_DEFAULT_OPTS = '--layout=reverse'
 

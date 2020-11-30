@@ -124,6 +124,9 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+" COC Prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
 " Global extensions
 let g:coc_global_extensions = [
 \ 'coc-snippets',
