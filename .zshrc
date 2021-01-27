@@ -65,3 +65,9 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Increase node memory limit to 4GB
+export NODE_OPTIONS=--max_old_space_size=4096
+
+# DBUS
+sudo /etc/init.d/dbus start &> /dev/null

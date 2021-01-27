@@ -136,5 +136,6 @@ let g:coc_global_extensions = [
 \ 'coc-json',
 \ 'coc-css',
 \ 'coc-html',
-\ 'coc-styled-components'
+\ 'coc-styled-components',
+\ 'coc-react-refactor'
 \ ]

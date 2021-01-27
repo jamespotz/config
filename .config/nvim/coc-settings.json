@@ -9,6 +9,7 @@
     "graphql"
   ],
   "eslint.autoFixOnSave": true,
+  "eslint.packageManager": "yarn",
   "diagnostic.warningSign": "⚠",
   "diagnostic.errorSign": "",
   "diagnostic.hintSign": "⚠",
