@@ -68,7 +68,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 
   " File Tree Explorer
-  Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
+  Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 
   " Git lens for vim
   Plug 'APZelos/blamer.nvim'
