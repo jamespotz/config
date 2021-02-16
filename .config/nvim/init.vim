@@ -62,6 +62,9 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   " Auto pairs
   Plug 'cohama/lexima.vim'
 
+  " Colors
+  Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase'  }
+
   Plug 'mbbill/undotree'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
