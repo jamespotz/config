@@ -56,13 +56,18 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
 
+  " Code Formatter
   Plug 'mhartington/formatter.nvim'
+
+  " Auto pairs
+  Plug 'cohama/lexima.vim'
 
   Plug 'mbbill/undotree'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-commentary'
   Plug 'mhinz/vim-signify'
   Plug 'sheerun/vim-polyglot'
   Plug 'dbeniamine/cheat.sh-vim'

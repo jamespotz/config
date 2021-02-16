@@ -54,6 +54,10 @@ alias fd="fdfind"
 alias myip="curl http://ipecho.net/plain; echo"
 alias config="nvim $HOME/.zshrc"
 alias reload="source $HOME/.zshrc"
+alias lg="lazygit"
+
+# Increase node js memory
+export NODE_OPTIONS="--max-old-space-size=4096"
 
 # WSL 2 specific settings.
 if grep -q "microsoft" /proc/version &>/dev/null; then

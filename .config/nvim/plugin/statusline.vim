@@ -28,10 +28,13 @@ let g:currentmode={
 function! GitBranch()
     if exists("g:loaded_fugitive")
         let branch = fugitive#head()
-        if len(branch) < 20
-            return branch
+        if len(branch) == 0
+            return ''
         endif
-        return branch[:10] . '...' . branch[(len(branch)-10):]
+        if len(branch) < 20
+            return '  ' . branch . ' '
+        endif
+        return '  ' . branch[:10] . '...' . branch[(len(branch)-10):] . ' '
     endif
     return ''
 endfunction
@@ -40,7 +43,8 @@ set laststatus=2
 set noshowmode
 set statusline=
 set statusline+=%0*\ %n\                                 " Buffer number
-set statusline+=%2*\ \ %{GitBranch()}\                        " Git
+set statusline+=%2*\%{GitBranch()}                 " Git
+set statusline+=%0*\%{&paste?'\ \ PASTE\ ':''}               " Displays the PASTE command if toggled on
 set statusline+=%1*\ %<%F%m%r%h%w\                       " File path, modified, readonly, helpfile, preview
 set statusline+=%3*│                                     " Separator
 set statusline+=%2*\ %Y\                                 " FileType
