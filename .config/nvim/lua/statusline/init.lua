@@ -97,8 +97,9 @@ M.get_git_branch = function(self)
 end
 
 M.get_filename = function(self)
-  if self:is_truncated(140) then return " %<%f " end
-  return " %<%F "
+  local is_modified = vim.bo.modified and ' ✘ ' or ''
+  if self:is_truncated(140) then return " %<%f"..is_modified end
+  return " %<%F"..is_modified
 end
 
 M.get_filetype = function()
