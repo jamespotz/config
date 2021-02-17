@@ -72,7 +72,6 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-commentary'
   Plug 'mhinz/vim-signify'
-  Plug 'sheerun/vim-polyglot'
   Plug 'dbeniamine/cheat.sh-vim'
 
   " File Explorer
@@ -80,10 +79,13 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'kyazdani42/nvim-tree.lua'
 
   Plug 'gruvbox-community/gruvbox'
+  Plug 'sainnhe/sonokai'
 call plug#end()
 
-colorscheme gruvbox
-highlight Normal guibg=none
+let g:sonokai_style = 'andromeda'
+let g:sonokai_enable_italic = 1
+let g:sonokai_disable_italic_comment = 1
+colorscheme sonokai
 
 let loaded_matchparen = 1
 let mapleader = " "
@@ -105,8 +107,14 @@ nnoremap <leader>Y gg"+yG
 " move at the very end of line
 nnoremap $ $l
 
+" Indent Lines wihtout going back to Normal Mode
+vnoremap < <gv
+vnoremap > >gv
+
 lua require('completion')
+lua require('treesitter')
 lua require('format')
+lua require('statusline')
 nnoremap <silent> <C-f> :Format<CR>
 
 "FIND AND REPLACE
