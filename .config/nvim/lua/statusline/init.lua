@@ -38,8 +38,8 @@ M.colors = {
 }
 
 local modes = {
-  ['n']  = {'Normal', 'N', M.colors.active};
-  ['no'] = {'N·Pending', 'N·P', M.colors.active} ;
+  ['n']  = {'Normal', 'N', M.colors.mode};
+  ['no'] = {'N·Pending', 'N·P', M.colors.mode} ;
   ['v']  = {'Visual', 'V', M.colors.diff_text};
   ['V']  = {'V·Line', 'V·L', M.colors.diff_text};
   [''] = {'V·Block', 'V·B', M.colors.diff_text}; -- this is not ^V, but it's , they're different
@@ -82,15 +82,16 @@ end
 M.get_git_branch = function(self)
 	local branch = vim.fn['fugitive#head'](7)
   local is_empty = branch ~= ''
+  local short_name = branch:len() > 20 and branch:sub(1, 20)..'...' or branch
 
   if self:is_truncated(90) then
-    return is_empty and string.format('  %s ', branch or '') or ''
+    return is_empty and string.format('  %s ', short_name '') or ''
   end
 
   return is_empty
     and string.format(
       '  %s ',
-      branch
+      short_name
     )
     or ''
 end
