@@ -4,60 +4,76 @@ local api = vim.api
 local M = {}
 
 -- possible values are 'arrow' | 'rounded' | 'blank'
-local active_sep = 'blank'
+local active_sep = 'angle'
 
 -- change them if you want to different separator
 M.separators = {
   arrow = { '', '' },
   rounded = { '', '' },
+  angle = { '', '' },
   blank = { '', '' },
 }
 
+-- set highlights
+vim.api.nvim_exec([[
+  highlight STDefault guifg=#bbc2cf guibg=#202328
+  highlight STRed guifg=#f8f8ff guibg=#ec5f67
+  highlight STGreen guifg=#f8f8ff guibg=#00FF7F
+  highlight STYellow guifg=#f8f8ff guibg=#ecbe7b
+  highlight STBlue guifg=#f8f8ff guibg=#1E90FF
+  highlight STCyan guifg=#f8f8ff guibg=#008080
+  highlight STMagenta guifg=#f8f8ff guibg=#c678dd
+  highlight STViolet guifg=#f8f8ff guibg=#4B0082
+  highlight STOrange guifg=#f8f8ff guibg=#FF8800
+  highlight STDarkgray guifg=#f8f8ff guibg=#2F4F4F
+
+  highlight STRedfg guibg=#202328 guifg=#ec5f67
+  highlight STGreenfg guibg=#202328 guifg=#00FF7F
+  highlight STYellowfg guibg=#202328 guifg=#ecbe7b
+  highlight STBluefg guibg=#008080 guifg=#1E90FF
+  highlight STCyanfg guibg=#202328 guifg=#008080
+  highlight STMagentafg guibg=#202328 guifg=#c678dd
+  highlight STVioletfg guibg=#FF8800 guifg=#4B0082
+  highlight STOrangefg guibg=#202328 guifg=#FF8800
+  highlight STDarkgrayfg guibg=#FF8800 guifg=#2F4F4F
+]], false)
+
 -- highlight groups
 M.colors = {
-  active        = '%#StatusLine#',
-  inactive      = '%#StatuslineNC#',
-  mode          = '%#Mode#',
-  mode_alt      = '%#ModeAlt#',
-  git           = '%#Git#',
-  git_alt       = '%#GitAlt#',
-  filetype      = '%#Filetype#',
-  filetype_alt  = '%#FiletypeAlt#',
-  line_col      = '%#LineCol#',
-  line_col_alt  = '%#LineColAlt#',
-  string        = '%#String#',
-  diff_text     = '%#DiffText#',
-  diff_add      = '%#DiffAdd#',
-  diff_change   = '%#DiffChange#',
-  wild_menu     = '%#WildMenu#',
-  matchparen    = '%#MatchParen#',
-  search        = '%#Search#',
-  diff_delete   = '%#DiffDelete#',
-  todo          = '%#Todo#',
-  inc_search    = '%#IncSearch#'
+  active        = '%#STDefault#',
+  inactive      = '%#STDefault#',
+  mode          = '%#STViolet#',
+  mode_alt      = '%#STVioletfg#',
+  git           = '%#STOrange#',
+  git_alt       = '%#STOrangefg#',
+  filetype      = '%#STCyan#',
+  filetype_alt  = '%#STCyanfg#',
+  line_col      = '%#STBlue#',
+  line_col_alt  = '%#STBluefg#',
+  paste         = '%#STRed#'
 }
 
 local modes = {
-  ['n']  = {'Normal', 'N', M.colors.mode};
-  ['no'] = {'N·Pending', 'N·P', M.colors.mode} ;
-  ['v']  = {'Visual', 'V', M.colors.diff_text};
-  ['V']  = {'V·Line', 'V·L', M.colors.diff_text};
-  [''] = {'V·Block', 'V·B', M.colors.diff_text}; -- this is not ^V, but it's , they're different
-  ['s']  = {'Select', 'S', M.colors.wild_menu};
-  ['S']  = {'S·Line', 'S·L', M.colors.wild_menu};
-  [''] = {'S·Block', 'S·B', M.colors.wild_menu}; -- same with this one, it's not ^S but it's 
-  ['i']  = {'Insert', 'I', M.colors.diff_add};
-  ['ic'] = {'Insert', 'I', M.colors.diff_add};
-  ['R']  = {'Replace', 'R', M.colors.diff_delete};
-  ['Rv'] = {'V·Replace', 'V·R', M.colors.diff_delete};
-  ['c']  = {'Command', 'C', M.colors.search};
-  ['cv'] = {'Vim·Ex ', 'V·E', M.colors.matchparen};
-  ['ce'] = {'Ex ', 'E', M.colors.matchparen};
-  ['r']  = {'Prompt ', 'P', M.colors.todo};
-  ['rm'] = {'More ', 'M', M.colors.todo};
-  ['r?'] = {'Confirm ', 'C', M.colors.todo};
-  ['!']  = {'Shell ', 'S', M.colors.inc_search};
-  ['t']  = {'Terminal ', 'T', M.colors.diff_add};
+  ['n']  = {'Normal', 'N'};
+  ['no'] = {'N·Pending', 'N·P'};
+  ['v']  = {'Visual', 'V'};
+  ['V']  = {'V·Line', 'V·L'};
+  [''] = {'V·Block', 'V·B'};
+  ['s']  = {'Select', 'S'};
+  ['S']  = {'S·Line', 'S·L'};
+  [''] = {'S·Block', 'S·B'};
+  ['i']  = {'Insert', 'I'};
+  ['ic'] = {'Insert', 'I'};
+  ['R']  = {'Replace', 'R'};
+  ['Rv'] = {'V·Replace', 'V·R'};
+  ['c']  = {'Command', 'C'};
+  ['cv'] = {'Vim·Ex ', 'V·E'};
+  ['ce'] = {'Ex ', 'E'};
+  ['r']  = {'Prompt ', 'P'};
+  ['rm'] = {'More ', 'M'};
+  ['r?'] = {'Confirm ', 'C'};
+  ['!']  = {'Shell ', 'S'};
+  ['t']  = {'Terminal ', 'T'};
 }
 
 M.is_truncated = function(_, width)
@@ -69,14 +85,9 @@ M.get_current_mode = function(self)
   local current_mode = api.nvim_get_mode().mode
 
   if self:is_truncated(80) then
-    return string.format(' %s ', modes[current_mode][2]):upper()
+    return string.format(' גּ %s ', modes[current_mode][2]):upper()
   end
-  return string.format(' %s ', modes[current_mode][1]):upper()
-end
-
-M.get_current_mode_color = function(self)
-  local current_mode = api.nvim_get_mode().mode
-  return modes[current_mode][3]
+  return string.format(' גּ %s ', modes[current_mode][1]):upper()
 end
 
 M.get_git_branch = function(self)
@@ -117,7 +128,7 @@ M.get_line_col = function(self)
 end
 
 M.paste = function(self)
-  if vim.o.paste then return ' PASTE ' end
+  if vim.o.paste then return '  PASTE ' end
   return ''
 end
 
@@ -125,9 +136,9 @@ end
 M.set_active = function(self)
   local colors = self.colors
 
-  local mode = self.get_current_mode_color() .. self:get_current_mode()
+  local mode = colors.mode .. self:get_current_mode()
   local mode_alt = colors.mode_alt .. self.separators[active_sep][1]
-  local paste = colors.diff_delete .. self:paste()
+  local paste = colors.paste .. self:paste()
   local git = colors.git .. self:get_git_branch()
   local git_alt = colors.git_alt .. self.separators[active_sep][1]
   local filename = colors.inactive .. self:get_filename()
@@ -137,7 +148,7 @@ M.set_active = function(self)
   local line_col_alt = colors.line_col_alt .. self.separators[active_sep][2]
 
   return table.concat({
-    colors.string, ' %n ', colors.active, mode, mode_alt, paste, git, git_alt,
+    colors.active, ' %n ', paste, mode, mode_alt, git, git_alt,
     colors.inactive, "%=", filename, "%=",
     filetype_alt, filetype, line_col_alt, line_col
   })
@@ -149,9 +160,8 @@ end
 
 M.set_explorer = function(self)
   local title = self.colors.mode .. '   '
-  local title_alt = self.colors.mode_alt .. self.separators[active_sep][2]
 
-  return table.concat({ self.colors.active, title, title_alt })
+  return table.concat({ self.colors.active, title, self.colors.active, ' FILE EXPLORER ' })
 end
 
 Statusline = setmetatable(M, {
@@ -163,7 +173,6 @@ Statusline = setmetatable(M, {
 })
 
 -- set statusline
--- TODO: replace this once we can define autocmd using lua
 vim.api.nvim_exec([[
   augroup Statusline
   au!

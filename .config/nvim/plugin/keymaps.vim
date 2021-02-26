@@ -26,4 +26,4 @@ nmap <space>d "_d
 nmap <space>c "_c
 
 " Find and Replace
-nnoremap R :%s/\<<C-r><C-w>\>//gc<Left><Left><C-r><C-w>
+nnoremap R :%s/\<<C-r><C-w>\>//gc<Left><Left><Left><C-r><C-w>
