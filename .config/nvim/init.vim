@@ -1,4 +1,5 @@
 set exrc " Wont open project .nvimrc without this here
+set splitbelow
 set pastetoggle=<F3>
 set virtualedit+=onemore
 set mouse=a
@@ -23,6 +24,7 @@ set termguicolors
 set scrolloff=8
 set noshowmode
 set signcolumn=yes
+set clipboard+=unnamedplus
 
 " Give more space displaying messages
 set cmdheight=1
@@ -78,8 +80,12 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
   Plug 'kyazdani42/nvim-tree.lua'
 
+  " Terminal
+  Plug 'voldikss/vim-floaterm'
+
   Plug 'gruvbox-community/gruvbox'
   Plug 'sainnhe/sonokai'
+  Plug 'romgrk/barbar.nvim'
 call plug#end()
 
 let g:sonokai_style = 'andromeda'
@@ -88,37 +94,11 @@ let g:sonokai_disable_italic_comment = 1
 colorscheme sonokai
 
 let loaded_matchparen = 1
-let mapleader = " "
-inoremap <C-c> <esc>
-nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
-nnoremap <leader>u :UndotreeShow<CR>
-nnoremap <leader>b :Vex<CR>
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-
-" greatest remap ever
-vnoremap <leader>p "_dP
-
-" next greatest remap ever : asbjornHaland
-nnoremap <leader>y "+y
-vnoremap <leader>y "+y
-nnoremap <leader>Y gg"+yG
-
-" move at the very end of line
-nnoremap $ $l
-
-" Indent Lines wihtout going back to Normal Mode
-vnoremap < <gv
-vnoremap > >gv
 
 lua require('completion')
 lua require('treesitter')
-lua require('format')
 lua require('statusline')
-nnoremap <silent> <C-f> :Format<CR>
-
-"FIND AND REPLACE
-nnoremap R :%s/\<<C-r><C-w>\>//g<Left><Left><C-r><C-w>
+lua require('formatting')
 
 fun! TrimWhitespace()
   let l:save = winsaveview()

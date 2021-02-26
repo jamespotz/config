@@ -32,16 +32,7 @@ precmd_functions+=(set_win_title)
 eval "$(starship init zsh)"
 eval "$(jump shell)"
 
-# Run neofetch on start
-neofetch
-
 export PS1="%B%~ %b$ "
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/james/google-cloud-sdk/path.zsh.inc' ]; then . '/home/james/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/james/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/james/google-cloud-sdk/completion.zsh.inc'; fi
 
 export PATH="$HOME/.cargo/bin:$PATH"
 

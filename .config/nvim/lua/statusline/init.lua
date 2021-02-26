@@ -85,7 +85,7 @@ M.get_git_branch = function(self)
   local short_name = branch:len() > 20 and branch:sub(1, 20)..'...' or branch
 
   if self:is_truncated(90) then
-    return is_empty and string.format('  %s ', short_name '') or ''
+    return is_empty and string.format('  %s ', short_name or '') or ''
   end
 
   return is_empty
@@ -116,12 +116,18 @@ M.get_line_col = function(self)
   return ' Ln %l, Col %c '
 end
 
+M.paste = function(self)
+  if vim.o.paste then return ' PASTE ' end
+  return ''
+end
+
 
 M.set_active = function(self)
   local colors = self.colors
 
   local mode = self.get_current_mode_color() .. self:get_current_mode()
   local mode_alt = colors.mode_alt .. self.separators[active_sep][1]
+  local paste = colors.diff_delete .. self:paste()
   local git = colors.git .. self:get_git_branch()
   local git_alt = colors.git_alt .. self.separators[active_sep][1]
   local filename = colors.inactive .. self:get_filename()
@@ -131,7 +137,7 @@ M.set_active = function(self)
   local line_col_alt = colors.line_col_alt .. self.separators[active_sep][2]
 
   return table.concat({
-    colors.string, ' %n ', colors.active, mode, mode_alt, git, git_alt,
+    colors.string, ' %n ', colors.active, mode, mode_alt, paste, git, git_alt,
     colors.inactive, "%=", filename, "%=",
     filetype_alt, filetype, line_col_alt, line_col
   })
