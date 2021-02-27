@@ -50,6 +50,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'hrsh7th/vim-vsnip'
   Plug 'tjdevries/nlua.nvim'
   Plug 'tjdevries/lsp_extensions.nvim'
+  Plug 'glepnir/lspsaga.nvim'
 
  " Neovim Tree shitter
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}

@@ -15,7 +15,7 @@ M.separators = {
 }
 
 -- set highlights
-vim.api.nvim_exec([[
+api.nvim_exec([[
   highlight STDefault guifg=#bbc2cf guibg=#202328
   highlight STRed guifg=#f8f8ff guibg=#ec5f67
   highlight STGreen guifg=#f8f8ff guibg=#00FF7F
@@ -35,7 +35,7 @@ vim.api.nvim_exec([[
   highlight STMagentafg guibg=#202328 guifg=#c678dd
   highlight STVioletfg guibg=#FF8800 guifg=#4B0082
   highlight STOrangefg guibg=#202328 guifg=#FF8800
-  highlight STDarkgrayfg guibg=#FF8800 guifg=#2F4F4F
+  highlight STDarkgrayfg guibg=#1E90FF guifg=#2F4F4F
 ]], false)
 
 -- highlight groups
@@ -50,7 +50,9 @@ M.colors = {
   filetype_alt  = '%#STCyanfg#',
   line_col      = '%#STBlue#',
   line_col_alt  = '%#STBluefg#',
-  paste         = '%#STRed#'
+  paste         = '%#STRed#',
+  lsp           = '%#STDarkgray#',
+  lsp_alt       = '%#STDarkgrayfg#'
 }
 
 local modes = {
@@ -108,7 +110,7 @@ M.get_git_branch = function(self)
 end
 
 M.get_filename = function(self)
-  local is_modified = vim.bo.modified and ' ✘ ' or ''
+  local is_modified = vim.bo.modified and '  ' or ''
   if self:is_truncated(140) then return " %<%f"..is_modified end
   return " %<%F"..is_modified
 end
@@ -124,7 +126,7 @@ end
 
 M.get_line_col = function(self)
   if self:is_truncated(60) then return ' %l:%c ' end
-  return ' Ln %l, Col %c '
+  return '  %l/%L,  %c '
 end
 
 M.paste = function(self)
@@ -132,6 +134,29 @@ M.paste = function(self)
   return ''
 end
 
+M.get_lsp_diagnostic = function(self)
+  local result = {}
+  local levels = {
+    errors = 'Error',
+    warnings = 'Warning',
+    info = 'Information',
+    hints = 'Hint'
+  }
+
+  for k, level in pairs(levels) do
+    result[k] = vim.lsp.diagnostic.get_count(0, level)
+  end
+
+  if self:is_truncated(120) then
+    return ''
+  else
+    return string.format(
+      " :%s :%s :%s :%s ",
+      result['errors'] or 0, result['warnings'] or 0,
+      result['info'] or 0, result['hints'] or 0
+    )
+  end
+end
 
 M.set_active = function(self)
   local colors = self.colors
@@ -146,11 +171,13 @@ M.set_active = function(self)
   local filetype = colors.filetype .. self:get_filetype()
   local line_col = colors.line_col .. self:get_line_col()
   local line_col_alt = colors.line_col_alt .. self.separators[active_sep][2]
+  local lsp_alt = colors.lsp_alt .. self.separators[active_sep][2]
+  local lsp = colors.lsp .. self:get_lsp_diagnostic()
 
   return table.concat({
     colors.active, ' %n ', paste, mode, mode_alt, git, git_alt,
     colors.inactive, "%=", filename, "%=",
-    filetype_alt, filetype, line_col_alt, line_col
+    filetype_alt, filetype, line_col_alt, line_col, lsp_alt, lsp
   })
 end
 
@@ -173,7 +200,7 @@ Statusline = setmetatable(M, {
 })
 
 -- set statusline
-vim.api.nvim_exec([[
+api.nvim_exec([[
   augroup Statusline
   au!
   au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline('active')
