@@ -58,6 +58,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
   " Code Formatter
   Plug 'mhartington/formatter.nvim'
@@ -91,7 +92,6 @@ call plug#end()
 
 let g:sonokai_style = 'andromeda'
 let g:sonokai_enable_italic = 1
-let g:sonokai_disable_italic_comment = 1
 colorscheme sonokai
 
 let loaded_matchparen = 1

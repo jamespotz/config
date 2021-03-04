@@ -54,10 +54,21 @@ export NODE_OPTIONS="--max-old-space-size=4096"
 export PATH=$PATH:/usr/local/go/bin
 
 # WSL 2 specific settings.
-if grep -q "microsoft" /proc/version &>/dev/null; then
-    # Requires: https://sourceforge.net/projects/vcxsrv/ (or alternative)
-    export DISPLAY="$(/sbin/ip route | awk '/default/ { print $3 }'):0"
-fi
+# set DISPLAY variable to the IP automatically assigned to WSL2
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+export LIBGL_ALWAYS_INDIRECT=1
 
 # DBUS
 sudo /etc/init.d/dbus start &> /dev/null
+
+# ZSH history corruption fix
+function fix_zsh_history() {
+  echo "Fixing corrupt .zsh_history file..."
+  mv ~/.zsh_history ~/.zsh_history_bad
+  strings ~/.zsh_history_bad > ~/.zsh_history
+  fc -R ~/.zsh_history
+  rm ~/.zsh_history_bad
+  echo "Done 🚀"
+}
+
+alias his_fix="fix_zsh_history"
