@@ -41,7 +41,10 @@ LS_COLORS="dircolors"
 # Alias
 alias mkdir="mkdir -p"
 alias ls="exa"
-alias fd="fdfind"
+if grep "Ubuntu" /etc/os-release &>/dev/null; then
+  alias fd="fdfind"
+fi
+
 alias myip="curl http://ipecho.net/plain; echo"
 alias config="nvim $HOME/.zshrc"
 alias reload="source $HOME/.zshrc"

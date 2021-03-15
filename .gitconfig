@@ -29,3 +29,5 @@
 [user]
 	name = James Robert Rooke
 	email = thepoltergeist23@gmail.com
+[pull]
+	ff = only
