@@ -5,7 +5,6 @@ set virtualedit+=onemore
 set mouse=a
 set guicursor=
 set relativenumber
-set nohlsearch
 set hidden
 set noerrorbells
 set number

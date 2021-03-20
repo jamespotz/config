@@ -27,3 +27,6 @@ nmap <space>c "_c
 
 " Find and Replace
 nnoremap R :%s/\<<C-r><C-w>\>//gc<Left><Left><Left><C-r><C-w>
+
+" Remove highlight
+nnoremap <leader>, :nohlsearch<CR><CR>
