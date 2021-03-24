@@ -1,3 +1,8 @@
+format = "$all"
+
+# Don't print a new line at the start of the prompt
+add_newline = false
+
 [aws]
 symbol = " "
 
@@ -20,6 +25,7 @@ symbol = " "
 
 [git_branch]
 symbol = "🌱 "
+truncation_length = 25
 
 [golang]
 symbol = " "

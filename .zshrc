@@ -61,15 +61,16 @@ export NODE_OPTIONS="--max-old-space-size=4096"
 
 # Add Go
 export PATH=$PATH:/usr/local/go/bin
+export PATH="$HOME/go/bin:$PATH"
 
 if grep -q "microsoft" /proc/version &>/dev/null; then
-# WSL 2 specific settings.
-# set DISPLAY variable to the IP automatically assigned to WSL2
-export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
-export LIBGL_ALWAYS_INDIRECT=1
+  # WSL 2 specific settings.
+  # set DISPLAY variable to the IP automatically assigned to WSL2
+  export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+  export LIBGL_ALWAYS_INDIRECT=1
 
-# DBUS
-sudo /etc/init.d/dbus start &> /dev/null
+  # DBUS
+  sudo /etc/init.d/dbus start &> /dev/null
 fi
 
 # ZSH history corruption fix

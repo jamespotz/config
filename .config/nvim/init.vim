@@ -49,7 +49,6 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'hrsh7th/vim-vsnip'
   Plug 'tjdevries/nlua.nvim'
   Plug 'tjdevries/lsp_extensions.nvim'
-  Plug 'glepnir/lspsaga.nvim'
 
  " Neovim Tree shitter
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -58,9 +57,6 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-telescope/telescope-fzy-native.nvim'
-
-  " Code Formatter
-  Plug 'mhartington/formatter.nvim'
 
   " Auto pairs
   Plug 'cohama/lexima.vim'
@@ -95,10 +91,7 @@ colorscheme sonokai
 
 let loaded_matchparen = 1
 
-lua require('completion')
-lua require('treesitter')
-lua require('statusline')
-lua require('formatting')
+lua require('settings')
 
 fun! TrimWhitespace()
   let l:save = winsaveview()

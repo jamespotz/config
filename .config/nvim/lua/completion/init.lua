@@ -54,12 +54,6 @@ require'compe'.setup {
   };
 }
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = truerequire
-
-require'lspconfig'.tsserver.setup {  capabilities = capabilities,}
-
-
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
