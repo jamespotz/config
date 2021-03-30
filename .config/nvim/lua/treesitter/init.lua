@@ -5,17 +5,14 @@ require "nvim-treesitter.configs".setup {
         enable = true
     },
 
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        init_selection = "gnn",
-        node_incremental = "grn",
-        scope_incremental = "grc",
-        node_decremental = "grm"
-      }
+    indent = {enable = {"javascriptreact"}},
+    playground = {
+        enable = true,
+        disable = {},
+        updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+        persist_queries = false -- Whether the query persists across vim sessions
     },
-
-    indent = {
-        enable = false
-    }
+    autotag = {enable = true},
+    rainbow = {enable = true},
+    context_commentstring = {enable = true, config = {javascriptreact = {style_element = '{/*%s*/}'}}}
 }

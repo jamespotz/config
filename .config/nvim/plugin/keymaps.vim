@@ -30,3 +30,8 @@ nnoremap R :%s/\<<C-r><C-w>\>//gc<Left><Left><Left><C-r><C-w>
 
 " Remove highlight
 nnoremap <leader>, :nohlsearch<CR><CR>
+
+" nvim-compe and lexima keymaps
+let g:lexima_no_default_rules = v:true
+call lexima#set_default_rules()
+inoremap <silent><expr> <CR>      compe#confirm(lexima#expand('<LT>CR>', 'i'))
