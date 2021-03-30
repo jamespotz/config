@@ -36,6 +36,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- javascript formatters and linter
+-- npm i -g prettier eslint_d
 local prettier = {formatCommand = "prettier --stdin-filepath ${INPUT}", formatStdin = true}
 
 local eslint = {
@@ -51,6 +52,8 @@ local eslint = {
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+-- TypeScript
+-- npm install -g typescript typescript-language-server
 nvim_lsp.tsserver.setup {
   on_attach = function(client, bufnr)
     client.resolved_capabilities.document_formatting = false
@@ -61,8 +64,16 @@ nvim_lsp.tsserver.setup {
   settings = {documentFormatting = false}
 }
 
+-- Docker
+-- npm install -g dockerfile-language-server-nodejs
 nvim_lsp.dockerls.setup {}
 
+-- SQL/MySQL
+-- npm i -g sql-language-server
+nvim_lsp.sqlls.setup {}
+
+-- EFM (General purpose Language Server that can use specified error message format generated from specified command)
+-- go get github.com/mattn/efm-langserver
 nvim_lsp.efm.setup {
   on_attach = function(client, bufnr)
     on_attach(client, bufnr)
