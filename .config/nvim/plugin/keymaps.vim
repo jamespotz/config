@@ -1,4 +1,3 @@
-let mapleader = " "
 inoremap <C-c> <esc>
 nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
 nnoremap <leader>u :UndotreeShow<CR>

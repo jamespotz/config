@@ -7,17 +7,18 @@ require"telescope_config"
 local nvim_lsp = require"lspconfig"
 
 -- Common keymaps
-vim.cmd('nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>')
-vim.cmd('nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>')
-vim.cmd('nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>')
-vim.cmd('nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>')
-vim.cmd('nnoremap <silent> ca :Lspsaga code_action<CR>')
-vim.cmd('nnoremap <silent> K :Lspsaga hover_doc<CR>')
-vim.cmd('nnoremap <silent> gR :Lspsaga rename<CR>')
+vim.cmd('nnoremap <silent> gd :lua vim.lsp.buf.definition()<CR>')
+vim.cmd('nnoremap <silent> gD :lua vim.lsp.buf.declaration()<CR>')
+vim.cmd('nnoremap <silent> gr :lua vim.lsp.buf.references()<CR>')
+vim.cmd('nnoremap <silent> gi :lua vim.lsp.buf.implementation()<CR>')
+vim.cmd('nnoremap <silent> ca :lua vim.lsp.buf.code_action()<CR>')
+vim.cmd('vnoremap <silent> <leader>ca :lua vim.lsp.buf.range_code_action()<CR>')
+vim.cmd('nnoremap <silent> K :lua vim.lsp.buf.hover()<CR>')
+vim.cmd('nnoremap <silent> gR :lua vim.lsp.buf.rename()<CR>')
 vim.cmd('nnoremap <silent> [e :Lspsaga diagnostic_jump_next<CR>')
 vim.cmd('nnoremap <silent> ]e :Lspsaga diagnostic_jump_prev<CR>')
-vim.cmd('nnoremap <space>f :lua vim.lsp.buf.formatting()<CR>')
-vim.cmd('nnoremap <space>fr :lua vim.lsp.buf.range_formatting()<CR>')
+vim.cmd('nnoremap <silent> <leader>f :lua vim.lsp.buf.formatting()<CR>')
+vim.cmd('nnoremap <silent> <leader>fr :lua vim.lsp.buf.range_formatting()<CR>')
 
 local on_attach = function(client, bufnr)
   -- Set autocommands conditional on server_capabilities
@@ -66,11 +67,42 @@ nvim_lsp.tsserver.setup {
 
 -- Docker
 -- npm install -g dockerfile-language-server-nodejs
-nvim_lsp.dockerls.setup {}
+nvim_lsp.dockerls.setup {
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+    print('Docker language server loaded!')
+  end
+}
 
 -- SQL/MySQL
 -- npm i -g sql-language-server
-nvim_lsp.sqlls.setup {}
+nvim_lsp.sqlls.setup {
+  cmd = {"sql-language-server", "up", "--method", "stdio"},
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+    print('Sql language server loaded!')
+  end
+}
+
+-- HTML
+-- npm install -g vscode-html-languageserver-bin
+nvim_lsp.html.setup {
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+    print('HTML language server loaded!')
+  end
+}
+
+-- CSS
+-- npm install -g vscode-css-languageserver-bin
+nvim_lsp.cssls.setup {
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+    print('CSS language server loaded!')
+  end
+}
 
 -- EFM (General purpose Language Server that can use specified error message format generated from specified command)
 -- go get github.com/mattn/efm-langserver
@@ -79,7 +111,7 @@ nvim_lsp.efm.setup {
     on_attach(client, bufnr)
     print('EFM loaded!')
   end,
-  init_options = {documentFormatting = true},
+  init_options = {documentFormatting = true, codeAction = false},
   filetypes = {"javascriptreact", "javascript", "typescript", "typescriptreact", "html", "css", "json", "yaml"},
   settings = {
       rootMarkers = {".git/"},

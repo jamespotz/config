@@ -36,7 +36,12 @@ function set_win_title(){
 }
 precmd_functions+=(set_win_title)
 eval "$(starship init zsh)"
-eval "$(jump shell)"
+
+# Autojump
+# https://github.com/ajeetdsouza/zoxide/#on-linux
+# Or directyl install the binary from github
+# curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/ajeetdsouza/zoxide/master/install.sh | sh
+eval "$(zoxide init zsh)"
 
 export PS1="%B%~ %b$ "
 

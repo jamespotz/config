@@ -1,4 +1,6 @@
+let mapleader = " "
 set exrc " Wont open project .nvimrc without this here
+set fileencoding="utf-8"
 set splitbelow
 set pastetoggle=<F3>
 set virtualedit+=onemore
@@ -42,6 +44,20 @@ set list listchars=tab:»·,trail:·,nbsp:·
 " Use one space, not two, after punctuation.
 set nojoinspaces
 
+" Realtime substitution
+set inccommand=split
+
+" Treat dash as a word text object
+set iskeyword+=-
+
+" highlight current line
+set cursorline
+
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+
 call plug#begin('~/.local/share/nvim/site/plugged')
   " Neovim lsp Plugins
   Plug 'neovim/nvim-lspconfig'
@@ -84,12 +100,13 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 
   Plug 'gruvbox-community/gruvbox'
   Plug 'sainnhe/sonokai'
+  Plug 'dracula/vim'
   Plug 'romgrk/barbar.nvim'
 call plug#end()
 
-let g:sonokai_style = 'andromeda'
-let g:sonokai_enable_italic = 1
-colorscheme sonokai
+" let g:sonokai_style = 'andromeda'
+" let g:sonokai_enable_italic = 1
+colorscheme dracula
 
 let loaded_matchparen = 1
 
