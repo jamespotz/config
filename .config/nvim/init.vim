@@ -62,7 +62,6 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   " Neovim lsp Plugins
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/nvim-compe'
-  Plug 'tzachar/compe-tabnine', { 'do': './install.sh' }
   Plug 'glepnir/lspsaga.nvim'
   Plug 'hrsh7th/vim-vsnip'
   Plug 'onsails/lspkind-nvim'
