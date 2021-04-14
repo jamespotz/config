@@ -62,6 +62,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   " Neovim lsp Plugins
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/nvim-compe'
+  Plug 'tzachar/compe-tabnine', { 'do': './install.sh' }
   Plug 'glepnir/lspsaga.nvim'
   Plug 'hrsh7th/vim-vsnip'
   Plug 'onsails/lspkind-nvim'
@@ -110,8 +111,6 @@ colorscheme dracula
 
 let loaded_matchparen = 1
 
-lua require('settings')
-
 fun! TrimWhitespace()
   let l:save = winsaveview()
   keeppatterns %s/\s\+$//e
@@ -122,3 +121,8 @@ augroup ThePoltergeist
   autocmd!
   autocmd BufWritePre * :call TrimWhitespace()
 augroup END
+
+" Default to static completion for SQL
+let g:omni_sql_default_compl_type = 'syntax'
+
+lua require('settings')
