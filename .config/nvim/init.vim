@@ -1,3 +1,49 @@
+call plug#begin('~/.local/share/nvim/site/plugged')
+  " Neovim lsp Plugins
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'hrsh7th/nvim-compe'
+  Plug 'glepnir/lspsaga.nvim'
+  Plug 'hrsh7th/vim-vsnip'
+  Plug 'onsails/lspkind-nvim'
+  Plug 'tjdevries/nlua.nvim'
+  Plug 'tjdevries/lsp_extensions.nvim'
+
+  " Neovim Tree shitter
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/playground'
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
+  " Auto pairs
+  Plug 'cohama/lexima.vim'
+
+  " Colors
+  Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase'  }
+
+  Plug 'mbbill/undotree'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-commentary'
+  Plug 'mhinz/vim-signify'
+  Plug 'dbeniamine/cheat.sh-vim'
+
+  " File Explorer
+  Plug 'kyazdani42/nvim-web-devicons' " for file icons
+  Plug 'kyazdani42/nvim-tree.lua'
+
+  " Terminal
+  Plug 'voldikss/vim-floaterm'
+
+  Plug 'gruvbox-community/gruvbox'
+  Plug 'sainnhe/sonokai'
+  Plug 'dracula/vim'
+  Plug 'romgrk/barbar.nvim'
+call plug#end()
+
 let mapleader = " "
 set exrc " Wont open project .nvimrc without this here
 set fileencoding="utf-8"
@@ -58,51 +104,6 @@ if exists('+termguicolors')
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-call plug#begin('~/.local/share/nvim/site/plugged')
-  " Neovim lsp Plugins
-  Plug 'neovim/nvim-lspconfig'
-  Plug 'hrsh7th/nvim-compe'
-  Plug 'glepnir/lspsaga.nvim'
-  Plug 'hrsh7th/vim-vsnip'
-  Plug 'onsails/lspkind-nvim'
-  Plug 'tjdevries/nlua.nvim'
-  Plug 'tjdevries/lsp_extensions.nvim'
-
- " Neovim Tree shitter
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'nvim-treesitter/playground'
-  Plug 'nvim-lua/popup.nvim'
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-telescope/telescope.nvim'
-  Plug 'nvim-telescope/telescope-fzy-native.nvim'
-
-  " Auto pairs
-  Plug 'cohama/lexima.vim'
-
-  " Colors
-  Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase'  }
-
-  Plug 'mbbill/undotree'
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
-  Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-surround'
-  Plug 'tpope/vim-commentary'
-  Plug 'mhinz/vim-signify'
-  Plug 'dbeniamine/cheat.sh-vim'
-
-  " File Explorer
-  Plug 'kyazdani42/nvim-web-devicons' " for file icons
-  Plug 'kyazdani42/nvim-tree.lua'
-
-  " Terminal
-  Plug 'voldikss/vim-floaterm'
-
-  Plug 'gruvbox-community/gruvbox'
-  Plug 'sainnhe/sonokai'
-  Plug 'dracula/vim'
-  Plug 'romgrk/barbar.nvim'
-call plug#end()
 
 " let g:sonokai_style = 'andromeda'
 " let g:sonokai_enable_italic = 1
