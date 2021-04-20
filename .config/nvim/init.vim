@@ -72,6 +72,7 @@ set scrolloff=8
 set noshowmode
 set signcolumn=yes
 set clipboard+=unnamedplus
+set termguicolors
 
 " Give more space displaying messages
 set cmdheight=1
