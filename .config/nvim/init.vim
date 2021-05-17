@@ -41,10 +41,12 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'gruvbox-community/gruvbox'
   Plug 'sainnhe/sonokai'
   Plug 'dracula/vim'
+  Plug 'marko-cerovac/material.nvim'
   Plug 'romgrk/barbar.nvim'
 call plug#end()
 
 let mapleader = " "
+set autoread
 set exrc " Wont open project .nvimrc without this here
 set fileencoding="utf-8"
 set splitbelow
@@ -100,6 +102,9 @@ set iskeyword+=-
 " highlight current line
 set cursorline
 
+" Font
+set guifont=JetBrains\ Mono\ Medium\ Nerd\ Font\ Complete:h14
+
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -125,5 +130,8 @@ augroup END
 
 " Default to static completion for SQL
 let g:omni_sql_default_compl_type = 'syntax'
+
+" Autread
+au FocusGained,BufEnter * :checktime
 
 lua require('settings')

@@ -93,3 +93,12 @@ alias his_fix="fix_zsh_history"
 # NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+# Spicetify-cli
+# curl -fsSL https://raw.githubusercontent.com/khanhas/spicetify-cli/master/install.sh | sh
+export SPICETIFY_INSTALL="$HOME/spicetify-cli"
+export PATH="$SPICETIFY_INSTALL:$PATH"
+
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+   source /etc/profile.d/vte.sh
+fi
