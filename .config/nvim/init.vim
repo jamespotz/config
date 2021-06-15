@@ -31,6 +31,9 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   " Rainbow brackets
   Plug 'p00f/nvim-ts-rainbow'
 
+  " GitBlame
+  Plug 'f-person/git-blame.nvim'
+
   Plug 'mbbill/undotree'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
