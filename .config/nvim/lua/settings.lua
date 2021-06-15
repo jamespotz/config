@@ -3,6 +3,13 @@ require"lspkind_config"
 require"treesitter"
 require"statusline"
 require"telescope_config"
+require"nvim-treesitter.configs".setup {
+  rainbow = {
+    enable = true,
+    extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+  }
+}
+require"colorizer".setup()
 
 local nvim_lsp = require"lspconfig"
 
@@ -138,3 +145,9 @@ nvim_lsp.efm.setup {
 vim.api.nvim_exec([[
   autocmd BufWritePre *.js,*.json lua vim.lsp.buf.formatting_sync(nil, 1000)
 ]], false)
+
+-- replace the default lsp diagnostic letters with prettier symbols
+vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnosticsDefaultError"})
+vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnosticsDefaultWarning"})
+vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiagnosticsDefaultInformation"})
+vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", numhl = "LspDiagnosticsDefaultHint"})

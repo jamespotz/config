@@ -19,8 +19,17 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   " Auto pairs
   Plug 'cohama/lexima.vim'
 
+  " Auto Close tags
+  Plug 'alvan/vim-closetag'
+
   " Colors
-  Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase'  }
+  Plug 'norcalli/nvim-colorizer.lua'
+
+  " Indent lines
+  Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'lua' }
+
+  " Rainbow brackets
+  Plug 'p00f/nvim-ts-rainbow'
 
   Plug 'mbbill/undotree'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -135,3 +144,14 @@ let g:omni_sql_default_compl_type = 'syntax'
 au FocusGained,BufEnter * :checktime
 
 lua require('settings')
+
+" blankline
+
+let g:indentLine_enabled = 1
+let g:indent_blankline_char = "▏"
+
+let g:indent_blankline_filetype_exclude = [ "help", "terminal", "dashboard" ]
+let g:indent_blankline_buftype_exclude = [ "terminal" ]
+
+let g:indent_blankline_show_trailing_blankline_indent = v:false
+let g:indent_blankline_show_first_indent_level = v:false
