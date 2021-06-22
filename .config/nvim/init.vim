@@ -17,10 +17,10 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
   " Auto pairs
-  Plug 'cohama/lexima.vim'
+  Plug 'windwp/nvim-autopairs'
 
-  " Auto Close tags
-  Plug 'alvan/vim-closetag'
+  " Auto Close/Rename tags
+  Plug 'windwp/nvim-ts-autotag'
 
   " Colors
   Plug 'norcalli/nvim-colorizer.lua'
@@ -32,7 +32,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'p00f/nvim-ts-rainbow'
 
   " GitBlame
-  Plug 'f-person/git-blame.nvim'
+  Plug 'tveskag/nvim-blame-line'
 
   Plug 'mbbill/undotree'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -53,8 +53,8 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'gruvbox-community/gruvbox'
   Plug 'sainnhe/sonokai'
   Plug 'dracula/vim'
-  Plug 'marko-cerovac/material.nvim'
-  Plug 'romgrk/barbar.nvim'
+  Plug 'folke/tokyonight.nvim'
+  Plug 'akinsho/nvim-bufferline.lua'
 call plug#end()
 
 let mapleader = " "
@@ -125,7 +125,8 @@ endif
 
 " let g:sonokai_style = 'andromeda'
 " let g:sonokai_enable_italic = 1
-colorscheme dracula
+let g:tokyonight_italic_functions = v:true
+colorscheme tokyonight
 
 let loaded_matchparen = 1
 

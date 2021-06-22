@@ -13,6 +13,10 @@ require "nvim-treesitter.configs".setup {
         persist_queries = false -- Whether the query persists across vim sessions
     },
     autotag = {enable = true},
-    rainbow = {enable = true},
-    context_commentstring = {enable = true, config = {javascriptreact = {style_element = '{/*%s*/}'}}}
+    rainbow = {
+      enable = true,
+      extended_mode = true,
+      max_file_lines = 1000,
+    },
+    context_commentstring = {enable = true, config = {javascriptreact = {style_element = '{/*%s*/}'}}},
 }

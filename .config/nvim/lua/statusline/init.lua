@@ -76,6 +76,7 @@ local modes = {
   ['r?'] = {'Confirm ', 'C'};
   ['!']  = {'Shell ', 'S'};
   ['t']  = {'Terminal ', 'T'};
+  ['niI'] = {'Insert', 'I'};
 }
 
 M.is_truncated = function(_, width)

@@ -3,13 +3,10 @@ require"lspkind_config"
 require"treesitter"
 require"statusline"
 require"telescope_config"
-require"nvim-treesitter.configs".setup {
-  rainbow = {
-    enable = true,
-    extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
-  }
-}
 require"colorizer".setup()
+require("bufferline").setup{
+  diagnostic = "nvim_lsp",
+}
 
 local nvim_lsp = require"lspconfig"
 
