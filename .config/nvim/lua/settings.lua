@@ -5,26 +5,72 @@ require"statusline"
 require"telescope_config"
 require"colorizer".setup()
 require("bufferline").setup{
-  diagnostic = "nvim_lsp",
+  options = {
+    separator_style = "slant",
+    diagnostic = "nvim_lsp",
+    custom_areas = {
+      right = function()
+        local result = {}
+        local error = vim.lsp.diagnostic.get_count(0, [[Error]])
+        local warning = vim.lsp.diagnostic.get_count(0, [[Warning]])
+        local info = vim.lsp.diagnostic.get_count(0, [[Information]])
+        local hint = vim.lsp.diagnostic.get_count(0, [[Hint]])
+
+        if error ~= 0 then
+          result[1] = {text = "  " .. error, guifg = "#EC5241"}
+        end
+
+        if warning ~= 0 then
+          result[2] = {text = "  " .. warning, guifg = "#EFB839"}
+        end
+
+        if hint ~= 0 then
+          result[3] = {text = "  " .. hint, guifg = "#A3BA5E"}
+        end
+
+        if info ~= 0 then
+          result[4] = {text = "  " .. info, guifg = "#7EA9A7"}
+        end
+        return result
+      end
+    }
+  }
 }
 
 local nvim_lsp = require"lspconfig"
 
--- Common keymaps
-vim.cmd('nnoremap <silent> gd :lua vim.lsp.buf.definition()<CR>')
-vim.cmd('nnoremap <silent> gD :lua vim.lsp.buf.declaration()<CR>')
-vim.cmd('nnoremap <silent> gr :lua vim.lsp.buf.references()<CR>')
-vim.cmd('nnoremap <silent> gi :lua vim.lsp.buf.implementation()<CR>')
-vim.cmd('nnoremap <silent> ca :Lspsaga code_action<CR>')
-vim.cmd('vnoremap <silent> <leader>ca :<C-U>Lspsaga range_code_action<CR>')
-vim.cmd('nnoremap <silent> K :lua vim.lsp.buf.hover()<CR>')
-vim.cmd('nnoremap <silent> gR :Lspsaga rename<CR>')
-vim.cmd('nnoremap <silent> [e :Lspsaga diagnostic_jump_next<CR>')
-vim.cmd('nnoremap <silent> ]e :Lspsaga diagnostic_jump_prev<CR>')
-vim.cmd('nnoremap <silent> <leader>f :lua vim.lsp.buf.formatting()<CR>')
-vim.cmd('nnoremap <silent> <leader>fr :lua vim.lsp.buf.range_formatting()<CR>')
-
 local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  --Enable completion triggered by <c-x><c-o>
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<space>rn', '<cmd>lua require("lspsaga.rename").rename()<CR>', opts)
+  buf_set_keymap('n', '<space>ca', '<cmd>lua require("lspsaga.codeaction").code_action()<CR>', opts)
+  buf_set_keymap("n", "<space>car", ':<C-U>lua require("lspsaga.codeaction").range_code_action()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_next()<CR>', opts)
+  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  buf_set_keymap("n", "<space>fr", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+
+
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_exec([[
@@ -67,6 +113,11 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 -- TypeScript
 -- npm install -g typescript typescript-language-server
 nvim_lsp.tsserver.setup {
+  init_options = {
+    preferences = {
+      importModuleSpecifierPreference = "relative"
+    }
+  },
   on_attach = function(client, bufnr)
     client.resolved_capabilities.document_formatting = false
     on_attach(client, bufnr)

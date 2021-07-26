@@ -9,7 +9,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'tjdevries/lsp_extensions.nvim'
 
   " Neovim Tree shitter
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/nvim-treesitter', { 'branch': '0.5-compat', 'do': ':TSUpdate' }
   Plug 'nvim-treesitter/playground'
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
@@ -26,7 +26,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'norcalli/nvim-colorizer.lua'
 
   " Indent lines
-  Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'lua' }
+  Plug 'lukas-reineke/indent-blankline.nvim'
 
   " Rainbow brackets
   Plug 'p00f/nvim-ts-rainbow'

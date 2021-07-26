@@ -65,6 +65,7 @@ local modes = {
   ['S']  = {'S·Line', 'S·L'};
   [''] = {'S·Block', 'S·B'};
   ['i']  = {'Insert', 'I'};
+  ['ix'] = {'Insert', 'I'};
   ['ic'] = {'Insert', 'I'};
   ['R']  = {'Replace', 'R'};
   ['Rv'] = {'V·Replace', 'V·R'};
