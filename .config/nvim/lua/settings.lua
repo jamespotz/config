@@ -86,18 +86,6 @@ local on_attach = function(client, bufnr)
   end
 end
 
--- javascript formatters and linter
--- npm i -g prettier eslint_d
-local prettier = {formatCommand = "prettier --stdin-filepath ${INPUT}", formatStdin = true}
-
-local eslint = {
-    lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
-    lintIgnoreExitCode = true,
-    lintStdin = true,
-    lintFormats = {"%f:%l:%c: %m"},
-    formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
-    formatStdin = true
-}
 
 -- Snippet support
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -166,33 +154,42 @@ nvim_lsp.cssls.setup {
   end
 }
 
--- EFM (General purpose Language Server that can use specified error message format generated from specified command)
--- go get github.com/mattn/efm-langserver
-nvim_lsp.efm.setup {
-  on_attach = function(client, bufnr)
-    on_attach(client, bufnr)
-    print('EFM loaded!')
-  end,
-  init_options = {documentFormatting = true, codeAction = false},
-  filetypes = {"javascriptreact", "javascript", "typescript", "typescriptreact", "html", "css", "json", "yaml"},
-  settings = {
-      rootMarkers = {".git/"},
-      languages = {
-          javascriptreact = {prettier, eslint},
-          javascript = {prettier, eslint},
-          typescriptreact = {prettier, eslint},
-          typescript = {prettier, eslint},
-          html = {prettier},
-          css = {prettier},
-          json = {prettier},
-          yaml = {prettier},
-      }
+-- Formatting
+local prettierFmt = function()
+  return {
+    exe = "prettier",
+    args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
+    stdin = true
   }
-}
+end
+
+local eslintFmt = function()
+  return {
+    exe = "eslint",
+    args = {"--stdin-filename", vim.api.nvim_buf_get_name(0), "--fix", "--cache"},
+    stdin = false
+  }
+end
+
+require"formatter".setup({
+  logging = false,
+  filetype = {
+    typescriptreact = {eslintFmt, prettierFmt},
+    typescript = {eslintFmt, prettierFmt},
+    javascript = {eslintFmt, prettierFmt},
+    javascriptreact = {eslintFmt, prettierFmt},
+    json = {prettierFmt},
+    html = {prettierFmt},
+    css = {prettierFmt}
+  }
+})
 
 vim.api.nvim_exec([[
-  autocmd BufWritePre *.js,*.json lua vim.lsp.buf.formatting_sync(nil, 1000)
-]], false)
+  augroup FormatAutogroup
+    autocmd!
+    autocmd BufWritePost *.js,*.ts,*.tsx,*.jsx,*.json,*.html,*.css,*.lua FormatWrite
+  augroup END
+]], true)
 
 -- replace the default lsp diagnostic letters with prettier symbols
 vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnosticsDefaultError"})

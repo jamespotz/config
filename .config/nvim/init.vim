@@ -50,6 +50,9 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   " Terminal
   Plug 'voldikss/vim-floaterm'
 
+  " Formatting
+  Plug 'mhartington/formatter.nvim'
+
   Plug 'gruvbox-community/gruvbox'
   Plug 'sainnhe/sonokai'
   Plug 'dracula/vim'
