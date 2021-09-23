@@ -88,15 +88,7 @@ end
 
 
 -- Snippet support
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {
-    'documentation',
-    'detail',
-    'additionalTextEdits',
-  }
-}
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- TypeScript
 -- npm install -g typescript typescript-language-server
@@ -158,15 +150,15 @@ nvim_lsp.cssls.setup {
 local prettierFmt = function()
   return {
     exe = "prettier",
-    args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
+    args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
     stdin = true
   }
 end
 
 local eslintFmt = function()
   return {
-    exe = "eslint",
-    args = {"--stdin-filename", vim.api.nvim_buf_get_name(0), "--fix", "--cache"},
+    exe = "eslint_d",
+    args = {"fix", "--stdin-filename", vim.api.nvim_buf_get_name(0)},
     stdin = false
   }
 end

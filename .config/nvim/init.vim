@@ -1,12 +1,17 @@
 call plug#begin('~/.local/share/nvim/site/plugged')
   " Neovim lsp Plugins
   Plug 'neovim/nvim-lspconfig'
-  Plug 'hrsh7th/nvim-compe'
   Plug 'glepnir/lspsaga.nvim'
-  Plug 'hrsh7th/vim-vsnip'
   Plug 'onsails/lspkind-nvim'
   Plug 'tjdevries/nlua.nvim'
   Plug 'tjdevries/lsp_extensions.nvim'
+
+  " Neovim LSP Completion
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-vsnip'
+  Plug 'hrsh7th/vim-vsnip'
 
   " Neovim Tree shitter
   Plug 'nvim-treesitter/nvim-treesitter', { 'branch': '0.5-compat', 'do': ':TSUpdate' }
