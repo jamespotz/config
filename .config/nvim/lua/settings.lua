@@ -4,6 +4,8 @@ require"treesitter"
 require"statusline"
 require"telescope_config"
 require"colorizer".setup()
+require'nvim-tree'.setup()
+
 require("bufferline").setup{
   options = {
     separator_style = "slant",
@@ -36,8 +38,6 @@ require("bufferline").setup{
     }
   }
 }
-
-local nvim_lsp = require"lspconfig"
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
