@@ -14,4 +14,4 @@ My Dotfiles Neovim, Alacritty, Kitty and ZSH config
 ## Installing LSP
 ```sh
 :LspInstall tsserver sqlls html cssls dockerls
-``
+```
