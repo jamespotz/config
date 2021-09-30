@@ -90,61 +90,47 @@ end
 -- Snippet support
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
--- TypeScript
--- npm install -g typescript typescript-language-server
-nvim_lsp.tsserver.setup {
-  init_options = {
-    preferences = {
-      importModuleSpecifierPreference = "relative"
-    }
-  },
-  on_attach = function(client, bufnr)
-    client.resolved_capabilities.document_formatting = false
-    on_attach(client, bufnr)
-    print('Tsserver loaded!')
-  end,
-  capabilities = capabilities,
-  settings = {documentFormatting = false}
-}
+-- Language Server Setups
+local lsp_installer = require("nvim-lsp-installer")
 
--- Docker
--- npm install -g dockerfile-language-server-nodejs
-nvim_lsp.dockerls.setup {
-  on_attach = function(client, bufnr)
-    on_attach(client, bufnr)
-    print('Docker language server loaded!')
-  end
-}
+lsp_installer.on_server_ready(function(server)
+    local opts = {}
 
--- SQL/MySQL
--- npm i -g sql-language-server
-nvim_lsp.sqlls.setup {
-  cmd = {"sql-language-server", "up", "--method", "stdio"},
-  on_attach = function(client, bufnr)
-    on_attach(client, bufnr)
-    print('Sql language server loaded!')
-  end
-}
+    opts.on_attach = function(client, bufnr)
+      on_attach(client, bufnr)
+      print('Language server loaded: ', server.name)
+    end
 
--- HTML
--- npm install -g vscode-html-languageserver-bin
-nvim_lsp.html.setup {
-  capabilities = capabilities,
-  on_attach = function(client, bufnr)
-    on_attach(client, bufnr)
-    print('HTML language server loaded!')
-  end
-}
+    if server.name == 'cssls' or server.name == 'html' then
+      opts.capabilities = capabilities
+    end
 
--- CSS
--- npm install -g vscode-css-languageserver-bin
-nvim_lsp.cssls.setup {
-  capabilities = capabilities,
-  on_attach = function(client, bufnr)
-    on_attach(client, bufnr)
-    print('CSS language server loaded!')
-  end
-}
+    if server.name == 'sqlls' then
+      opts.cmd = {"sql-language-server", "up", "--method", "stdio"}
+    end
+
+    -- (optional) Customize the options passed to the server
+    if server.name == "tsserver" then
+      opts.init_options = {
+        preferences = {
+          importModuleSpecifierPreference = "relative"
+        }
+      }
+
+      opts.on_attach = function(client, bufnr)
+        client.resolved_capabilities.document_formatting = false
+        on_attach(client, bufnr)
+        print('Language server loaded: ', server.name)
+      end
+
+      opts.capabilities = capabilities
+      opts.settings = {documentFormatting = false}
+    end
+
+    -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
+    server:setup(opts)
+    vim.cmd [[ do User LspAttachBuffers ]]
+end)
 
 -- Formatting
 local prettierFmt = function()

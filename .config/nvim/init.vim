@@ -6,6 +6,9 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'tjdevries/nlua.nvim'
   Plug 'tjdevries/lsp_extensions.nvim'
 
+  " Neovim LSP Installer
+  Plug 'williamboman/nvim-lsp-installer'
+
   " Neovim LSP Completion
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-buffer'
