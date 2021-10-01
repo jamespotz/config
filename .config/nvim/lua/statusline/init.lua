@@ -95,18 +95,17 @@ M.get_current_mode = function(self)
 end
 
 M.get_git_branch = function(self)
-	local branch = vim.fn['fugitive#head'](7)
-  local is_empty = branch ~= ''
-  local short_name = branch:len() > 20 and branch:sub(1, 20)..'...' or branch
+	local signs = vim.b.gitsigns_status_dict or {head = '', added = 0, changed = 0, removed = 0}
+  local is_empty = signs.head ~= ''
 
   if self:is_truncated(90) then
-    return is_empty and string.format('  %s ', short_name or '') or ''
+    return is_empty and string.format('  %s ', signs.head:sub(1, 20)..'...' or '') or ''
   end
 
   return is_empty
     and string.format(
       '  %s ',
-      short_name
+      signs.head:sub(1, 20)..'...'
     )
     or ''
 end

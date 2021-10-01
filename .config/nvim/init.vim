@@ -16,6 +16,10 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'hrsh7th/cmp-vsnip'
   Plug 'hrsh7th/vim-vsnip'
 
+  " LSP diagnostics and colors
+  Plug 'folke/trouble.nvim'
+  Plug 'folke/lsp-colors.nvim'
+
   " Neovim Tree shitter
   Plug 'nvim-treesitter/nvim-treesitter', { 'branch': '0.5-compat', 'do': ':TSUpdate' }
   Plug 'nvim-treesitter/playground'
@@ -42,13 +46,16 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   " GitBlame
   Plug 'tveskag/nvim-blame-line'
 
+  " Surround text
+  Plug 'blackcauldron7/surround.nvim'
+
+  " Commenting
+  Plug 'b3nj5m1n/kommentary'
+
+  " Git Signs
+  Plug 'lewis6991/gitsigns.nvim'
+
   Plug 'mbbill/undotree'
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
-  Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-surround'
-  Plug 'tpope/vim-commentary'
-  Plug 'mhinz/vim-signify'
   Plug 'dbeniamine/cheat.sh-vim'
 
   " File Explorer

@@ -4,7 +4,16 @@ require"treesitter"
 require"statusline"
 require"telescope_config"
 require"colorizer".setup()
-require'nvim-tree'.setup()
+require"nvim-tree".setup()
+require"trouble".setup()
+require("lsp-colors").setup({
+  Error = "#db4b4b",
+  Warning = "#e0af68",
+  Information = "#0db9d7",
+  Hint = "#10B981"
+})
+require"gitsigns".setup()
+require"surround".setup({mappings_style = "surround"})
 
 require("bufferline").setup{
   options = {
