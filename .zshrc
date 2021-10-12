@@ -48,7 +48,7 @@ precmd_functions+=(set_win_title)
 # https://github.com/ajeetdsouza/zoxide/#on-linux
 # Or directyl install the binary from github
 # curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/ajeetdsouza/zoxide/master/install.sh | sh
-eval "$(zoxide init zsh)"
+eval "$($HOME/.local/bin/zoxide init zsh)"
 
 export PS1="%B%~ %b$ "
 
@@ -75,15 +75,15 @@ export NODE_OPTIONS="--max-old-space-size=4096"
 export PATH=$PATH:/usr/local/go/bin
 export PATH="$HOME/go/bin:$PATH"
 
-if grep -q "microsoft" /proc/version &>/dev/null; then
-  # WSL 2 specific settings.
-  # set DISPLAY variable to the IP automatically assigned to WSL2
-  export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
-  export LIBGL_ALWAYS_INDIRECT=1
+# if grep -q "microsoft" /proc/version &>/dev/null; then
+#   # WSL 2 specific settings.
+#   # set DISPLAY variable to the IP automatically assigned to WSL2
+#   export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+#   export LIBGL_ALWAYS_INDIRECT=1
 
-  # DBUS
-  sudo /etc/init.d/dbus start &> /dev/null
-fi
+#   # DBUS
+#   sudo /etc/init.d/dbus start &> /dev/null
+# fi
 
 # ZSH history corruption fix
 function fix_zsh_history() {
@@ -97,9 +97,9 @@ function fix_zsh_history() {
 
 alias his_fix="fix_zsh_history"
 
-# NVM
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# fnm
+export PATH=/home/jamespotz/.fnm:$PATH
+eval "`fnm env`"
 
 # Spicetify-cli
 # curl -fsSL https://raw.githubusercontent.com/khanhas/spicetify-cli/master/install.sh | sh
@@ -112,3 +112,13 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+# Preserve MANPATH if you already defined it somewhere in your config.
+# Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
+export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
+
+# Nvim
+export PATH="$PATH:$HOME/.local/bin"
