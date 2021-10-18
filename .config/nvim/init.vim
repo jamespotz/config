@@ -22,6 +22,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 
   " Neovim Tree shitter
   Plug 'nvim-treesitter/nvim-treesitter', { 'branch': '0.5-compat', 'do': ':TSUpdate' }
+  Plug 'JoosepAlviste/nvim-ts-context-commentstring'
   Plug 'nvim-treesitter/playground'
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
@@ -50,7 +51,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'blackcauldron7/surround.nvim'
 
   " Commenting
-  Plug 'b3nj5m1n/kommentary'
+  Plug 'tpope/vim-commentary'
 
   " Git Signs
   Plug 'lewis6991/gitsigns.nvim'

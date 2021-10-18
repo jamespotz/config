@@ -2,10 +2,14 @@ require "nvim-treesitter.configs".setup {
     ensure_installed = "maintained",
 
     highlight = {
-        enable = true
+        enable = true,
+        additional_vim_regex_highlighting = false
     },
 
-    indent = {enable = {"javascriptreact"}},
+    indent = {
+      enable = {"javascriptreact", "javascript"}
+    },
+
     playground = {
         enable = true,
         disable = {},

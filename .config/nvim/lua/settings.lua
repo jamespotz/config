@@ -150,21 +150,22 @@ local prettierFmt = function()
   }
 end
 
-local eslintFmt = function()
+-- install npm install -g prettier-eslint-cli
+local prettierEslintFmt = function()
   return {
-    exe = "eslint_d",
-    args = {"fix", "--stdin-filename", vim.api.nvim_buf_get_name(0)},
-    stdin = false
+    exe = "prettier-eslint",
+    args = {"--stdin", "--stdin-filepath", vim.api.nvim_buf_get_name(0)},
+    stdin = true
   }
 end
 
 require"formatter".setup({
   logging = false,
   filetype = {
-    typescriptreact = {eslintFmt, prettierFmt},
-    typescript = {eslintFmt, prettierFmt},
-    javascript = {eslintFmt, prettierFmt},
-    javascriptreact = {eslintFmt, prettierFmt},
+    typescriptreact = {prettierEslintFmt},
+    typescript = {prettierEslintFmt},
+    javascript = {prettierEslintFmt},
+    javascriptreact = {prettierEslintFmt},
     json = {prettierFmt},
     html = {prettierFmt},
     css = {prettierFmt}
