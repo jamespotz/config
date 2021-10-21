@@ -5,10 +5,7 @@ local lspkind = require('lspkind')
 
 cmp.setup({
   formatting = {
-    format = function(entry, vim_item)
-      vim_item.kind = lspkind.presets.default[vim_item.kind]
-      return vim_item
-    end
+    format = lspkind.cmp_format(),
   },
   snippet = {
     expand = function(args)
@@ -22,6 +19,7 @@ cmp.setup({
     ['<C-e>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' }),
   },
   sources = {
     { name = 'nvim_lsp' },

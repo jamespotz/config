@@ -4,7 +4,12 @@ require"treesitter"
 require"statusline"
 require"telescope_config"
 require"colorizer".setup()
-require"nvim-tree".setup()
+require"nvim-tree".setup({
+  update_focused_file = {
+    enable = true,
+    update_cwd = true
+  },
+})
 require"trouble".setup()
 require("lsp-colors").setup({
   Error = "#db4b4b",
@@ -14,6 +19,12 @@ require("lsp-colors").setup({
 })
 require"gitsigns".setup()
 require"surround".setup({mappings_style = "surround"})
+require "lsp_signature".setup({
+  bind = true, -- This is mandatory, otherwise border config won't get registered.
+  handler_opts = {
+    border = "single"
+  }
+})
 
 require("bufferline").setup{
   options = {

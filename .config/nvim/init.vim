@@ -29,6 +29,9 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
+  " LSP Signatures
+  Plug 'ray-x/lsp_signature.nvim'
+
   " Auto pairs
   Plug 'windwp/nvim-autopairs'
 
