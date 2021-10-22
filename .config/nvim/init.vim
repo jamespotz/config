@@ -17,9 +17,6 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'hrsh7th/cmp-vsnip'
   Plug 'hrsh7th/vim-vsnip'
 
-  " Snippets
-  Plug 'rafamadriz/friendly-snippets'
-
   " LSP diagnostics and colors
   Plug 'folke/trouble.nvim'
   Plug 'folke/lsp-colors.nvim'
