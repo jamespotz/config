@@ -12,9 +12,13 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   " Neovim LSP Completion
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-vsnip'
   Plug 'hrsh7th/vim-vsnip'
+
+  " Snippets
+  Plug 'rafamadriz/friendly-snippets'
 
   " LSP diagnostics and colors
   Plug 'folke/trouble.nvim'
@@ -72,10 +76,8 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   " Formatting
   Plug 'mhartington/formatter.nvim'
 
-  Plug 'gruvbox-community/gruvbox'
-  Plug 'sainnhe/sonokai'
-  Plug 'dracula/vim'
-  Plug 'folke/tokyonight.nvim'
+  Plug 'bluz71/vim-nightfly-guicolors'
+  Plug 'olimorris/onedarkpro.nvim'
   Plug 'akinsho/nvim-bufferline.lua'
 call plug#end()
 
@@ -92,7 +94,7 @@ set relativenumber
 set hidden
 set noerrorbells
 set number
-set tabstop=2 softtabstop=2
+set tabstop=2
 set shiftwidth=2
 set expandtab
 set smartindent
@@ -108,13 +110,13 @@ set scrolloff=8
 set noshowmode
 set signcolumn=yes
 set clipboard+=unnamedplus
-set termguicolors
+set timeoutlen=100
 
 " Give more space displaying messages
 set cmdheight=1
 
 " Lower for better user experience
-set updatetime=50
+set updatetime=300
 
 " Dont pass message to |ins-completion-menu|
 set shortmess+=c
@@ -144,11 +146,7 @@ if exists('+termguicolors')
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-
-" let g:sonokai_style = 'andromeda'
-" let g:sonokai_enable_italic = 1
-let g:tokyonight_italic_functions = v:true
-colorscheme tokyonight
+colorscheme nightfly
 
 let loaded_matchparen = 1
 
