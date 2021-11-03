@@ -4,12 +4,7 @@ require"treesitter"
 require"statusline"
 require"telescope_config"
 require"colorizer".setup()
-require"nvim-tree".setup({
-  update_focused_file = {
-    enable = true,
-    update_cwd = true
-  },
-})
+require"file_explorer"
 require"trouble".setup()
 require("lsp-colors").setup({
   Error = "#db4b4b",
