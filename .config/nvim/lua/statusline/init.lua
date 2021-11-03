@@ -4,7 +4,7 @@ local api = vim.api
 local M = {}
 
 -- possible values are 'arrow' | 'rounded' | 'blank'
-local active_sep = 'angle'
+local active_sep = 'arrow'
 
 -- change them if you want to different separator
 M.separators = {

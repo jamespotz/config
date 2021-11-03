@@ -1,7 +1,6 @@
 call plug#begin('~/.local/share/nvim/site/plugged')
   " Neovim lsp Plugins
   Plug 'neovim/nvim-lspconfig'
-  Plug 'glepnir/lspsaga.nvim'
   Plug 'onsails/lspkind-nvim'
   Plug 'tjdevries/nlua.nvim'
   Plug 'tjdevries/lsp_extensions.nvim'
@@ -13,9 +12,13 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-buffer'
   Plug 'hrsh7th/cmp-path'
+  Plug 'hrsh7th/cmp-emoji'
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-vsnip'
   Plug 'hrsh7th/vim-vsnip'
+
+  " Tabnine
+  Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 
   " LSP diagnostics and colors
   Plug 'folke/trouble.nvim'
@@ -32,6 +35,9 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 
   " LSP Signatures
   Plug 'ray-x/lsp_signature.nvim'
+
+  " LSP lightbulb
+  Plug 'kosayoda/nvim-lightbulb'
 
   " Auto pairs
   Plug 'windwp/nvim-autopairs'
@@ -78,7 +84,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
   Plug 'akinsho/nvim-bufferline.lua'
 call plug#end()
 
-let mapleader = " "
+let mapleader="\<Space>"
 set autoread
 set exrc " Wont open project .nvimrc without this here
 set fileencoding="utf-8"
@@ -107,7 +113,6 @@ set scrolloff=8
 set noshowmode
 set signcolumn=yes
 set clipboard+=unnamedplus
-set timeoutlen=100
 
 " Give more space displaying messages
 set cmdheight=1
@@ -141,6 +146,10 @@ set guifont=JetBrains\ Mono\ Medium\ Nerd\ Font\ Complete:h14
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+
+if executable("rg")
+  set grepprg=rg\ --vimgrep
 endif
 
 colorscheme nightfly

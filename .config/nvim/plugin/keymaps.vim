@@ -1,5 +1,5 @@
 inoremap <C-c> <esc>
-nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
+nnoremap <leader><CR> :so ~/.config/nvim/init.vim<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>b :Vex<CR>
 vnoremap J :m '>+1<CR>gv=gv

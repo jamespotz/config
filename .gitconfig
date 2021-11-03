@@ -12,10 +12,13 @@
   co = checkout
   pf = push --force-with-lease
   st = status
+  ac = !git add -A && git commit -m
+  acm = commit --amend -m
+	fc = !git fetch && git checkout
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
-	editor = nvim
+  editor = nvim
 [merge]
   ff = only
 [commit]
@@ -27,7 +30,7 @@
 [diff]
   colorMoved = zebra
 [user]
-	name = James Robert Rooke
-	email = thepoltergeist23@gmail.com
+  name = James Robert Rooke
+  email = thepoltergeist23@gmail.com
 [pull]
-	ff = only
+  ff = only
