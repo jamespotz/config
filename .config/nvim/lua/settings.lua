@@ -4,6 +4,7 @@ require"treesitter"
 require"telescope_config"
 require"colorizer".setup()
 require"file_explorer"
+require"floaterm_config"
 require"trouble".setup()
 require("lsp-colors").setup({
   Error = "#db4b4b",
