@@ -1,7 +1,6 @@
 require"completion"
 require"lspkind_config"
 require"treesitter"
-require"statusline"
 require"telescope_config"
 require"colorizer".setup()
 require"file_explorer"
@@ -21,6 +20,9 @@ require "lsp_signature".setup({
   }
 })
 
+require('lualine').setup({
+  options = {theme = 'nightfly'}
+})
 require("bufferline").setup{
   options = {
     separator_style = "slant",
