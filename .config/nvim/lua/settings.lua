@@ -26,7 +26,7 @@ require('lualine').setup({
 })
 require("bufferline").setup{
   options = {
-    separator_style = "slant",
+    separator_style = "padded-slant",
     diagnostic = "nvim_lsp",
     custom_areas = {
       right = function()

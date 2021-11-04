@@ -115,6 +115,12 @@ require('packer').startup(function()
 }
 end)
 
+-- Creates undo directory
+local undo_dir = vim.fn.expand('~/.undo')
+if vim.fn.isdirectory(undo_dir) == 0 then
+  vim.fn.mkdir(undo_dir, 'p');
+end
+
 local load_defaults = function()
   local default_options = {
     backup = false, -- creates a backup file
@@ -139,7 +145,7 @@ local load_defaults = function()
     swapfile = false, -- creates a swapfile
     termguicolors = true, -- set term gui colors (most terminals support this)
     title = true, -- set the title of window to the value of the titlestring
-    --undodir = "~/.vim/undodir", -- set the undo directory to be saved
+    undodir = undo_dir, -- set the undo directory to be saved
     undofile = true, -- enable persistent undo
     updatetime = 250, -- faster completion
     writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
