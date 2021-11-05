@@ -104,6 +104,17 @@ end
 -- Snippet support
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+-- Organize Import tsserver
+local function organize_imports()
+  local params = {
+    command = "_typescript.organizeImports",
+    arguments = {vim.api.nvim_buf_get_name(0)},
+    title = ""
+  }
+
+  vim.lsp.buf_request_sync(0, "workspace/executeCommand", params, 500)
+end
+
 -- Language Server Setups
 local lsp_installer = require("nvim-lsp-installer")
 
@@ -125,6 +136,13 @@ lsp_installer.on_server_ready(function(server)
 
     -- (optional) Customize the options passed to the server
     if server.name == "tsserver" then
+      opts.commands = {
+        OrganizeImports = {
+          organize_imports,
+          description = "Organize Imports"
+        }
+      }
+
       opts.init_options = {
         preferences = {
           importModuleSpecifierPreference = "relative"
@@ -134,6 +152,8 @@ lsp_installer.on_server_ready(function(server)
       opts.on_attach = function(client, bufnr)
         client.resolved_capabilities.document_formatting = false
         on_attach(client, bufnr)
+
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "oi", ":OrganizeImports<CR>", {silent = true})
         print('Language server loaded: ', server.name)
       end
 
