@@ -55,6 +55,7 @@ require('packer').startup(function()
     'nvim-telescope/telescope.nvim',
     requires = { 'nvim-lua/plenary.nvim' }
   }
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   -- LSP Signatures
   use 'ray-x/lsp_signature.nvim'
@@ -188,13 +189,18 @@ vim.api.nvim_set_keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { noremap = true,
 -- Highlight on yank
 vim.api.nvim_exec(
   [[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
-]],
+    augroup YankHighlight
+      autocmd!
+      autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+    augroup end
+  ]],
   false
 )
+
+-- Autoread
+vim.api.nvim_exec([[
+  autocmd FocusGained,BufEnter * :checktime
+]], false)
 
 -- Y yank until the end of line  (note: this is now a default on master)
 vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true })
