@@ -65,7 +65,8 @@ local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 npairs.setup({
   check_ts = true,
   ts_config = {
-    javascript = {'string'}
+    lua = {'string'},
+    javascript = {'template_string'}
   }
 })
 require('nvim-autopairs.rule')
