@@ -6,7 +6,7 @@ require"colorizer".setup()
 require"file_explorer"
 require"floaterm_config"
 require"trouble".setup()
-require("lsp-colors").setup({
+require"lsp-colors".setup({
   Error = "#db4b4b",
   Warning = "#e0af68",
   Information = "#0db9d7",
@@ -14,7 +14,7 @@ require("lsp-colors").setup({
 })
 require"gitsigns".setup()
 require"surround".setup({mappings_style = "surround"})
-require "lsp_signature".setup({
+require"lsp_signature".setup({
   bind = true, -- This is mandatory, otherwise border config won't get registered.
   handler_opts = {
     border = "single"
@@ -153,7 +153,7 @@ lsp_installer.on_server_ready(function(server)
         client.resolved_capabilities.document_formatting = false
         on_attach(client, bufnr)
 
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "oi", ":OrganizeImports<CR>", {silent = true})
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>oi", ":OrganizeImports<CR>", {silent = true})
         print('Language server loaded: ', server.name)
       end
 
