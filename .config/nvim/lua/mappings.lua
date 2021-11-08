@@ -1,7 +1,7 @@
-local map = function(mode, key, cmd, options)
+local map = function(mode, lhs, rhs, options)
   local opts = { noremap = true }
   for k,v in pairs(options or {}) do opts[k] = v end
-  vim.api.nvim_set_keymap(mode, key, cmd, opts)
+  vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
 end
 
 --Remap space as leader key
@@ -22,7 +22,7 @@ map('n', 'Y', 'y$')
 -- Common Keymaps
 map('i', '<C-c>', '<esc>')
 map('n', '<Leader>u', ':UndoTreeShow')
-map('n', 'R', [[<cmd>%s/\<<C-r><C-w>\>//gc<Left><Left><Left><C-r><C-w>]])
+map('n', 'R', ":%s/\\<<C-r><C-w>\\>//gc<Left><Left><Left><C-r><C-w>")
 map('n', '<Leader>,', ':nohlsearch<CR>')
 map('n', '$', '$1')
 
