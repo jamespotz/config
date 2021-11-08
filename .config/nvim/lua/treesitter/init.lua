@@ -7,7 +7,8 @@ require "nvim-treesitter.configs".setup {
     },
 
     indent = {
-      enable = {"javascriptreact", "javascript"}
+      enable = true,
+      disable = { 'yaml' }
     },
 
     playground = {

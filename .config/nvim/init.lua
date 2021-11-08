@@ -90,6 +90,9 @@ require('packer').startup(function()
   -- Git Signs
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
 
+  -- Easier motions
+  use 'phaazon/hop.nvim'
+
   use 'mbbill/undotree'
   use 'dbeniamine/cheat.sh-vim'
 
@@ -112,8 +115,8 @@ require('packer').startup(function()
   -- Statusline
   use {
   'nvim-lualine/lualine.nvim',
-  requires = {'kyazdani42/nvim-web-devicons', opt = true}
-}
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
 end)
 
 -- Creates undo directory
@@ -124,6 +127,7 @@ end
 
 local load_defaults = function()
   local default_options = {
+    backspace = { "indent", "eol", "start" },
     backup = false, -- creates a backup file
     clipboard = "unnamedplus", -- allows neovim to access the system clipboard
     cmdheight = 2, -- more space in the neovim command line for displaying messages
@@ -163,6 +167,9 @@ local load_defaults = function()
     spelllang = "en",
     scrolloff = 8,
     sidescrolloff = 8,
+    wildmenu = true,
+    wildmode = 'full',
+    wildcharm = vim.fn.char2nr('^I'),
   }
 
   ---  SETTINGS  ---
@@ -176,15 +183,6 @@ end
 
 load_defaults();
 vim.cmd [[colorscheme nightfly]]
-
---Remap space as leader key
-vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
---Remap for dealing with word wrap
-vim.api.nvim_set_keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
-vim.api.nvim_set_keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
 
 -- Highlight on yank
 vim.api.nvim_exec(
@@ -202,9 +200,6 @@ vim.api.nvim_exec([[
   autocmd FocusGained,BufEnter * :checktime
 ]], false)
 
--- Y yank until the end of line  (note: this is now a default on master)
-vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true })
-
 --Map blankline
 vim.g.indent_blankline_char = '┊'
 vim.g.indent_blankline_filetype_exclude = { 'help', 'packer' }
@@ -213,11 +208,7 @@ vim.g.indent_blankline_char_highlight = 'LineNr'
 vim.g.indent_blankline_show_trailing_blankline_indent = false
 
 -- Keymaps
-vim.api.nvim_set_keymap('i', '<C-c>', '<esc>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>u', ':UndoTreeShow', { noremap = true })
-vim.api.nvim_set_keymap('n', 'R', [[<cmd>%s/\<<C-r><C-w>\>//gc<Left><Left><Left><C-r><C-w>]], { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>,', ':nohlsearch', { noremap = true })
-vim.api.nvim_set_keymap('n', '$', '$1', { noremap = true })
+require('mappings')
 
 -- Settings
 require('settings')
