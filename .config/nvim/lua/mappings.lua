@@ -22,7 +22,7 @@ map('n', 'Y', 'y$')
 -- Common Keymaps
 map('i', '<C-c>', '<esc>')
 map('n', '<Leader>u', ':UndoTreeShow')
-map('n', 'R', ":%s/\\<<C-r><C-w>\\>//gc<Left><Left><Left><C-r><C-w>")
+map('n', 'R', ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gc")
 map('n', '<Leader>,', ':nohlsearch<CR>')
 map('n', '$', '$1')
 
@@ -39,7 +39,7 @@ map("n", "<S-Tab>", ":bprevious<CR>")
 
 -- HOP config
 require("hop").setup()
-map("n", "h", "<cmd>lua require'hop'.hint_words()<cr>")
-map("n", "l", "<cmd>lua require'hop'.hint_lines()<cr>")
-map("v", "h", "<cmd>lua require'hop'.hint_words()<cr>")
-map("v", "l", "<cmd>lua require'hop'.hint_lines()<cr>")
+map("n", "f", "<cmd>lua require'hop'.hint_words()<cr>")
+map("n", "F", "<cmd>lua require'hop'.hint_lines()<cr>")
+map("v", "f", "<cmd>lua require'hop'.hint_words()<cr>")
+map("v", "F", "<cmd>lua require'hop'.hint_lines()<cr>")

@@ -1,11 +1,18 @@
--- Install packer
-local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
+-- Local variables
+local fn = vim.fn;
+local api = vim.api
+local g = vim.g
+local opt = vim.opt
+local cmd = vim.cmd
 
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+-- Install packer
+local install_path = fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
+
+if fn.empty(fn.glob(install_path)) > 0 then
+  fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
 end
 
-vim.api.nvim_exec(
+api.nvim_exec(
   [[
   augroup Packer
     autocmd!
@@ -106,6 +113,7 @@ require('packer').startup(function()
   -- Formatting
   use 'mhartington/formatter.nvim'
 
+  -- Colorscheme's
   use 'bluz71/vim-nightfly-guicolors'
   use 'olimorris/onedarkpro.nvim'
 
@@ -117,12 +125,24 @@ require('packer').startup(function()
   'nvim-lualine/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
+
+  -- Testing
+  use 'vim-test/vim-test'
+
+  -- Highlight text under cursor
+  use 'RRethy/vim-illuminate'
+
+  -- Todo commentstring
+  use {
+    "folke/todo-comments.nvim",
+    requires = { "nvim-lua/plenary.nvim" }
+  }
 end)
 
 -- Creates undo directory
-local undo_dir = vim.fn.expand('~/.undo')
-if vim.fn.isdirectory(undo_dir) == 0 then
-  vim.fn.mkdir(undo_dir, 'p');
+local undo_dir = fn.expand('~/.undo')
+if fn.isdirectory(undo_dir) == 0 then
+  fn.mkdir(undo_dir, 'p');
 end
 
 local load_defaults = function()
@@ -141,6 +161,8 @@ local load_defaults = function()
     ignorecase = true, -- ignore case in search patterns
     mouse = "a", -- allow the mouse to be used in neovim
     pumheight = 10, -- pop up menu height
+    pumblend = 20, -- pop up menu transparency
+    winblend = 20, -- floating window transparency
     showmode = false, -- we don't need to see things like -- INSERT -- anymore
     showtabline = 2, -- always show tabs
     smartcase = true, -- smart case
@@ -169,23 +191,25 @@ local load_defaults = function()
     sidescrolloff = 8,
     wildmenu = true,
     wildmode = 'full',
-    wildcharm = vim.fn.char2nr('^I'),
+    wildcharm = fn.char2nr('^I'), -- tab completion for the wildmenu
+    lazyredraw = true, -- Only redraw when necessary
+    inccommand = 'nosplit', -- Show incremental live substitution
   }
 
   ---  SETTINGS  ---
 
-  vim.opt.shortmess:append "c"
+  opt.shortmess:append "c"
 
   for k, v in pairs(default_options) do
-    vim.opt[k] = v
+    opt[k] = v
   end
 end
 
 load_defaults();
-vim.cmd [[colorscheme nightfly]]
+cmd [[colorscheme nightfly]]
 
 -- Highlight on yank
-vim.api.nvim_exec(
+api.nvim_exec(
   [[
     augroup YankHighlight
       autocmd!
@@ -196,19 +220,22 @@ vim.api.nvim_exec(
 )
 
 -- Autoread
-vim.api.nvim_exec([[
+api.nvim_exec([[
   autocmd FocusGained,BufEnter * :checktime
 ]], false)
 
 --Map blankline
-vim.g.indent_blankline_char = '┊'
-vim.g.indent_blankline_filetype_exclude = { 'help', 'packer' }
-vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile' }
-vim.g.indent_blankline_char_highlight = 'LineNr'
-vim.g.indent_blankline_show_trailing_blankline_indent = false
+g.indent_blankline_char = '┊'
+g.indent_blankline_filetype_exclude = { 'help', 'packer' }
+g.indent_blankline_buftype_exclude = { 'terminal', 'nofile' }
+g.indent_blankline_char_highlight = 'LineNr'
+g.indent_blankline_show_trailing_blankline_indent = false
 
 -- Keymaps
 require('mappings')
 
 -- Settings
 require('settings')
+
+-- Test config 
+require('test_config')
