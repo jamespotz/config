@@ -137,6 +137,15 @@ require('packer').startup(function()
     "folke/todo-comments.nvim",
     requires = { "nvim-lua/plenary.nvim" }
   }
+
+  -- Refactoring
+  use {
+    "ThePrimeagen/refactoring.nvim",
+    requires = {
+        {"nvim-lua/plenary.nvim"},
+        {"nvim-treesitter/nvim-treesitter"}
+    }
+  }
 end)
 
 -- Creates undo directory

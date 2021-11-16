@@ -43,3 +43,7 @@ map("n", "f", "<cmd>lua require'hop'.hint_words()<cr>")
 map("n", "F", "<cmd>lua require'hop'.hint_lines()<cr>")
 map("v", "f", "<cmd>lua require'hop'.hint_words()<cr>")
 map("v", "F", "<cmd>lua require'hop'.hint_lines()<cr>")
+
+-- Move current line with Alt+j/k
+map("i", "<A-j>", "<Esc>:m .+1<CR>==gi")
+map("i", "<A-k>", "<Esc>:m .-2<CR>==gi")

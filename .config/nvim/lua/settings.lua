@@ -10,6 +10,7 @@ require"telescope_config"
 require"colorizer".setup()
 require"file_explorer"
 require"floaterm_config"
+require"refactor"
 require"trouble".setup()
 require"todo-comments".setup()
 require"lsp-colors".setup({
