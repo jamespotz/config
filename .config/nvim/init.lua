@@ -23,7 +23,7 @@ api.nvim_exec(
 )
 
 local use = require('packer').use
-require('packer').startup(function()
+require('packer').startup({function()
   use 'wbthomason/packer.nvim' -- Package manager
   -- Neovim lsp Plugins
   use 'neovim/nvim-lspconfig'
@@ -42,9 +42,6 @@ require('packer').startup(function()
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
-
-  -- Tabnine
-  use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
 
   -- LSP diagnostics and colors
   use 'folke/trouble.nvim'
@@ -146,7 +143,14 @@ require('packer').startup(function()
         {"nvim-treesitter/nvim-treesitter"}
     }
   }
-end)
+end,
+config = {
+  display = {
+    open_fn = function()
+      return require('packer.util').float({ border = 'single' })
+    end
+  }
+}})
 
 -- Creates undo directory
 local undo_dir = fn.expand('~/.undo')
