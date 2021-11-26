@@ -56,7 +56,6 @@ cmp.setup({
     { name = 'buffer' },
     { name = 'path' },
     { name = 'emoji' },
-    { name = 'cmp_tabnine' },
   }
 })
 
@@ -73,12 +72,3 @@ require('nvim-autopairs.rule')
 require('nvim-autopairs.conds')
 require('nvim-autopairs.utils')
 cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
-
-local tabnine = require('cmp_tabnine.config')
-tabnine:setup({
-    max_lines = 1000;
-    max_num_results = 20;
-    sort = true;
-    run_on_every_keystroke = true;
-    snippet_placeholder = '..';
-})
