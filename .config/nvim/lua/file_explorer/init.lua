@@ -1,9 +1,9 @@
+local api = vim.api
 local g = vim.g
 
 -- settings
-g.nvim_tree_gitignore = 1
 g.nvim_tree_git_hl = 1
-g.nvim_tree_refresh_wait = 300
+g.nvim_tree_refresh_wait = 500
 g.nvim_tree_highlight_opened_files = 1
 
 g.nvim_tree_special_files = {}
@@ -58,7 +58,6 @@ require('nvim-tree').setup(
   }
 )
 
-local vim = vim.api
-vim.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-vim.nvim_set_keymap('n', '<leader>r', ':NvimTreeRefresh<CR>', { noremap = true, silent = true })
-vim.nvim_set_keymap('n', '<leader>n', ':NvimTreeFindFiles<CR>', { noremap = true, silent = true })
+api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+api.nvim_set_keymap('n', '<leader>r', ':NvimTreeRefresh<CR>', { noremap = true, silent = true })
+api.nvim_set_keymap('n', '<leader>n', ':NvimTreeFindFiles<CR>', { noremap = true, silent = true })
