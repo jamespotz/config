@@ -45,10 +45,7 @@ function set_win_title(){
 precmd_functions+=(set_win_title)
 
 # Autojump
-# https://github.com/ajeetdsouza/zoxide/#on-linux
-# Or directyl install the binary from github
-# curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/ajeetdsouza/zoxide/master/install.sh | sh
-eval "$($HOME/.local/bin/zoxide init zsh)"
+eval "$(zoxide init zsh)"
 
 export PS1="%B%~ %b$ "
 
@@ -101,15 +98,6 @@ alias his_fix="fix_zsh_history"
 export PATH=/home/jamespotz/.fnm:$PATH
 eval "`fnm env`"
 
-# Spicetify-cli
-# curl -fsSL https://raw.githubusercontent.com/khanhas/spicetify-cli/master/install.sh | sh
-export SPICETIFY_INSTALL="$HOME/spicetify-cli"
-export PATH="$SPICETIFY_INSTALL:$PATH"
-
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-   source /etc/profile.d/vte.sh
-fi
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -119,9 +107,6 @@ fi
 # Preserve MANPATH if you already defined it somewhere in your config.
 # Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
-
-# Nvim
-export PATH="$PATH:$HOME/.local/bin"
 
 # cisco anyconnect
 alias cisco="nohup /opt/cisco/anyconnect/bin/vpnui >/dev/null 2>&1 &"
