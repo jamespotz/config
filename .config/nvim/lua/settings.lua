@@ -29,7 +29,7 @@ require"lsp_signature".setup({
 })
 
 require('lualine').setup({
-  options = {theme = 'nightfly'}
+  options = {theme = 'onedarkpro'}
 })
 require("bufferline").setup{
   options = {

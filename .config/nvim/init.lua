@@ -219,7 +219,7 @@ local load_defaults = function()
 end
 
 load_defaults();
-cmd [[colorscheme nightfly]]
+cmd [[colorscheme onedarkpro]]
 
 -- Highlight on yank
 api.nvim_exec(
