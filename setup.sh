@@ -33,12 +33,13 @@ yes "" | ssh-keygen -t rsa -C "${email}"
 echo "${green}Copy the ssh key below and add to Github/Bitbucket account:${clear}"
 "${yellow}"; cat "${HOME}"/.ssh/id_rsa.pub; "${clear}"
 
-echo "Press [SPACE] to continue..."
+echo "${green}Press [SPACE] to continue...${clear}"
 read -r -s -d ' '
 
-echo "${green}Cloning config${clear}"
+echo "${green}Creating work directory${clear}"
 mkdir -p "${HOME}"/Work
-cd "${HOME}"/Work
+
+echo "${green}Cloning config${clear}"
 yadm clone git@github.com:jamespotz/config.git
 
 echo "${green}DONE...${clear}"
