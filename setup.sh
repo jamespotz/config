@@ -22,6 +22,7 @@ echo "${green}Installing HomeBrew${clear}"
 
 echo "${green}Installing essential packages${clear}"
 brew install zsh yadm exa ripgrep neovim fnm zsh-syntax-highlighting zsh-autosuggestions bat
+brew install romkatv/powerlevel10k/powerlevel10k 
 
 echo "${green}ZSH setup${clear}"
 sudo chsh -s "$(which zsh)" "${USER}"
