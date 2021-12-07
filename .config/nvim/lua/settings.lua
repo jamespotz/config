@@ -29,7 +29,7 @@ require"lsp_signature".setup({
 })
 
 require('lualine').setup({
-  options = {theme = 'onedarkpro'}
+  options = {theme = 'tokyonight'}
 })
 require("bufferline").setup{
   options = {
@@ -184,11 +184,11 @@ local prettierFmt = function()
   }
 end
 
--- install npm install -g prettier-eslint-cli
-local prettierEslintFmt = function()
+-- install npm install -g eslint_d
+local eslintFmt = function()
   return {
-    exe = "prettier-eslint",
-    args = {"--stdin", "--stdin-filepath", api.nvim_buf_get_name(0)},
+    exe = "eslint_d",
+    args = {"--stdin", "--stdin-filename", api.nvim_buf_get_name(0), '--fix-to-stdout'},
     stdin = true
   }
 end
@@ -196,10 +196,10 @@ end
 require"formatter".setup({
   logging = false,
   filetype = {
-    typescriptreact = {prettierEslintFmt},
-    typescript = {prettierEslintFmt},
-    javascript = {prettierEslintFmt},
-    javascriptreact = {prettierEslintFmt},
+    typescriptreact = {eslintFmt},
+    typescript = {eslintFmt},
+    javascript = {eslintFmt},
+    javascriptreact = {eslintFmt},
     json = {prettierFmt},
     html = {prettierFmt},
     css = {prettierFmt}

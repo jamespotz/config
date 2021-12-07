@@ -25,6 +25,12 @@ api.nvim_exec(
 local use = require('packer').use
 require('packer').startup({function()
   use 'wbthomason/packer.nvim' -- Package manager
+
+  -- Colorscheme's
+  use 'bluz71/vim-nightfly-guicolors'
+  use 'olimorris/onedarkpro.nvim'
+  use 'folke/tokyonight.nvim'
+
   -- Neovim lsp Plugins
   use 'neovim/nvim-lspconfig'
   use 'onsails/lspkind-nvim'
@@ -42,6 +48,9 @@ require('packer').startup({function()
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
+  
+  -- Editorconfig
+  use 'editorconfig/editorconfig-vim'
 
   -- LSP diagnostics and colors
   use 'folke/trouble.nvim'
@@ -109,10 +118,6 @@ require('packer').startup({function()
 
   -- Formatting
   use 'mhartington/formatter.nvim'
-
-  -- Colorscheme's
-  use 'bluz71/vim-nightfly-guicolors'
-  use 'olimorris/onedarkpro.nvim'
 
   -- Bufferline
   use 'akinsho/nvim-bufferline.lua'
@@ -219,7 +224,7 @@ local load_defaults = function()
 end
 
 load_defaults();
-cmd [[colorscheme onedarkpro]]
+cmd [[colorscheme tokyonight]]
 
 -- Highlight on yank
 api.nvim_exec(

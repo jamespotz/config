@@ -1,0 +1,44 @@
+#!/bin/bash
+
+set -eu -o pipefail # fail on error and report it, debug all lines
+
+# Set up the shell variables for colors
+# http://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
+yellow=$(tput setaf 3);
+green=$(tput setaf 2);
+clear=$(tput sgr0);
+
+echo "${green}Update/Upgrade system${clear}"
+sudo apt update && sudo apt dist-upgrade -y
+
+echo "${green}Installing Build Essential${clear}"
+sudo apt install build-essential curl wget -y
+
+echo "${green}Installing Archive Utilities${clear}"
+sudo apt install rar unrar p7zip-full p7zip-rar -y
+
+echo "${green}Installing HomeBrew${clear}"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+echo "${green}Installing essential packages${clear}"
+brew install zsh yadm exa ripgrep neovim fnm zsh-syntax-highlighting zsh-autosuggestions bat
+
+echo "${green}ZSH setup${clear}"
+sudo chsh -s "$(which zsh)" "${USER}"
+
+echo "${green}Setup ssh keygen${clear}"
+echo "Email:"
+read -r email
+yes "" | ssh-keygen -t rsa -C "${email}"
+echo "${green}Copy the ssh key below and add to Github/Bitbucket account:${clear}"
+"${yellow}"; cat "${HOME}"/.ssh/id_rsa.pub; "${clear}"
+
+echo "Press [SPACE] to continue..."
+read -r -s -d ' '
+
+echo "${green}Cloning config${clear}"
+mkdir -p "${HOME}"/Work
+cd "${HOME}"/Work
+yadm clone git@github.com:jamespotz/config.git
+
+echo "${green}DONE...${clear}"
