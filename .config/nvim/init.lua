@@ -48,6 +48,11 @@ require('packer').startup({function()
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
+
+  -- TypeScript Utils
+  use 'jose-elias-alvarez/nvim-lsp-ts-utils'
+  -- Formatting
+  use 'jose-elias-alvarez/null-ls.nvim'
   
   -- Editorconfig
   use 'editorconfig/editorconfig-vim'
@@ -115,9 +120,6 @@ require('packer').startup({function()
 
   -- Terminal
   use 'voldikss/vim-floaterm'
-
-  -- Formatting
-  use 'mhartington/formatter.nvim'
 
   -- Bufferline
   use 'akinsho/nvim-bufferline.lua'
