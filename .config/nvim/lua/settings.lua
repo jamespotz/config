@@ -174,7 +174,10 @@ null_ls.config({
 	sources = {
 		null_ls.builtins.diagnostics.eslint_d, -- eslint or eslint_d
 		null_ls.builtins.code_actions.eslint_d, -- eslint or eslint_d
-		null_ls.builtins.formatting.prettier,
+		null_ls.builtins.formatting.eslint_d,
+		null_ls.builtins.formatting.prettier.with({
+			disabled_filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+		}),
 		null_ls.builtins.formatting.stylua,
 	},
 })
