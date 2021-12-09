@@ -103,6 +103,19 @@ local on_attach = function(client, bufnr)
 	)
 	cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 
+	if client.resolved_capabilities.document_highlight then
+		cmd([[
+      hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
+      hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
+      hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
+      augroup lsp_document_highlight
+        autocmd! * <buffer>
+        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      augroup END
+    ]])
+	end
+
 	if client.resolved_capabilities.document_formatting then
 		cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
 	end
@@ -172,7 +185,6 @@ end)
 local null_ls = require("null-ls")
 null_ls.config({
 	sources = {
-		null_ls.builtins.diagnostics.eslint_d, -- eslint or eslint_d
 		null_ls.builtins.code_actions.eslint_d, -- eslint or eslint_d
 		null_ls.builtins.formatting.eslint_d,
 		null_ls.builtins.formatting.prettier.with({
@@ -187,10 +199,11 @@ require("lspconfig")["null-ls"].setup({
 })
 
 -- replace the default lsp diagnostic letters with prettier symbols
-fn.sign_define("LspDiagnosticsSignError", { text = "", numhl = "LspDiagnosticsDefaultError" })
-fn.sign_define("LspDiagnosticsSignWarning", { text = "", numhl = "LspDiagnosticsDefaultWarning" })
-fn.sign_define("LspDiagnosticsSignInformation", { text = "", numhl = "LspDiagnosticsDefaultInformation" })
-fn.sign_define("LspDiagnosticsSignHint", { text = "", numhl = "LspDiagnosticsDefaultHint" })
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+	local hl = "DiagnosticSign" .. type
+	fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
 
 -- nvim-lightbulb
 cmd([[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]])
