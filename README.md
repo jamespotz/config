@@ -10,7 +10,7 @@ bash <(curl -s https://raw.githubusercontent.com/jamespotz/config/master/setup.s
 
 # Neovim Setup
 
-![https://github.com/jamespotz/config/blob/de71d197b98b116da7d40c82acd3d00e8ecd96f2/image.png](https://github.com/jamespotz/config/blob/de71d197b98b116da7d40c82acd3d00e8ecd96f2/image.png)
+![image.png](image.png)
 
 ## Language Server's
 
