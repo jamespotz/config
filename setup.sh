@@ -21,7 +21,7 @@ echo "${green}Installing HomeBrew${clear}"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 echo "${green}Installing essential packages${clear}"
-brew install zsh yadm exa ripgrep neovim fnm zsh-syntax-highlighting zsh-autosuggestions bat
+brew install zsh yadm exa ripgrep neovim fnm zsh-syntax-highlighting zsh-autosuggestions bat git
 brew install romkatv/powerlevel10k/powerlevel10k 
 
 echo "${green}ZSH setup${clear}"
@@ -42,5 +42,10 @@ mkdir -p "${HOME}"/Work
 
 echo "${green}Cloning config${clear}"
 yadm clone git@github.com:jamespotz/config.git
+
+echo "${green}Installing neovim packages${clear}"
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.neovim
+nvim --headless +PackerUpdate +qall
 
 echo "${green}DONE...${clear}"
