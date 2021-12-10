@@ -49,6 +49,3 @@ map("v", "F", "<cmd>lua require'hop'.hint_lines()<cr>")
 -- Move current line with Alt+j/k
 map("i", "<A-j>", "<Esc>:m .+1<CR>==gi")
 map("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
-
--- toogle virtual current line blame → <leader>hb for Full line blame
-map("n", "<leader>lb", [[<Cmd>lua require'gitsigns'.toggle_current_line_blame()<CR>]], { silent = true })
