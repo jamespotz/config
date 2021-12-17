@@ -31,6 +31,7 @@ require("packer").startup({
 		use("bluz71/vim-nightfly-guicolors")
 		use("olimorris/onedarkpro.nvim")
 		use("folke/tokyonight.nvim")
+		use("shaunsingh/nord.nvim")
 
 		-- Neovim lsp Plugins
 		use("neovim/nvim-lspconfig")

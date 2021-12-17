@@ -193,9 +193,6 @@ local on_attach = function(client, bufnr)
 
 	if client.resolved_capabilities.document_highlight then
 		cmd([[
-      hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
-      hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
-      hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
       augroup lsp_document_highlight
         autocmd! * <buffer>
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
@@ -271,7 +268,7 @@ lsp_installer.on_server_ready(function(server)
 end)
 
 local null_ls = require("null-ls")
-null_ls.config({
+null_ls.setup({
 	sources = {
 		null_ls.builtins.code_actions.eslint_d, -- eslint or eslint_d
 		null_ls.builtins.formatting.eslint_d,
@@ -280,9 +277,6 @@ null_ls.config({
 		}),
 		null_ls.builtins.formatting.stylua,
 	},
-})
-
-require("lspconfig")["null-ls"].setup({
 	on_attach = on_attach,
 })
 

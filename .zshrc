@@ -46,34 +46,12 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 LS_COLORS="dircolors"
 
-# Alias
-alias mkdir="mkdir -p"
-alias ls="exa"
-if grep "Ubuntu" /etc/os-release &>/dev/null; then
-  alias fd="fdfind"
-fi
-
-alias myip="curl http://ipecho.net/plain; echo"
-alias config="nvim $HOME/.zshrc"
-alias reload="source $HOME/.zshrc"
-alias lg="lazygit"
-
 # Increase node js memory
 export NODE_OPTIONS="--max-old-space-size=4096"
 
 # Add Go
 export PATH=$PATH:/usr/local/go/bin
 export PATH="$HOME/go/bin:$PATH"
-
-# if grep -q "microsoft" /proc/version &>/dev/null; then
-# #   # WSL 2 specific settings.
-# #   # set DISPLAY variable to the IP automatically assigned to WSL2
-# #   export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
-# #   export LIBGL_ALWAYS_INDIRECT=1
-
-# #   # DBUS
-# #   # sudo /etc/init.d/dbus start &> /dev/null
-# fi
 
 # ZSH history corruption fix
 function fix_zsh_history() {
@@ -84,8 +62,6 @@ function fix_zsh_history() {
   rm ~/.zsh_history_bad
   echo "Done 🚀"
 }
-
-alias his_fix="fix_zsh_history"
 
 # fnm
 export PATH=/home/jamespotz/.fnm:$PATH
@@ -101,7 +77,22 @@ eval "`fnm env`"
 # Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 
-# cisco anyconnect
-alias cisco="nohup /opt/cisco/anyconnect/bin/vpnui >/dev/null 2>&1 &"
-alias ff="nohup firefox >/dev/null 2>&1 &"
-alias me="nohup microsoft-edge --enable-features=UseOzonePlatform --ozone-platform=wayland >/dev/null 2>&1 &"
+# Alias
+alias mkdir="mkdir -p"
+
+if command -v exa &> /dev/null; then
+  alias ls="exa"
+fi
+
+if command -v bat &> /dev/null; then
+  alias cat="bat"
+fi
+
+if command -v fdfind &>/dev/null; then
+  alias fd="fdfind"
+fi
+
+alias myip="curl http://ipecho.net/plain; echo"
+alias config="nvim $HOME/.zshrc"
+alias reload="source $HOME/.zshrc"
+alias his_fix="fix_zsh_history"
