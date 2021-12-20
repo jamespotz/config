@@ -276,6 +276,7 @@ null_ls.setup({
 			disabled_filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
 		}),
 		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.diagnostics.eslint_d,
 	},
 	on_attach = on_attach,
 })

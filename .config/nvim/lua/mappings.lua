@@ -1,3 +1,6 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 local map = function(mode, lhs, rhs, options)
 	local opts = { noremap = true }
 	for k, v in pairs(options or {}) do
@@ -8,8 +11,6 @@ end
 
 --Remap space as leader key
 map("", "<Space>", "<Nop>", { silent = true })
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 
 --Remap for dealing with word wrap
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -49,3 +50,7 @@ map("v", "F", "<cmd>lua require'hop'.hint_lines()<cr>")
 -- Move current line with Alt+j/k
 map("i", "<A-j>", "<Esc>:m .+1<CR>==gi")
 map("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
+
+-- Stay in indent mode
+map("v", "<", "<gv", { silent = true })
+map("v", ">", ">gv", { silent = true })
