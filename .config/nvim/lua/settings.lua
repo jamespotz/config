@@ -117,32 +117,6 @@ require("bufferline").setup({
 	options = {
 		separator_style = "padded-slant",
 		diagnostic = "nvim_lsp",
-		custom_areas = {
-			right = function()
-				local result = {}
-				local error = lsp.diagnostic.get_count(0, [[Error]])
-				local warning = lsp.diagnostic.get_count(0, [[Warning]])
-				local info = lsp.diagnostic.get_count(0, [[Information]])
-				local hint = lsp.diagnostic.get_count(0, [[Hint]])
-
-				if error ~= 0 then
-					result[1] = { text = "  " .. error, guifg = "#EC5241" }
-				end
-
-				if warning ~= 0 then
-					result[2] = { text = "  " .. warning, guifg = "#EFB839" }
-				end
-
-				if hint ~= 0 then
-					result[3] = { text = "  " .. hint, guifg = "#A3BA5E" }
-				end
-
-				if info ~= 0 then
-					result[4] = { text = "  " .. info, guifg = "#7EA9A7" }
-				end
-				return result
-			end,
-		},
 	},
 })
 
@@ -214,11 +188,27 @@ local lsp_installer = require("nvim-lsp-installer")
 
 lsp_installer.on_server_ready(function(server)
 	local opts = {}
+	opts.settings = { documentFormatting = false }
 
 	opts.on_attach = function(client, bufnr)
 		on_attach(client, bufnr)
 		require("illuminate").on_attach(client)
 		print("Language server loaded: ", server.name)
+	end
+
+	if server.name == "jsonls" then
+		opts.settings.json = {
+			schemas = {
+				{
+					fileMatch = { "package.json" },
+					url = "https://json.schemastore.org/package.json",
+				},
+				{
+					fileMatch = { "tsconfig.json", "tsconfig.*.json" },
+					url = "https://json.schemastore.org/tsconfig.json",
+				},
+			},
+		}
 	end
 
 	if server.name == "cssls" or server.name == "html" then
@@ -259,7 +249,6 @@ lsp_installer.on_server_ready(function(server)
 		end
 
 		opts.capabilities = capabilities
-		opts.settings = { documentFormatting = false }
 	end
 
 	-- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
@@ -270,11 +259,8 @@ end)
 local null_ls = require("null-ls")
 null_ls.setup({
 	sources = {
-		null_ls.builtins.code_actions.eslint_d, -- eslint or eslint_d
-		null_ls.builtins.formatting.eslint_d,
-		null_ls.builtins.formatting.prettier.with({
-			disabled_filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-		}),
+		null_ls.builtins.code_actions.eslint_d,
+		null_ls.builtins.formatting.prettierd,
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.diagnostics.eslint_d,
 	},

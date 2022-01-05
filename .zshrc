@@ -1,4 +1,3 @@
-source /home/linuxbrew/.linuxbrew/opt/powerlevel10k/powerlevel10k.zsh-theme
 source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /home/linuxbrew/.linuxbrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -37,6 +36,7 @@ function set_win_title(){
 }
 precmd_functions+=(set_win_title)
 
+
 # Autojump
 eval "$(zoxide init zsh)"
 
@@ -67,9 +67,6 @@ function fix_zsh_history() {
 export PATH=/home/jamespotz/.fnm:$PATH
 eval "`fnm env`"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
@@ -96,3 +93,6 @@ alias myip="curl http://ipecho.net/plain; echo"
 alias config="nvim $HOME/.zshrc"
 alias reload="source $HOME/.zshrc"
 alias his_fix="fix_zsh_history"
+
+# Starship.rs 
+eval "$(starship init zsh)"

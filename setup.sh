@@ -21,8 +21,7 @@ echo "${green}Installing HomeBrew${clear}"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 echo "${green}Installing essential packages${clear}"
-brew install zsh yadm exa ripgrep neovim fnm zsh-syntax-highlighting zsh-autosuggestions bat git tree-sitter luajit
-brew install romkatv/powerlevel10k/powerlevel10k 
+brew install zsh yadm exa ripgrep neovim fnm zsh-syntax-highlighting zsh-autosuggestions bat git tree-sitter luajit starship
 
 echo "${green}ZSH setup${clear}"
 sudo chsh -s "$(which zsh)" "${USER}"
