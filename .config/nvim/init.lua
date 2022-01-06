@@ -48,8 +48,9 @@ require("packer").startup({
 		use("hrsh7th/cmp-path")
 		use("hrsh7th/cmp-emoji")
 		use("hrsh7th/nvim-cmp")
-		use("hrsh7th/cmp-vsnip")
-		use("hrsh7th/vim-vsnip")
+		use("L3MON4D3/LuaSnip")
+		use("saadparwaiz1/cmp_luasnip")
+		use("rafamadriz/friendly-snippets")
 
 		-- TypeScript Utils
 		use("jose-elias-alvarez/nvim-lsp-ts-utils")

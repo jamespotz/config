@@ -13,7 +13,5 @@ symbol = " "
 style = "bold dimmed green"
 
 [status]
-style = "bold red"
-format = '[\[$symbol $common_meaning$signal_name$maybe_int\]]($style) '
 map_symbol = true
 disabled = false
