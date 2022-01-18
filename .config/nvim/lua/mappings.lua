@@ -37,8 +37,8 @@ map("n", "N", "Nzzzv")
 map("n", "<Leader>sa", "ggVG<c-$>")
 
 -- Tab to switch buffers in Normal mode
-map("n", "<Tab>", ":bnext<CR>")
-map("n", "<S-Tab>", ":bprevious<CR>")
+-- map("n", "<Tab>", ":bnext<CR>")
+-- map("n", "<S-Tab>", ":bprevious<CR>")
 
 -- HOP config
 require("hop").setup()
