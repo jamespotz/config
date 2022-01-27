@@ -1,3 +1,4 @@
+require("nvim-treesitter.install").compilers = { "gcc" }
 require("nvim-treesitter.configs").setup({
 	ensure_installed = "maintained",
 
@@ -29,20 +30,20 @@ require("nvim-treesitter.configs").setup({
 		enable = true,
 		enable_autocmd = false,
 		config = {
-			javascript = {
-				__default = "// %s",
-				jsx_element = "{/* %s */}",
-				jsx_fragment = "{/* %s */}",
-				jsx_attribute = "// %s",
-				comment = "// %s",
-			},
+			-- Languages that have a single comment style
+			typescript = "// %s",
+			css = "/* %s */",
+			scss = "/* %s */",
+			html = "<!-- %s -->",
+			svelte = "<!-- %s -->",
+			vue = "<!-- %s -->",
+			json = "",
 		},
 	},
 
 	textobjects = {
 		select = {
 			enable = true,
-
 			-- Automatically jump forward to textobj, similar to targets.vim
 			lookahead = true,
 
@@ -52,15 +53,10 @@ require("nvim-treesitter.configs").setup({
 				["if"] = "@function.inner",
 				["ac"] = "@class.outer",
 				["ic"] = "@class.inner",
-
-				-- Or you can define your own textobjects like this
-				["iF"] = {
-					python = "(function_definition) @function",
-					cpp = "(function_definition) @function",
-					c = "(function_definition) @function",
-					java = "(method_declaration) @function",
-				},
 			},
+		},
+		swap = {
+			enable = true,
 		},
 	},
 })
