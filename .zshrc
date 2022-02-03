@@ -47,7 +47,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 LS_COLORS="dircolors"
 
 # Increase node js memory
-export NODE_OPTIONS="--max-old-space-size=4096"
+# export NODE_OPTIONS="--max-old-space-size=4096"
 
 # Add Go
 export PATH=$PATH:/usr/local/go/bin

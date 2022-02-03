@@ -12,7 +12,7 @@
   co = checkout
   pf = push --force-with-lease
   st = status
-  ac = !git add -A && git commit -m
+  ac = !git add -A && git commit
   acm = commit --amend -m
 	fc = !git fetch && git checkout
 [core]
