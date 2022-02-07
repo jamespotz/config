@@ -54,3 +54,5 @@ map("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
 -- Stay in indent mode
 map("v", "<", "<gv", { silent = true })
 map("v", ">", ">gv", { silent = true })
+
+map("n", "/", "/\\v")
