@@ -92,7 +92,7 @@ require("gitsigns").setup({
 	},
 })
 
-require("surround").setup({ mappings_style = "surround" })
+-- require("surround").setup({ mappings_style = "surround" })
 
 require("lualine").setup({
 	options = { theme = "tokyonight" },

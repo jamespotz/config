@@ -100,7 +100,8 @@ require("packer").startup({
 		use("p00f/nvim-ts-rainbow")
 
 		-- Surround text
-		use("blackcauldron7/surround.nvim")
+		-- use("blackcauldron7/surround.nvim")
+		use("tpope/vim-surround")
 
 		-- Commenting
 		use("numToStr/Comment.nvim")
