@@ -1,6 +1,10 @@
 vim.o.completeopt = "menu,menuone,noselect"
 
-local cmp = require("cmp")
+local status_ok, cmp = pcall(require, "cmp")
+if not status_ok then
+	return
+end
+
 local lspkind = require("lspkind")
 local luasnip = require("luasnip")
 
@@ -72,17 +76,3 @@ luasnip.config.set_config({
 })
 
 require("luasnip/loaders/from_vscode").lazy_load()
-
-local npairs = require("nvim-autopairs")
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-npairs.setup({
-	check_ts = true,
-	ts_config = {
-		lua = { "string" },
-		javascript = { "template_string" },
-	},
-})
-require("nvim-autopairs.rule")
-require("nvim-autopairs.conds")
-require("nvim-autopairs.utils")
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))

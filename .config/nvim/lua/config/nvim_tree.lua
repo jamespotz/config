@@ -1,3 +1,8 @@
+local status_ok, nvim_tree = pcall(require, "nvim-tree")
+if not status_ok then
+	return
+end
+
 local api = vim.api
 local g = vim.g
 
@@ -45,7 +50,7 @@ g.nvim_tree_icons = {
   },
 }
 
-require('nvim-tree').setup(
+nvim_tree.setup(
   {
     auto_close = true,
     diagnostics = {

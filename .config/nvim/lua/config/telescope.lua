@@ -1,7 +1,11 @@
 local api = vim.api
+local status_ok, telescope = pcall(require, "telescope")
+if not status_ok then
+	return
+end
 
 local actions = require("telescope.actions")
-require("telescope").setup({
+telescope.setup({
 	defaults = {
 		prompt_prefix = " >",
 		color_devicons = true,
@@ -28,7 +32,7 @@ require("telescope").setup({
 	},
 })
 
-require("telescope").load_extension("fzf")
+telescope.load_extension("fzf")
 
 --Keymaps
 api.nvim_set_keymap(
