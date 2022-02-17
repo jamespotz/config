@@ -121,9 +121,7 @@ use("windwp/nvim-ts-autotag")
 -- Colors
 use({
 	"norcalli/nvim-colorizer.lua",
-	config = function()
-		require("colorizer").setup()
-	end,
+	config = get_config("colorizer"),
 })
 
 -- Indent lines
