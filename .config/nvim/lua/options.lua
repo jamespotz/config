@@ -1,6 +1,4 @@
 local fn = vim.fn
-local api = vim.api
-local g = vim.g
 local opt = vim.opt
 local cmd = vim.cmd
 

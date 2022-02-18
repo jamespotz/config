@@ -3,10 +3,10 @@ local api = vim.api
 -- Highlight on yank
 api.nvim_exec(
 	[[
-    augroup YankHighlight
+    augroup highlight_yank
       autocmd!
-      autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-    augroup end
+      au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=200})
+    augroup END
   ]],
 	false
 )
@@ -14,7 +14,7 @@ api.nvim_exec(
 -- Autoread
 api.nvim_exec(
 	[[
-  autocmd FocusGained,BufEnter * :checktime
-]],
+    autocmd FocusGained,BufEnter * :checktime
+  ]],
 	false
 )

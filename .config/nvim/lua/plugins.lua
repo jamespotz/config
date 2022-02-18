@@ -1,8 +1,5 @@
 local fn = vim.fn
 local api = vim.api
-local g = vim.g
-local opt = vim.opt
-local cmd = vim.cmd
 
 -- Install packer
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -21,7 +18,7 @@ api.nvim_exec(
 	[[
   augroup Packer
     autocmd!
-    autocmd BufWritePost init.lua PackerCompile
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
   augroup end
 ]],
 	false
@@ -50,6 +47,13 @@ use("bluz71/vim-nightfly-guicolors")
 use("olimorris/onedarkpro.nvim")
 use("folke/tokyonight.nvim")
 use("shaunsingh/nord.nvim")
+
+-- Startup
+use({
+	"goolord/alpha-nvim",
+	requires = { "kyazdani42/nvim-web-devicons" },
+	config = get_config("alpha"),
+})
 
 -- Neovim lsp Plugins
 use("neovim/nvim-lspconfig")
@@ -110,7 +114,7 @@ use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 use("ray-x/lsp_signature.nvim")
 
 -- LSP lightbulb
-use("kosayoda/nvim-lightbulb")
+use({ "kosayoda/nvim-lightbulb", config = get_config("lightbulb") })
 
 -- Auto pairs
 use({ "windwp/nvim-autopairs", config = get_config("autopairs") })
@@ -142,7 +146,7 @@ use("JoosepAlviste/nvim-ts-context-commentstring")
 use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" }, config = get_config("git") })
 
 -- Easier motions
-use("phaazon/hop.nvim")
+use({ "phaazon/hop.nvim", event = "BufReadPre", config = get_config("hop") })
 
 use("mbbill/undotree")
 use("dbeniamine/cheat.sh-vim")
