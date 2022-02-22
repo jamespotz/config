@@ -12,7 +12,7 @@ echo "${green}Update/Upgrade system${clear}"
 sudo apt update && sudo apt dist-upgrade -y
 
 echo "${green}Installing Build Essential${clear}"
-sudo apt install build-essential curl wget -y
+sudo apt install build-essential curl wget git -y
 
 echo "${green}Installing Archive Utilities${clear}"
 sudo apt install rar unrar p7zip-full p7zip-rar -y
