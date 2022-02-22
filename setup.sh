@@ -19,6 +19,8 @@ sudo apt install rar unrar p7zip-full p7zip-rar -y
 
 echo "${green}Installing HomeBrew${clear}"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/jamespotz/.profile
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 echo "${green}Installing essential packages${clear}"
 brew install zsh yadm exa ripgrep neovim fnm zsh-syntax-highlighting zsh-autosuggestions bat git tree-sitter luajit starship
