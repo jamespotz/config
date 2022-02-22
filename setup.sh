@@ -11,8 +11,8 @@ clear=$(tput sgr0);
 echo "${green}Update/Upgrade system${clear}"
 sudo apt update && sudo apt dist-upgrade -y
 
-echo "${green}Installing Build Essential${clear}"
-sudo apt install build-essential curl wget git -y
+echo "${green}Installing Build Essential and more...${clear}"
+sudo apt install build-essential curl wget git zsh -y
 
 echo "${green}Installing Archive Utilities${clear}"
 sudo apt install rar unrar p7zip-full p7zip-rar -y
@@ -23,7 +23,7 @@ echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/jamespotz
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 echo "${green}Installing essential packages${clear}"
-brew install zsh yadm exa ripgrep neovim fnm zsh-syntax-highlighting zsh-autosuggestions bat git tree-sitter luajit starship
+brew install yadm exa ripgrep neovim fnm zsh-syntax-highlighting zsh-autosuggestions bat git tree-sitter luajit starship
 
 echo "${green}ZSH setup${clear}"
 mv ~/.zshrc ~/zshrc.bak
