@@ -26,6 +26,7 @@ echo "${green}Installing essential packages${clear}"
 brew install zsh yadm exa ripgrep neovim fnm zsh-syntax-highlighting zsh-autosuggestions bat git tree-sitter luajit starship
 
 echo "${green}ZSH setup${clear}"
+mv ~/.zshrc ~/zshrc.bak
 sudo chsh -s "$(which zsh)" "${USER}"
 
 echo "${green}Setup ssh keygen${clear}"
