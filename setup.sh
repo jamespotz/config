@@ -52,8 +52,9 @@ nvim --headless +PackerUpdate +qall
 
 echo "${green}Installing node v14...${clear}"
 fnm install v14
+fnm default v14
 
 echo "${green}Installing global npm packages eslint_d, prettierd, and yarn...${clear}"
-npm install -g yarn eslint_d @fsouza/prettierd
+fnm exec --using=v14 npm install -g yarn eslint_d @fsouza/prettierd
 
 echo "${green}DONE!🚀🚀${clear}"
