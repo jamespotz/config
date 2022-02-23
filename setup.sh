@@ -23,7 +23,7 @@ echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/jamespotz
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 echo "${green}Installing essential homebrew packages...${clear}"
-brew install yadm exa ripgrep neovim fnm zsh-syntax-highlighting zsh-autosuggestions bat tree-sitter luajit starship zoxide
+brew install yadm exa ripgrep neovim fnm zsh-syntax-highlighting zsh-autosuggestions bat tree-sitter luajit starship zoxide gcc
 
 echo "${green}ZSH setup...${clear}"
 mv ~/.zshrc ~/zshrc.bak
