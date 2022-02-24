@@ -15,7 +15,7 @@ echo "${green}Installing Build Essential and more...${clear}"
 sudo apt install build-essential curl wget git zsh -y
 
 echo "${green}Installing Archive Utilities...${clear}"
-sudo apt install rar unrar p7zip-full p7zip-rar -y
+sudo apt install rar unrar p7zip-full p7zip-rar unzip -y
 
 echo "${green}Installing HomeBrew...${clear}"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -23,7 +23,7 @@ echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/jamespotz
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 echo "${green}Installing essential homebrew packages...${clear}"
-brew install yadm exa ripgrep neovim fnm zsh-syntax-highlighting zsh-autosuggestions bat tree-sitter luajit starship zoxide gcc
+brew install yadm exa ripgrep neovim fnm zsh-syntax-highlighting zsh-autosuggestions bat tree-sitter luajit starship zoxide gcc stylua
 
 echo "${green}ZSH setup...${clear}"
 [ -f ~/.zshrc] && mv ~/.zshrc ~/zshrc.bak

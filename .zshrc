@@ -65,8 +65,7 @@ function fix_zsh_history() {
 }
 
 # fnm
-export PATH=/home/jamespotz/.fnm:$PATH
-eval "`fnm env`"
+eval "$(fnm env --use-on-cd)"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
