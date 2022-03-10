@@ -40,12 +40,6 @@ map("n", "<Leader>sa", "ggVG<c-$>")
 -- map("n", "<Tab>", ":bnext<CR>")
 -- map("n", "<S-Tab>", ":bprevious<CR>")
 
--- HOP config
-map("n", "h", "<cmd>lua require'hop'.hint_words()<cr>")
-map("n", "l", "<cmd>lua require'hop'.hint_lines()<cr>")
-map("v", "h", "<cmd>lua require'hop'.hint_words()<cr>")
-map("v", "l", "<cmd>lua require'hop'.hint_lines()<cr>")
-
 -- Move current line with Alt+j/k
 map("i", "<A-j>", "<Esc>:m .+1<CR>==gi")
 map("i", "<A-k>", "<Esc>:m .-2<CR>==gi")

@@ -49,6 +49,7 @@ use("folke/tokyonight.nvim")
 use("shaunsingh/nord.nvim")
 
 -- Startup
+use({ "lewis6991/impatient.nvim", config = get_config("impatient") })
 use({
 	"goolord/alpha-nvim",
 	requires = { "kyazdani42/nvim-web-devicons" },
