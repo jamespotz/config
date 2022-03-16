@@ -61,6 +61,8 @@ local on_attach = function(client, bufnr)
 	if client.resolved_capabilities.document_formatting then
 		cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
 	end
+
+	require("illuminate").on_attach(client)
 end
 
 -- Snippet support
@@ -75,7 +77,6 @@ lsp_installer.on_server_ready(function(server)
 
 	opts.on_attach = function(client, bufnr)
 		on_attach(client, bufnr)
-		require("illuminate").on_attach(client)
 		print("Language server loaded: ", server.name)
 	end
 
@@ -84,6 +85,7 @@ lsp_installer.on_server_ready(function(server)
 			client.resolved_capabilities.document_formatting = false
 			client.resolved_capabilities.document_range_formatting = false
 			on_attach(client, bufnr)
+			print("Language server loaded: ", server.name)
 		end
 
 		opts.settings.json = {
@@ -105,6 +107,7 @@ lsp_installer.on_server_ready(function(server)
 			client.resolved_capabilities.document_formatting = false
 			client.resolved_capabilities.document_range_formatting = false
 			on_attach(client, bufnr)
+			print("Language server loaded: ", server.name)
 		end
 	end
 
@@ -141,7 +144,6 @@ lsp_installer.on_server_ready(function(server)
 			api.nvim_buf_set_keymap(bufnr, "n", "<leader>R", ":TSLspRenameFile<CR>", options)
 			api.nvim_buf_set_keymap(bufnr, "n", "<leader>ia", ":TSLspImportAll<CR>", options)
 
-			require("illuminate").on_attach(client)
 			print("Language server loaded: ", server.name)
 		end
 

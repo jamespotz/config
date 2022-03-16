@@ -69,4 +69,7 @@ local load_defaults = function()
 end
 
 load_defaults()
+
+vim.g.tokyonight_italic_functions = true
+vim.g.tokyonight_italic_variables = true
 cmd([[colorscheme tokyonight]])

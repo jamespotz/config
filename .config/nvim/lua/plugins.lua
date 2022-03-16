@@ -44,9 +44,8 @@ use("wbthomason/packer.nvim") -- Package manager
 
 -- Colorscheme's
 use("bluz71/vim-nightfly-guicolors")
-use("olimorris/onedarkpro.nvim")
 use("folke/tokyonight.nvim")
-use("shaunsingh/nord.nvim")
+use("EdenEast/nightfox.nvim")
 
 -- Startup
 use({ "lewis6991/impatient.nvim", config = get_config("impatient") })
