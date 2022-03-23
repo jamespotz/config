@@ -48,8 +48,8 @@ local load_defaults = function()
 		numberwidth = 4, -- set number column width to 2 {default 4}
 		signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
 		wrap = false, -- display lines as one long line
-		spell = false,
-		spelllang = "en",
+		spell = true,
+		spelllang = "en_us",
 		scrolloff = 8,
 		sidescrolloff = 8,
 		wildmenu = true,
@@ -70,6 +70,4 @@ end
 
 load_defaults()
 
-vim.g.tokyonight_italic_functions = true
-vim.g.tokyonight_italic_variables = true
 cmd([[colorscheme tokyonight]])

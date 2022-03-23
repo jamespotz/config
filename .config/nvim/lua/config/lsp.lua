@@ -119,6 +119,14 @@ lsp_installer.on_server_ready(function(server)
 		opts.cmd = { "sql-language-server", "up", "--method", "stdio" }
 	end
 
+	if server.name == "cssmodules_ls" then
+		opts.on_attach = function(client, bufnr)
+			client.resolved_capabilities.goto_definition = false
+			on_attach(client, bufnr)
+			print("Language server loaded: ", server.name)
+		end
+	end
+
 	-- (optional) Customize the options passed to the server
 	if server.name == "tsserver" then
 		opts.init_options = {

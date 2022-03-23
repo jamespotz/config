@@ -81,6 +81,9 @@ use({
 	config = get_config("cmp"),
 })
 
+-- Spelling
+use({ "lewis6991/spellsitter.nvim", config = get_config("spellsitter") })
+
 -- TypeScript Utils
 use("jose-elias-alvarez/nvim-lsp-ts-utils")
 -- Formatting
