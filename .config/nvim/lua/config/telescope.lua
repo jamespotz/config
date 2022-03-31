@@ -7,7 +7,7 @@ end
 local actions = require("telescope.actions")
 telescope.setup({
 	defaults = {
-		prompt_prefix = " >",
+		prompt_prefix = " 🔍",
 		color_devicons = true,
 
 		file_previewer = require("telescope.previewers").vim_buffer_cat.new,
@@ -18,6 +18,21 @@ telescope.setup({
 			i = {
 				["<C-x>"] = false,
 				["<C-q>"] = actions.send_to_qflist,
+			},
+		},
+	},
+	pickers = {
+		find_files = {
+			mappings = {
+				n = {
+					["cd"] = function(prompt_bufnr)
+						local selection = require("telescope.actions.state").get_selected_entry()
+						local dir = vim.fn.fnamemodify(selection.path, ":p:h")
+						require("telescope.actions").close(prompt_bufnr)
+						-- Depending on what you want put `cd`, `lcd`, `tcd`
+						vim.cmd(string.format("silent lcd %s", dir))
+					end,
+				},
 			},
 		},
 	},
@@ -47,7 +62,7 @@ api.nvim_set_keymap(
 api.nvim_set_keymap(
 	"n",
 	"<leader>ps",
-	[[<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input("Search For > ")})<CR>]],
+	[[<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input("Search For 🔍 ")})<CR>]],
 	{ noremap = true, silent = true }
 )
 api.nvim_set_keymap(

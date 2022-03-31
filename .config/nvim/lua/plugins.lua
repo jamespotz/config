@@ -76,10 +76,12 @@ use({
 		{ "hrsh7th/cmp-emoji" },
 		{ "saadparwaiz1/cmp_luasnip" },
 		{ "rafamadriz/friendly-snippets" },
-		{ "f3fora/cmp-spell", { "hrsh7th/cmp-calc" } },
+		{ "f3fora/cmp-spell" },
+		{ "hrsh7th/cmp-calc" },
 	},
 	config = get_config("cmp"),
 })
+use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
 
 -- Spelling
 use({ "lewis6991/spellsitter.nvim", config = get_config("spellsitter") })
@@ -195,3 +197,5 @@ use({
 	},
 	config = get_config("refactoring"),
 })
+
+use("airblade/vim-rooter")

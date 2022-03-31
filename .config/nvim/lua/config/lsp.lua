@@ -80,6 +80,8 @@ lsp_installer.on_server_ready(function(server)
 		print("Language server loaded: ", server.name)
 	end
 
+	opts.capabilities = capabilities
+
 	if server.name == "jsonls" then
 		opts.on_attach = function(client, bufnr)
 			client.resolved_capabilities.document_formatting = false
@@ -103,16 +105,20 @@ lsp_installer.on_server_ready(function(server)
 	end
 
 	if server.name == "stylelint_lsp" then
+		opts.settings = {
+			stylelintplus = {
+				autoFixOnSave = true,
+				autoFixOnFormat = true,
+				cssInJs = true,
+			},
+		}
+
 		opts.on_attach = function(client, bufnr)
 			client.resolved_capabilities.document_formatting = false
 			client.resolved_capabilities.document_range_formatting = false
 			on_attach(client, bufnr)
 			print("Language server loaded: ", server.name)
 		end
-	end
-
-	if server.name == "cssls" or server.name == "html" then
-		opts.capabilities = capabilities
 	end
 
 	if server.name == "sqlls" then
@@ -142,7 +148,11 @@ lsp_installer.on_server_ready(function(server)
 			on_attach(client, bufnr)
 
 			local ts_utils = require("nvim-lsp-ts-utils")
-			ts_utils.setup({})
+			ts_utils.setup({
+				enable_import_on_completion = true,
+				import_all_timeout = 5000, -- ms
+				update_imports_on_move = true,
+			})
 
 			-- required to fix code action ranges and filter diagnostics
 			ts_utils.setup_client(client)
@@ -154,8 +164,6 @@ lsp_installer.on_server_ready(function(server)
 
 			print("Language server loaded: ", server.name)
 		end
-
-		opts.capabilities = capabilities
 	end
 
 	-- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
