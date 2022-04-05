@@ -133,6 +133,10 @@ lsp_installer.on_server_ready(function(server)
 		end
 	end
 
+	if server.name == "cssls" then
+		opts.filetypes = { "html", "css", "typescriptreact", "typescript", "javascript", "javascriptreact", "scss" }
+	end
+
 	-- (optional) Customize the options passed to the server
 	if server.name == "tsserver" then
 		opts.init_options = {
