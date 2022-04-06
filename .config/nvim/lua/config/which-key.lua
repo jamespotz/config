@@ -128,9 +128,18 @@ local mappings = {
 		M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
 		r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
 		R = { "<cmd>Telescope registers<cr>", "Registers" },
+		s = {
+			"<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input('Search For 🔍: ')})<CR>",
+			"Search Text",
+		},
 		t = { "<cmd>Telescope live_grep<cr>", "Text" },
 		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 		C = { "<cmd>Telescope commands<cr>", "Commands" },
+	},
+	t = {
+		name = "Test",
+		a = { "<cmd>TestSuite<CR>", "Test all" },
+		s = { "<cmd>TestFile<CR>", "Test Current File" },
 	},
 }
 
