@@ -223,3 +223,5 @@ use({
 		require("octo").setup()
 	end,
 })
+
+use({ "folke/which-key.nvim", config = get_config("which-key") })

@@ -24,7 +24,6 @@ map("n", "Y", "y$")
 
 -- Common Keymaps
 map("i", "<C-c>", "<esc>")
-map("n", "<Leader>u", ":UndoTreeShow")
 map("n", "R", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gc<Left><Left><Left>")
 map("n", "<Leader>,", ":nohlsearch<CR>")
 map("n", "$", "$1")
@@ -35,10 +34,6 @@ map("n", "N", "Nzzzv")
 
 -- Easy select all of file
 map("n", "<Leader>sa", "ggVG<c-$>")
-
--- Tab to switch buffers in Normal mode
--- map("n", "<Tab>", ":bnext<CR>")
--- map("n", "<S-Tab>", ":bprevious<CR>")
 
 -- Move current line with Alt+j/k
 map("i", "<A-j>", "<Esc>:m .+1<CR>==gi")
