@@ -44,3 +44,7 @@ map("v", "<", "<gv", { silent = true })
 map("v", ">", ">gv", { silent = true })
 
 map("n", "/", "/\\v")
+
+-- Navigate buffers
+map("n", "<Tab>", ":bnext<CR>", { silent = true })
+map("n", "<S-Tab>", ":bprevious<CR>", { silent = true })

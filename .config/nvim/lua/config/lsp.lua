@@ -62,7 +62,7 @@ lsp_installer.on_server_ready(function(server)
 
 	opts.on_attach = function(client, bufnr)
 		on_attach(client, bufnr)
-		print("Language server loaded: ", server.name)
+		vim.notify("Language server loaded", nil, { title = server.name })
 	end
 
 	opts.capabilities = capabilities
@@ -72,7 +72,7 @@ lsp_installer.on_server_ready(function(server)
 			client.resolved_capabilities.document_formatting = false
 			client.resolved_capabilities.document_range_formatting = false
 			on_attach(client, bufnr)
-			print("Language server loaded: ", server.name)
+			vim.notify("Language server loaded", nil, { title = server.name })
 		end
 
 		opts.settings.json = {
@@ -102,7 +102,8 @@ lsp_installer.on_server_ready(function(server)
 			client.resolved_capabilities.document_formatting = false
 			client.resolved_capabilities.document_range_formatting = false
 			on_attach(client, bufnr)
-			print("Language server loaded: ", server.name)
+
+			vim.notify("Language server loaded", nil, { title = server.name })
 		end
 	end
 
@@ -114,7 +115,8 @@ lsp_installer.on_server_ready(function(server)
 		opts.on_attach = function(client, bufnr)
 			client.resolved_capabilities.goto_definition = false
 			on_attach(client, bufnr)
-			print("Language server loaded: ", server.name)
+
+			vim.notify("Language server loaded", nil, { title = server.name })
 		end
 	end
 
@@ -151,7 +153,7 @@ lsp_installer.on_server_ready(function(server)
 			api.nvim_buf_set_keymap(bufnr, "n", "<leader>R", ":TSLspRenameFile<CR>", options)
 			api.nvim_buf_set_keymap(bufnr, "n", "<leader>ia", ":TSLspImportAll<CR>", options)
 
-			print("Language server loaded: ", server.name)
+			vim.notify("Language server loaded", nil, { title = server.name })
 		end
 	end
 

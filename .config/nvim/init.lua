@@ -1,8 +1,10 @@
 -- Plugin management via Packer
-require("plugins")
+require("core.plugins")
 -- Vim mappings, see lua/config/which.lua for more mappings
-require("mappings")
+require("core.mappings")
 -- All non plugin related (vim) options
-require("options")
+require("core.options")
 -- Vim autocommands/autogroups
-require("autocmd")
+require("core.autocmd")
+-- Vim commands
+require("core.commands")

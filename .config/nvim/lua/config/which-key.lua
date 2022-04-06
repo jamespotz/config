@@ -53,6 +53,7 @@ local mappings = {
 	[";"] = { "<cmd>Alpha<CR>", "Dashboard" },
 	["w"] = { "<cmd>w!<CR>", "Save" },
 	["q"] = { "<cmd>q!<CR>", "Quit" },
+	["rv"] = { "<cmd>ReloadConfig<cr>", "Reload $MYVIMRC" },
 	g = {
 		name = "Git",
 		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
@@ -109,6 +110,25 @@ local mappings = {
 			"Workspace Symbols",
 		},
 		e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },
+	},
+	o = {
+		name = "Octo",
+		p = {
+			name = "PR",
+			l = { "<cmd>Octo pr search label:'Ready for Review' is:open<cr>", "List PR" },
+		},
+		r = {
+			name = "Review",
+			s = { "<cmd>Octo review start<cr>", "Start Review" },
+			r = { "<cmd>Octo review discard<cr>", "Discard Review" },
+		},
+		s = {
+			name = "Search",
+			p = {
+				'<cmd>Octo search is:open is:pr author:jamespotz label:"Ready for Review"<cr>',
+				"Search Ready for Review",
+			},
+		},
 	},
 	p = {
 		name = "Packer",

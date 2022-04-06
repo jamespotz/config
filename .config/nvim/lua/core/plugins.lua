@@ -177,7 +177,7 @@ use({
 use({ "voldikss/vim-floaterm", config = get_config("floaterm") })
 
 -- Bufferline
-use({ "akinsho/nvim-bufferline.lua", config = get_config("bufferline") })
+use({ "akinsho/bufferline.nvim", config = get_config("bufferline") })
 
 -- Statusline
 use({
@@ -230,3 +230,5 @@ use({
 })
 
 use({ "folke/which-key.nvim", config = get_config("which-key") })
+
+use({ "rcarriga/nvim-notify", config = get_config("notify") })
