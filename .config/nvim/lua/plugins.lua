@@ -79,15 +79,10 @@ use({
 		{ "hrsh7th/cmp-emoji" },
 		{ "saadparwaiz1/cmp_luasnip" },
 		{ "rafamadriz/friendly-snippets" },
-		{ "f3fora/cmp-spell" },
-		{ "hrsh7th/cmp-calc" },
 	},
 	config = get_config("cmp"),
 })
 use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
-
--- Spelling
-use({ "lewis6991/spellsitter.nvim", config = get_config("spellsitter") })
 
 -- TypeScript Utils
 use("jose-elias-alvarez/nvim-lsp-ts-utils")
@@ -154,7 +149,7 @@ use("JoosepAlviste/nvim-ts-context-commentstring")
 use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" }, config = get_config("git") })
 
 -- Easier motions
-use({ "phaazon/hop.nvim", event = "BufReadPre", config = get_config("hop") })
+use({ "ggandor/lightspeed.nvim", config = get_config("lightspeed") })
 
 use("mbbill/undotree")
 use("dbeniamine/cheat.sh-vim")
@@ -212,3 +207,19 @@ use({
 })
 
 use("airblade/vim-rooter")
+
+-- Diff/merge tools
+use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim", config = get_config("diff_view") })
+
+-- Github
+use({
+	"pwntester/octo.nvim",
+	requires = {
+		"nvim-lua/plenary.nvim",
+		"nvim-telescope/telescope.nvim",
+		"kyazdani42/nvim-web-devicons",
+	},
+	config = function()
+		require("octo").setup()
+	end,
+})

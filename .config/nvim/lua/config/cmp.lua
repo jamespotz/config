@@ -87,7 +87,6 @@ cmp.setup({
 		{ name = "buffer" },
 		{ name = "path" },
 		{ name = "emoji" },
-		{ name = "spell" },
 		{ name = "cmdline" },
 	},
 })

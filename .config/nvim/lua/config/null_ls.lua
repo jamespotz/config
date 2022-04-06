@@ -8,10 +8,11 @@ null_ls.setup({
 		null_ls.builtins.formatting.prettierd,
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.diagnostics.eslint_d,
+		null_ls.builtins.diagnostics.cspell,
 	},
 	on_attach = function(client)
-    if client.resolved_capabilities.document_formatting then
-      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
-    end
-  end,
+		if client.resolved_capabilities.document_formatting then
+			vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+		end
+	end,
 })
