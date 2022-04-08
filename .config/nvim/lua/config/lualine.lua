@@ -25,7 +25,16 @@ require("lualine").setup({
 		lualine_b = {
 			{ "branch", fmt = trunc(200, 20, nil) },
 			"diff",
-			"diagnostics",
+		},
+		lualine_y = {
+			{
+				"diagnostics",
+				sources = { "nvim_diagnostic" },
+				color_error = "#BF616A",
+				color_warn = "#EBCB8B",
+				color_info = "#88C0D0",
+				color_hint = "#3A4151",
+			},
 		},
 	},
 	extensions = { "nvim-tree" },

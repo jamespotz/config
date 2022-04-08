@@ -36,7 +36,7 @@ whichkey.setup({
 		width = { min = 20, max = 50 }, -- min and max width of the columns
 		spacing = 3, -- spacing between columns
 	},
-	hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
+	hidden = { "<silent>", "<cmd>", "<cmd>", "<cr>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
 	show_help = true, -- show help message on the command line when the popup is visible
 })
 
@@ -49,11 +49,20 @@ local opts = {
 	nowait = true, -- use `nowait` when creating keymaps
 }
 
+local vopts = {
+	mode = "v", -- NORMAL mode
+	prefix = "<leader>",
+	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+	silent = true, -- use `silent` when creating keymaps
+	noremap = true, -- use `noremap` when creating keymaps
+	nowait = true, -- use `nowait` when creating keymaps
+}
+
 local mappings = {
-	[";"] = { "<cmd>Alpha<CR>", "Dashboard" },
-	["w"] = { "<cmd>w!<CR>", "Save" },
-	["q"] = { "<cmd>q!<CR>", "Quit" },
-	["rv"] = { "<cmd>ReloadConfig<cr>", "Reload $MYVIMRC" },
+	[";"] = { "<cmd>Alpha<cr>", "Dashboard" },
+	["w"] = { "<cmd>w!<cr>", "Save" },
+	["q"] = { "<cmd>q!<cr>", "Quit" },
+	["rsv"] = { "<cmd>ReloadConfig<cr>", "Reload $MYVIMRC" },
 	g = {
 		name = "Git",
 		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
@@ -79,6 +88,14 @@ local mappings = {
 			"Git Diff",
 		},
 	},
+	h = {
+		name = "Harpoon",
+		h = { "<cmd>Telescope harpoon marks<cr>", "View Marks" },
+		m = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Add File" },
+		n = { '<cmd>lua require("harpoon.ui").nav_next()<cr>', "Nav next" },
+		p = { '<cmd>lua require("harpoon.ui").nav_prev()<cr>', "Nav prev" },
+		t = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "Toggle Menu" },
+	},
 	l = {
 		name = "LSP",
 		a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
@@ -88,8 +105,8 @@ local mappings = {
 		g = {
 			name = "Go to",
 			d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Definition" },
-			t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Type Definition" },
-			i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation" },
+			t = { "<cmd>lua vim.lsp.buf.type_definition()<cr>", "Type Definition" },
+			i = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "Implementation" },
 		},
 		i = { "<cmd>LspInfo<cr>", "Info" },
 		I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
@@ -139,6 +156,15 @@ local mappings = {
 		S = { "<cmd>PackerStatus<cr>", "Status" },
 		u = { "<cmd>PackerUpdate<cr>", "Update" },
 	},
+	r = {
+		name = "Refactoring",
+		d = {
+			name = "Debug",
+			n = { "<cmd>lua require('refactoring').debug.cleanup({})<cr>", "Print cleanup" },
+			p = { "<cmd>lua require('refactoring').debug.printf({below = false})<cr>", "Print debug" },
+		},
+		i = { "<cmd>lua require('refactoring').refactor('Inline Variable')<cr>", "Inline Variable" },
+	},
 	s = {
 		name = "Search",
 		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
@@ -149,7 +175,7 @@ local mappings = {
 		r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
 		R = { "<cmd>Telescope registers<cr>", "Registers" },
 		s = {
-			"<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input('Search For 🔍: ')})<CR>",
+			"<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input('Search For 🔍: ')})<cr>",
 			"Search Text",
 		},
 		t = { "<cmd>Telescope live_grep<cr>", "Text" },
@@ -158,9 +184,24 @@ local mappings = {
 	},
 	t = {
 		name = "Test",
-		a = { "<cmd>TestSuite<CR>", "Test all" },
-		s = { "<cmd>TestFile<CR>", "Test Current File" },
+		a = { "<cmd>TestSuite<cr>", "Test all" },
+		s = { "<cmd>TestFile<cr>", "Test Current File" },
+	},
+}
+
+local vmappings = {
+	d = {
+		name = "Debug",
+		v = { "<cmd>lua require('refactoring').debug.print_var({})<cr>", "Print variable" },
+	},
+	r = {
+		name = "Refactoring",
+		e = { "<cmd>lua require('refactoring').refactor('Extract Function')<cr>", "Extract Function" },
+		f = { "<cmd>lua require('refactoring').refactor('Extract Function To File')<cr>", "Extract Function to file" },
+		i = { "<cmd>lua require('refactoring').refactor('Inline Variable')<cr>", "Inline Variable" },
+		v = { "<cmd>lua require('refactoring').refactor('Extract Variable')<cr>", "Extract variable" },
 	},
 }
 
 whichkey.register(mappings, opts)
+whichkey.register(vmappings, vopts)

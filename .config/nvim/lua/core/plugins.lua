@@ -49,6 +49,7 @@ use("wbthomason/packer.nvim") -- Package manager
 
 -- Startup
 use({ "lewis6991/impatient.nvim", config = get_config("impatient") })
+use("nathom/filetype.nvim")
 use({
 	"goolord/alpha-nvim",
 	requires = { "kyazdani42/nvim-web-devicons" },
@@ -67,7 +68,7 @@ use({ "mfussenegger/nvim-dap", config = get_config("nvim-dap") })
 use("neovim/nvim-lspconfig")
 use({ "onsails/lspkind-nvim", config = get_config("lspkind") })
 use("tjdevries/nlua.nvim")
-use("tjdevries/lsp_extensions.nvim")
+use("nvim-lua/lsp_extensions.nvim")
 
 -- Neovim LSP Installer
 use({ "williamboman/nvim-lsp-installer", config = get_config("lsp") })
@@ -119,7 +120,7 @@ use({
 use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
 -- LSP Signatures
-use("ray-x/lsp_signature.nvim")
+use({ "ray-x/lsp_signature.nvim", config = get_config("lsp_signature") })
 
 -- LSP lightbulb
 use({ "kosayoda/nvim-lightbulb", config = get_config("lightbulb") })
@@ -172,6 +173,9 @@ use({
 	},
 	config = get_config("neo_tree"),
 })
+
+-- Marks
+use({ "ThePrimeagen/harpoon", config = get_config("harpoon") })
 
 -- Terminal
 use({ "voldikss/vim-floaterm", config = get_config("floaterm") })

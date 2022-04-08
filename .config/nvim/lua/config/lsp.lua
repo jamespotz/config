@@ -7,11 +7,6 @@ local on_attach = function(client, bufnr)
 	--Enable completion triggered by <c-x><c-o>
 	api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-	local lsp_signature = require("lsp_signature")
-	if lsp_signature then
-		lsp_signature.on_attach()
-	end
-
 	-- Mappings.
 	local opts = { noremap = true, silent = true }
 
@@ -66,6 +61,9 @@ lsp_installer.on_server_ready(function(server)
 	end
 
 	opts.capabilities = capabilities
+	opts.flags = {
+		debounce_text_changes = 150,
+	}
 
 	if server.name == "jsonls" then
 		opts.on_attach = function(client, bufnr)
@@ -118,10 +116,6 @@ lsp_installer.on_server_ready(function(server)
 
 			vim.notify("Language server loaded", nil, { title = server.name })
 		end
-	end
-
-	if server.name == "cssls" then
-		opts.filetypes = { "html", "css", "typescriptreact", "typescript", "javascript", "javascriptreact", "scss" }
 	end
 
 	-- (optional) Customize the options passed to the server
