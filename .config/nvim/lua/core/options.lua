@@ -2,6 +2,32 @@ local fn = vim.fn
 local opt = vim.opt
 local cmd = vim.cmd
 
+-- Disable some builtin plugins.
+local disabled_built_ins = {
+	"2html_plugin",
+	"gzip",
+	"matchit",
+	"rrhelper",
+	"netrw",
+	"netrwPlugin",
+	"netrwSettings",
+	"netrwFileHandlers",
+	"zip",
+	"zipPlugin",
+	"tar",
+	"tarPlugin",
+	"getscript",
+	"getscriptPlugin",
+	"vimball",
+	"vimballPlugin",
+	"logipat",
+	"spellfile_plugin",
+}
+
+for _, plugin in pairs(disabled_built_ins) do
+	vim.g["loaded_" .. plugin] = 1
+end
+
 -- Creates undo directory
 local undo_dir = fn.expand("~/.undo")
 if fn.isdirectory(undo_dir) == 0 then

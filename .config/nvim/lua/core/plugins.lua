@@ -138,7 +138,7 @@ use({
 })
 
 -- Indent lines
-use({ "lukas-reineke/indent-blankline.nvim", config = get_config("indent") })
+use({ "lukas-reineke/indent-blankline.nvim", event = "BufEnter", config = get_config("indent") })
 
 -- Rainbow brackets
 use("p00f/nvim-ts-rainbow")
@@ -152,16 +152,25 @@ use({ "numToStr/Comment.nvim", config = get_config("comment") })
 use("JoosepAlviste/nvim-ts-context-commentstring")
 
 -- Git Signs
-use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" }, config = get_config("git") })
+use({
+	"lewis6991/gitsigns.nvim",
+	event = "BufRead",
+	requires = { "nvim-lua/plenary.nvim" },
+	config = get_config("git"),
+})
 
 -- Easier motions
 use({ "ggandor/lightspeed.nvim", config = get_config("lightspeed") })
 
 -- File Explorer
 use("kyazdani42/nvim-web-devicons") -- for file icons
--- use({ "kyazdani42/nvim-tree.lua", config = get_config("nvim_tree") })
 use({
 	"kyazdani42/nvim-tree.lua",
+	cmd = {
+		"NvimTreeOpen",
+		"NvimTreeFocus",
+		"NvimTreeToggle",
+	},
 	requires = {
 		"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
 	},
@@ -175,7 +184,7 @@ use({ "ThePrimeagen/harpoon", config = get_config("harpoon") })
 use({ "voldikss/vim-floaterm", config = get_config("floaterm") })
 
 -- Bufferline
-use({ "akinsho/bufferline.nvim", config = get_config("bufferline") })
+use({ "akinsho/bufferline.nvim", event = "BufWinEnter", config = get_config("bufferline") })
 
 -- Statusline
 use({
@@ -212,7 +221,12 @@ use({
 use("airblade/vim-rooter")
 
 -- Diff/merge tools
-use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim", config = get_config("diff_view") })
+use({
+	"sindrets/diffview.nvim",
+	requires = "nvim-lua/plenary.nvim",
+	cmd = { "DiffviewOpen", "DiffviewToggleFiles" },
+	config = get_config("diff_view"),
+})
 
 -- Github
 use({
@@ -222,12 +236,15 @@ use({
 		"nvim-telescope/telescope.nvim",
 		"kyazdani42/nvim-web-devicons",
 	},
+	cmd = {
+		"Octo",
+	},
 	config = function()
 		require("octo").setup()
 	end,
 })
 
-use({ "folke/which-key.nvim", config = get_config("which-key") })
+use({ "folke/which-key.nvim", event = "BufWinEnter", config = get_config("which-key") })
 
 use({ "rcarriga/nvim-notify", config = get_config("notify") })
 
