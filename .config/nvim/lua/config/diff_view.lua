@@ -107,8 +107,3 @@ diffview.setup({
 		},
 	},
 })
-
-local api = vim.api
-api.nvim_set_keymap("n", "<leader>dv", ":DiffviewOpen<CR>", { noremap = true, silent = true })
-api.nvim_set_keymap("n", "<leader>df", ":DiffviewToggleFiles<CR>", { noremap = true, silent = true })
-api.nvim_set_keymap("n", "<leader>dc", ":DiffviewClose<CR>", { noremap = true, silent = true })

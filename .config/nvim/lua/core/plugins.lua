@@ -157,21 +157,15 @@ use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" }, config 
 -- Easier motions
 use({ "ggandor/lightspeed.nvim", config = get_config("lightspeed") })
 
-use("mbbill/undotree")
-use("dbeniamine/cheat.sh-vim")
-
 -- File Explorer
 use("kyazdani42/nvim-web-devicons") -- for file icons
 -- use({ "kyazdani42/nvim-tree.lua", config = get_config("nvim_tree") })
 use({
-	"nvim-neo-tree/neo-tree.nvim",
-	branch = "v2.x",
+	"kyazdani42/nvim-tree.lua",
 	requires = {
-		"nvim-lua/plenary.nvim",
 		"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
-		"MunifTanjim/nui.nvim",
 	},
-	config = get_config("neo_tree"),
+	config = get_config("nvim_tree"),
 })
 
 -- Marks
@@ -236,3 +230,7 @@ use({
 use({ "folke/which-key.nvim", config = get_config("which-key") })
 
 use({ "rcarriga/nvim-notify", config = get_config("notify") })
+
+-- Fix CursorHold Bug
+-- issue https://github.com/neovim/neovim/issues/12587
+use("antoinemadec/FixCursorHold.nvim")

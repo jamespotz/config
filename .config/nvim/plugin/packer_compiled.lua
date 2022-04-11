@@ -75,6 +75,11 @@ _G.packer_plugins = {
     path = "/home/jamespotz/.local/share/nvim/site/pack/packer/start/Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
   },
+  ["FixCursorHold.nvim"] = {
+    loaded = true,
+    path = "/home/jamespotz/.local/share/nvim/site/pack/packer/start/FixCursorHold.nvim",
+    url = "https://github.com/antoinemadec/FixCursorHold.nvim"
+  },
   LuaSnip = {
     loaded = true,
     path = "/home/jamespotz/.local/share/nvim/site/pack/packer/start/LuaSnip",
@@ -91,11 +96,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jamespotz/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
-  },
-  ["cheat.sh-vim"] = {
-    loaded = true,
-    path = "/home/jamespotz/.local/share/nvim/site/pack/packer/start/cheat.sh-vim",
-    url = "https://github.com/dbeniamine/cheat.sh-vim"
   },
   ["cmp-buffer"] = {
     loaded = true,
@@ -212,12 +212,6 @@ _G.packer_plugins = {
     path = "/home/jamespotz/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
-  ["neo-tree.nvim"] = {
-    config = { 'require("config/neo_tree")' },
-    loaded = true,
-    path = "/home/jamespotz/.local/share/nvim/site/pack/packer/start/neo-tree.nvim",
-    url = "https://github.com/nvim-neo-tree/neo-tree.nvim"
-  },
   ["nightfox.nvim"] = {
     loaded = true,
     path = "/home/jamespotz/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
@@ -227,11 +221,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jamespotz/.local/share/nvim/site/pack/packer/start/nlua.nvim",
     url = "https://github.com/tjdevries/nlua.nvim"
-  },
-  ["nui.nvim"] = {
-    loaded = true,
-    path = "/home/jamespotz/.local/share/nvim/site/pack/packer/start/nui.nvim",
-    url = "https://github.com/MunifTanjim/nui.nvim"
   },
   ["null-ls.nvim"] = {
     config = { 'require("config/null_ls")' },
@@ -290,6 +279,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jamespotz/.local/share/nvim/site/pack/packer/start/nvim-notify",
     url = "https://github.com/rcarriga/nvim-notify"
+  },
+  ["nvim-tree.lua"] = {
+    config = { 'require("config/nvim_tree")' },
+    loaded = true,
+    path = "/home/jamespotz/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    url = "https://github.com/kyazdani42/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     config = { 'require("config/treesitter")' },
@@ -382,11 +377,6 @@ _G.packer_plugins = {
     path = "/home/jamespotz/.local/share/nvim/site/pack/packer/start/trouble.nvim",
     url = "https://github.com/folke/trouble.nvim"
   },
-  undotree = {
-    loaded = true,
-    path = "/home/jamespotz/.local/share/nvim/site/pack/packer/start/undotree",
-    url = "https://github.com/mbbill/undotree"
-  },
   ["vim-floaterm"] = {
     config = { 'require("config/floaterm")' },
     loaded = true,
@@ -436,18 +426,18 @@ time([[Config for lsp_signature.nvim]], false)
 time([[Config for nvim-treesitter]], true)
 require("config/treesitter")
 time([[Config for nvim-treesitter]], false)
--- Config for: vim-floaterm
-time([[Config for vim-floaterm]], true)
-require("config/floaterm")
-time([[Config for vim-floaterm]], false)
+-- Config for: lsp-colors.nvim
+time([[Config for lsp-colors.nvim]], true)
+require("config/lsp_colors")
+time([[Config for lsp-colors.nvim]], false)
 -- Config for: which-key.nvim
 time([[Config for which-key.nvim]], true)
 require("config/which-key")
 time([[Config for which-key.nvim]], false)
--- Config for: harpoon
-time([[Config for harpoon]], true)
-require("config/harpoon")
-time([[Config for harpoon]], false)
+-- Config for: indent-blankline.nvim
+time([[Config for indent-blankline.nvim]], true)
+require("config/indent")
+time([[Config for indent-blankline.nvim]], false)
 -- Config for: diffview.nvim
 time([[Config for diffview.nvim]], true)
 require("config/diff_view")
@@ -456,38 +446,38 @@ time([[Config for diffview.nvim]], false)
 time([[Config for impatient.nvim]], true)
 require("config/impatient")
 time([[Config for impatient.nvim]], false)
--- Config for: neo-tree.nvim
-time([[Config for neo-tree.nvim]], true)
-require("config/neo_tree")
-time([[Config for neo-tree.nvim]], false)
+-- Config for: nvim-notify
+time([[Config for nvim-notify]], true)
+require("config/notify")
+time([[Config for nvim-notify]], false)
 -- Config for: trouble.nvim
 time([[Config for trouble.nvim]], true)
 require("config/trouble")
 time([[Config for trouble.nvim]], false)
--- Config for: lualine.nvim
-time([[Config for lualine.nvim]], true)
-require("config/lualine")
-time([[Config for lualine.nvim]], false)
+-- Config for: nvim-dap
+time([[Config for nvim-dap]], true)
+require("config/nvim-dap")
+time([[Config for nvim-dap]], false)
+-- Config for: vim-floaterm
+time([[Config for vim-floaterm]], true)
+require("config/floaterm")
+time([[Config for vim-floaterm]], false)
+-- Config for: bufferline.nvim
+time([[Config for bufferline.nvim]], true)
+require("config/bufferline")
+time([[Config for bufferline.nvim]], false)
 -- Config for: refactoring.nvim
 time([[Config for refactoring.nvim]], true)
 require("config/refactoring")
 time([[Config for refactoring.nvim]], false)
--- Config for: lightspeed.nvim
-time([[Config for lightspeed.nvim]], true)
-require("config/lightspeed")
-time([[Config for lightspeed.nvim]], false)
--- Config for: lsp-colors.nvim
-time([[Config for lsp-colors.nvim]], true)
-require("config/lsp_colors")
-time([[Config for lsp-colors.nvim]], false)
 -- Config for: nvim-autopairs
 time([[Config for nvim-autopairs]], true)
 require("config/autopairs")
 time([[Config for nvim-autopairs]], false)
--- Config for: vim-test
-time([[Config for vim-test]], true)
-require("config/vim_test")
-time([[Config for vim-test]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+require("config/cmp")
+time([[Config for nvim-cmp]], false)
 -- Config for: octo.nvim
 time([[Config for octo.nvim]], true)
 try_loadstring("\27LJ\1\0022\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nsetup\tocto\frequire\0", "config", "octo.nvim")
@@ -496,38 +486,38 @@ time([[Config for octo.nvim]], false)
 time([[Config for telescope.nvim]], true)
 require("config/telescope")
 time([[Config for telescope.nvim]], false)
--- Config for: nvim-dap
-time([[Config for nvim-dap]], true)
-require("config/nvim-dap")
-time([[Config for nvim-dap]], false)
--- Config for: nvim-colorizer.lua
-time([[Config for nvim-colorizer.lua]], true)
-require("config/colorizer")
-time([[Config for nvim-colorizer.lua]], false)
--- Config for: Comment.nvim
-time([[Config for Comment.nvim]], true)
-require("config/comment")
-time([[Config for Comment.nvim]], false)
--- Config for: alpha-nvim
-time([[Config for alpha-nvim]], true)
-require("config/alpha")
-time([[Config for alpha-nvim]], false)
--- Config for: nvim-cmp
-time([[Config for nvim-cmp]], true)
-require("config/cmp")
-time([[Config for nvim-cmp]], false)
 -- Config for: nvim-lightbulb
 time([[Config for nvim-lightbulb]], true)
 require("config/lightbulb")
 time([[Config for nvim-lightbulb]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+require("config/nvim_tree")
+time([[Config for nvim-tree.lua]], false)
+-- Config for: lualine.nvim
+time([[Config for lualine.nvim]], true)
+require("config/lualine")
+time([[Config for lualine.nvim]], false)
+-- Config for: harpoon
+time([[Config for harpoon]], true)
+require("config/harpoon")
+time([[Config for harpoon]], false)
+-- Config for: nvim-colorizer.lua
+time([[Config for nvim-colorizer.lua]], true)
+require("config/colorizer")
+time([[Config for nvim-colorizer.lua]], false)
+-- Config for: vim-test
+time([[Config for vim-test]], true)
+require("config/vim_test")
+time([[Config for vim-test]], false)
 -- Config for: lspkind-nvim
 time([[Config for lspkind-nvim]], true)
 require("config/lspkind")
 time([[Config for lspkind-nvim]], false)
--- Config for: bufferline.nvim
-time([[Config for bufferline.nvim]], true)
-require("config/bufferline")
-time([[Config for bufferline.nvim]], false)
+-- Config for: lightspeed.nvim
+time([[Config for lightspeed.nvim]], true)
+require("config/lightspeed")
+time([[Config for lightspeed.nvim]], false)
 -- Config for: gitsigns.nvim
 time([[Config for gitsigns.nvim]], true)
 require("config/git")
@@ -540,18 +530,18 @@ time([[Config for todo-comments.nvim]], false)
 time([[Config for nvim-lsp-installer]], true)
 require("config/lsp")
 time([[Config for nvim-lsp-installer]], false)
--- Config for: nvim-notify
-time([[Config for nvim-notify]], true)
-require("config/notify")
-time([[Config for nvim-notify]], false)
+-- Config for: Comment.nvim
+time([[Config for Comment.nvim]], true)
+require("config/comment")
+time([[Config for Comment.nvim]], false)
 -- Config for: null-ls.nvim
 time([[Config for null-ls.nvim]], true)
 require("config/null_ls")
 time([[Config for null-ls.nvim]], false)
--- Config for: indent-blankline.nvim
-time([[Config for indent-blankline.nvim]], true)
-require("config/indent")
-time([[Config for indent-blankline.nvim]], false)
+-- Config for: alpha-nvim
+time([[Config for alpha-nvim]], true)
+require("config/alpha")
+time([[Config for alpha-nvim]], false)
 if should_profile then save_profiles(0) end
 
 end)

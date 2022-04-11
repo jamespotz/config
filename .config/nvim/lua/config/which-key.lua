@@ -59,23 +59,20 @@ local vopts = {
 }
 
 local mappings = {
+	["<C-n>"] = { "<cmd>NvimTreeToggle<cr>", "Toggle NvimTree" },
 	[";"] = { "<cmd>Alpha<cr>", "Dashboard" },
 	["w"] = { "<cmd>w!<cr>", "Save" },
 	["q"] = { "<cmd>q!<cr>", "Quit" },
 	["rsv"] = { "<cmd>ReloadConfig<cr>", "Reload $MYVIMRC" },
+	d = {
+		name = "Diff View",
+		c = { "<cmd>DiffviewClose<cr>", "Close Diff View" },
+		v = { "<cmd>DiffviewOpen -uno<cr>", "Open Diff View" },
+		t = { "<cmd>DiffviewToggleFiles<cr>", "Toggle Diff view files" },
+	},
 	g = {
 		name = "Git",
-		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-		k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
 		l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
-		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-		r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-		R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-		s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-		u = {
-			"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
-			"Undo Stage Hunk",
-		},
 		o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
 		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
 		c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
@@ -194,7 +191,7 @@ local vmappings = {
 		name = "Debug",
 		v = { "<cmd>lua require('refactoring').debug.print_var({})<cr>", "Print variable" },
 	},
-	r = {
+	e = {
 		name = "Refactoring",
 		e = { "<cmd>lua require('refactoring').refactor('Extract Function')<cr>", "Extract Function" },
 		f = { "<cmd>lua require('refactoring').refactor('Extract Function To File')<cr>", "Extract Function to file" },
