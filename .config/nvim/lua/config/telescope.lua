@@ -1,4 +1,3 @@
-local api = vim.api
 local status_ok, telescope = pcall(require, "telescope")
 if not status_ok then
 	return
@@ -39,11 +38,3 @@ telescope.setup({
 })
 
 telescope.load_extension("fzf")
-
---Keymaps
-api.nvim_set_keymap(
-	"n",
-	"<C-p>",
-	[[<cmd>lua require('telescope.builtin').git_files()<CR>]],
-	{ noremap = true, silent = true }
-)

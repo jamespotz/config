@@ -59,7 +59,6 @@ local vopts = {
 }
 
 local mappings = {
-	["<C-n>"] = { "<cmd>NvimTreeToggle<cr>", "Toggle NvimTree" },
 	[";"] = { "<cmd>Alpha<cr>", "Dashboard" },
 	["w"] = { "<cmd>w!<cr>", "Save" },
 	["q"] = { "<cmd>q!<cr>", "Quit" },
@@ -200,5 +199,19 @@ local vmappings = {
 	},
 }
 
+local global_mappings = {
+	["<C-n>"] = { "<cmd>NvimTreeToggle<cr>", "Toggle NvimTree" },
+	["<C-p>"] = { "<cmd>lua require('telescope.builtin').git_files()<cr>", "Git Files" },
+}
+
+local gopts = {
+	mode = "n", -- NORMAL mode
+	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+	silent = true, -- use `silent` when creating keymaps
+	noremap = true, -- use `noremap` when creating keymaps
+	nowait = true, -- use `nowait` when creating keymaps
+}
+
 whichkey.register(mappings, opts)
 whichkey.register(vmappings, vopts)
+whichkey.register(global_mappings, gopts)
