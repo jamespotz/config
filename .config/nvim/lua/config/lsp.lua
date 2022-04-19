@@ -1,46 +1,36 @@
-local api = vim.api
 local cmd = vim.cmd
 local fn = vim.fn
 local lsp = vim.lsp
+local keymap = vim.keymap
+
+require("lsp-format").setup({
+	typescript = {
+		exclude = { "tsserver", "stylelint_lsp" },
+	},
+	javascript = {
+		exclude = { "tsserver", "stylelint_lsp" },
+	},
+	typescriptreact = {
+		exclude = { "tsserver", "stylelint_lsp" },
+	},
+	javascriptreact = {
+		exclude = { "tsserver", "stylelint_lsp" },
+	},
+})
 
 local on_attach = function(client, bufnr)
-	--Enable completion triggered by <c-x><c-o>
-	api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+	local opts = { buffer = bufnr }
+	require("lsp-format").on_attach(client)
 
-	-- Mappings.
-	local opts = { noremap = true, silent = true }
-
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	api.nvim_buf_set_keymap(bufnr, "n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-	api.nvim_buf_set_keymap(bufnr, "n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-	api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"<leader>so",
-		[[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]],
-		opts
-	)
-	cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
-
-	if client.resolved_capabilities.document_highlight then
-		cmd([[
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]])
-	end
-
-	if client.resolved_capabilities.document_formatting then
-		cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
-	end
+	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+	vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+	vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
+	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+	vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 
 	require("illuminate").on_attach(client)
 end
@@ -67,8 +57,6 @@ lsp_installer.on_server_ready(function(server)
 
 	if server.name == "jsonls" then
 		opts.on_attach = function(client, bufnr)
-			client.resolved_capabilities.document_formatting = false
-			client.resolved_capabilities.document_range_formatting = false
 			on_attach(client, bufnr)
 			vim.notify("Language server loaded", nil, { title = server.name })
 		end
@@ -97,8 +85,6 @@ lsp_installer.on_server_ready(function(server)
 		}
 
 		opts.on_attach = function(client, bufnr)
-			client.resolved_capabilities.document_formatting = false
-			client.resolved_capabilities.document_range_formatting = false
 			on_attach(client, bufnr)
 
 			vim.notify("Language server loaded", nil, { title = server.name })
@@ -111,7 +97,7 @@ lsp_installer.on_server_ready(function(server)
 
 	if server.name == "cssmodules_ls" then
 		opts.on_attach = function(client, bufnr)
-			client.resolved_capabilities.goto_definition = false
+			client.server_capabilities.goto_definition = false
 			on_attach(client, bufnr)
 
 			vim.notify("Language server loaded", nil, { title = server.name })
@@ -128,8 +114,6 @@ lsp_installer.on_server_ready(function(server)
 		}
 
 		opts.on_attach = function(client, bufnr)
-			client.resolved_capabilities.document_formatting = false
-			client.resolved_capabilities.document_range_formatting = false
 			on_attach(client, bufnr)
 
 			local ts_utils = require("nvim-lsp-ts-utils")
@@ -142,12 +126,12 @@ lsp_installer.on_server_ready(function(server)
 			-- required to fix code action ranges and filter diagnostics
 			ts_utils.setup_client(client)
 
-			local options = { silent = true }
-			api.nvim_buf_set_keymap(bufnr, "n", "<leader>oi", ":TSLspOrganize<CR>", options)
-			api.nvim_buf_set_keymap(bufnr, "n", "<leader>R", ":TSLspRenameFile<CR>", options)
-			api.nvim_buf_set_keymap(bufnr, "n", "<leader>ia", ":TSLspImportAll<CR>", options)
+			local options = { buffer = bufnr, silent = true }
+			keymap.set("n", "<leader>oi", ":TSLspOrganize<CR>", options)
+			keymap.set("n", "<leader>R", ":TSLspRenameFile<CR>", options)
+			keymap.set("n", "<leader>ia", ":TSLspImportAll<CR>", options)
 
-			vim.notify("Language server loaded", nil, { title = server.name })
+			vim.notify("Language serverss loaded", nil, { title = server.name })
 		end
 	end
 
@@ -167,4 +151,4 @@ end
 cmd([[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]])
 
 -- format on :wq
-cmd([[cabbrev wq execute "lua vim.lsp.buf.formatting_sync()" <bar> wq]])
+cmd([[cabbrev wq execute "Format sync" <bar> wq]])

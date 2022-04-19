@@ -54,6 +54,9 @@ LS_COLORS="dircolors"
 export PATH=$PATH:/usr/local/go/bin
 export PATH="$HOME/go/bin:$PATH"
 
+# Add Local bin
+export PATH="$HOME/.local/bin:$PATH"
+
 # ZSH history corruption fix
 function fix_zsh_history() {
   echo "Fixing corrupt .zsh_history file..."

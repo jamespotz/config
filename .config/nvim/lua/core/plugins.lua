@@ -94,6 +94,7 @@ use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp"
 use("jose-elias-alvarez/nvim-lsp-ts-utils")
 -- Formatting
 use({ "jose-elias-alvarez/null-ls.nvim", config = get_config("null_ls") })
+use("lukas-reineke/lsp-format.nvim")
 
 -- Editorconfig
 use("editorconfig/editorconfig-vim")
@@ -221,12 +222,7 @@ use({
 use("airblade/vim-rooter")
 
 -- Diff/merge tools
-use({
-	"sindrets/diffview.nvim",
-	requires = "nvim-lua/plenary.nvim",
-	cmd = { "DiffviewOpen", "DiffviewToggleFiles" },
-	config = get_config("diff_view"),
-})
+use("tpope/vim-fugitive")
 
 -- Github
 use({

@@ -58,17 +58,18 @@ local vopts = {
 	nowait = true, -- use `nowait` when creating keymaps
 }
 
+-- nnoremap <leader>ga :Git fetch --all<CR>
+-- nnoremap <leader>grum :Git rebase upstream/master<CR>
+-- nnoremap <leader>grom :Git rebase origin/master<CR>
+--
+-- nmap <leader>gh :diffget //3<CR>
+-- nmap <leader>gu :diffget //2<CR>
+-- nmap <leader>gs :G<CR>
 local mappings = {
 	[";"] = { "<cmd>Alpha<cr>", "Dashboard" },
 	["w"] = { "<cmd>w!<cr>", "Save" },
 	["q"] = { "<cmd>q!<cr>", "Quit" },
 	["rsv"] = { "<cmd>ReloadConfig<cr>", "Reload $MYVIMRC" },
-	d = {
-		name = "Diff View",
-		c = { "<cmd>DiffviewClose<cr>", "Close Diff View" },
-		v = { "<cmd>DiffviewOpen -uno<cr>", "Open Diff View" },
-		t = { "<cmd>DiffviewToggleFiles<cr>", "Toggle Diff view files" },
-	},
 	g = {
 		name = "Git",
 		l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
@@ -83,6 +84,9 @@ local mappings = {
 			"<cmd>Gitsigns diffthis HEAD<cr>",
 			"Git Diff",
 		},
+		s = { "<cmd>G<cr>", "Open Git" },
+		h = { "<cmd>diffget //3<cr>", "Merge Theirs" },
+		f = { "<cmd>diffget //2<cr>", "Merge ours" },
 	},
 	h = {
 		name = "Harpoon",

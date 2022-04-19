@@ -2,7 +2,7 @@ function _G.ReloadConfig()
 	local hls_status = vim.v.hlsearch
 	for name, _ in pairs(package.loaded) do
 		if name:match("^core") or name:match("^config") then
-			package.loaded[name] = nil
+			require("plenary.reload").reload_module(name)
 		end
 	end
 
