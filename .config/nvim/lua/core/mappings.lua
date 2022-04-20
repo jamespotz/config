@@ -6,7 +6,7 @@ local map = function(mode, lhs, rhs, options)
 	for k, v in pairs(options or {}) do
 		opts[k] = v
 	end
-	vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
+	vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 --Remap space as leader key

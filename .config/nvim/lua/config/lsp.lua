@@ -147,8 +147,5 @@ for type, icon in pairs(signs) do
 	fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
--- nvim-lightbulb
-cmd([[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]])
-
 -- format on :wq
 cmd([[cabbrev wq execute "Format sync" <bar> wq]])

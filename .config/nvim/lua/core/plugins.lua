@@ -123,9 +123,6 @@ use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 -- LSP Signatures
 use({ "ray-x/lsp_signature.nvim", config = get_config("lsp_signature") })
 
--- LSP lightbulb
-use({ "kosayoda/nvim-lightbulb", config = get_config("lightbulb") })
-
 -- Auto pairs
 use({ "windwp/nvim-autopairs", config = get_config("autopairs") })
 
