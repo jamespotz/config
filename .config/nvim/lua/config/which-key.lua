@@ -84,9 +84,6 @@ local mappings = {
 			"<cmd>Gitsigns diffthis HEAD<cr>",
 			"Git Diff",
 		},
-		s = { "<cmd>G<cr>", "Open Git" },
-		h = { "<cmd>diffget //3<cr>", "Merge Theirs" },
-		f = { "<cmd>diffget //2<cr>", "Merge ours" },
 	},
 	h = {
 		name = "Harpoon",

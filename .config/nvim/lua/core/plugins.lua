@@ -218,8 +218,8 @@ use({
 
 use("airblade/vim-rooter")
 
--- Diff/merge tools
-use("tpope/vim-fugitive")
+-- Git Conflicts
+use({ "akinsho/git-conflict.nvim", config = get_config("git-conflict") })
 
 -- Github
 use({
