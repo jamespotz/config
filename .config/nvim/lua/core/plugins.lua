@@ -254,6 +254,8 @@ use({ "rcarriga/nvim-notify", config = get_config("notify") })
 -- issue https://github.com/neovim/neovim/issues/12587
 use("antoinemadec/FixCursorHold.nvim")
 
+use("moll/vim-bbye")
+
 if PACKER_BOOTSTRAP then
 	packer.sync()
 	print("Plugins synced...")
