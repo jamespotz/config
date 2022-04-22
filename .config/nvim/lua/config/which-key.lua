@@ -178,6 +178,7 @@ local mappings = {
 		t = { "<cmd>Telescope live_grep<cr>", "Text" },
 		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 		C = { "<cmd>Telescope commands<cr>", "Commands" },
+		T = { "<cmd>TodoTelescope<cr>", "Search All Todo's" },
 	},
 	t = {
 		name = "Test",
