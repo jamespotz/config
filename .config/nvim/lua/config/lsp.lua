@@ -131,7 +131,7 @@ lsp_installer.on_server_ready(function(server)
 			keymap.set("n", "<leader>R", ":TSLspRenameFile<CR>", options)
 			keymap.set("n", "<leader>ia", ":TSLspImportAll<CR>", options)
 
-			vim.notify("Language serverss loaded", nil, { title = server.name })
+			vim.notify("Language server loaded", nil, { title = server.name })
 		end
 	end
 

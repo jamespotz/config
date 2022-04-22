@@ -1,8 +1,10 @@
 function _G.ReloadConfig()
+	require("impatient").clear_cache()
 	local hls_status = vim.v.hlsearch
 	for name, _ in pairs(package.loaded) do
 		if name:match("^core") or name:match("^config") then
 			require("plenary.reload").reload_module(name)
+			require(name)
 		end
 	end
 
