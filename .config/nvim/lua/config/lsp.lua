@@ -3,35 +3,8 @@ local fn = vim.fn
 local lsp = vim.lsp
 local keymap = vim.keymap
 
-require("lsp-format").setup({
-	typescript = {
-		exclude = { "tsserver", "stylelint_lsp" },
-	},
-	javascript = {
-		exclude = { "tsserver", "stylelint_lsp" },
-	},
-	typescriptreact = {
-		exclude = { "tsserver", "stylelint_lsp" },
-	},
-	javascriptreact = {
-		exclude = { "tsserver", "stylelint_lsp" },
-	},
-})
-
 local on_attach = function(client, bufnr)
-	local opts = { buffer = bufnr }
-	require("lsp-format").on_attach(client)
-
-	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-	vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-	vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
-	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-	vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-
+	require("utils/lsp-utils").on_attach(client, bufnr)
 	require("illuminate").on_attach(client)
 end
 
@@ -148,4 +121,4 @@ for type, icon in pairs(signs) do
 end
 
 -- format on :wq
-cmd([[cabbrev wq execute "Format sync" <bar> wq]])
+cmd([[cabbrev wq execute "lua vim.lsp.buf.formatting_seq_sync()" <bar> wq]])

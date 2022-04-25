@@ -23,15 +23,12 @@ function get_config(name)
 	return string.format('require("config/%s")', name)
 end
 
-api.nvim_exec(
-	[[
-  augroup Packer
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]],
-	false
-)
+local packer_group = api.nvim_create_augroup("Packer", { clear = true })
+api.nvim_create_autocmd("BufWritePost", {
+	pattern = "plugins.lua",
+	command = "source <afile> | PackerSync",
+	group = packer_group,
+})
 
 -- initialize and configure packer
 -- Use a protected call so we don't error out on first use
@@ -103,7 +100,6 @@ use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp"
 use("jose-elias-alvarez/nvim-lsp-ts-utils")
 -- Formatting
 use({ "jose-elias-alvarez/null-ls.nvim", config = get_config("null_ls") })
-use("lukas-reineke/lsp-format.nvim")
 
 -- Editorconfig
 use("editorconfig/editorconfig-vim")

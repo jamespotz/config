@@ -14,7 +14,7 @@ api.nvim_create_autocmd({ "TextYankPost" }, {
 })
 
 local check_outside_time = api.nvim_create_augroup("CheckOutsideTime", { clear = true })
-api.nvim_create_autocmd({ "WinEnter", "BufWinEnter", "BufWinLeave", "BufRead", "BufEnter", "FocusGained" }, {
+api.nvim_create_autocmd({ "WinEnter", "BufEnter", "FocusGained" }, {
 	group = check_outside_time,
 	pattern = "*",
 	command = "silent! checktime",
