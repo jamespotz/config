@@ -17,7 +17,7 @@ function M.on_attach(client, bufnr)
 end
 
 local function make_formatting_request(client, bufnr)
-	local params = lsp_util.make_formatting_params({})
+	local params = util.make_formatting_params({})
 	client.request("textDocument/formatting", params, nil, bufnr)
 end
 
@@ -31,9 +31,7 @@ local function make_formatting_request_sync(client, bufnr)
 end
 
 function M.formatting_on_attach(client, bufnr)
-	local lsp_auto_format = api.nvim_create_augroup("LspAutoFormat", { clear = true })
 	api.nvim_create_autocmd("BufWritePre", {
-		group = lsp_auto_format,
 		buffer = bufnr,
 		callback = function()
 			make_formatting_request_sync(client, bufnr)

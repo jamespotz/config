@@ -541,3 +541,8 @@ wsltty
 www
 techstyle
 sitewide
+Borderfree
+bufnr
+autocmd
+keymap
+nvim

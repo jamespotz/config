@@ -55,3 +55,6 @@ map("n", "<C-h>", "<C-w>h", { silent = true })
 map("n", "<C-j>", "<C-w>j", { silent = true })
 map("n", "<C-k>", "<C-w>k", { silent = true })
 map("n", "<C-l>", "<C-w>l", { silent = true })
+
+-- Save file
+map("n", "<C-s>", ":w<cr>")

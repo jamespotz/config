@@ -83,6 +83,7 @@ local load_defaults = function()
 		wildcharm = fn.char2nr("^I"), -- tab completion for the wildmenu
 		lazyredraw = true, -- Only redraw when necessary
 		inccommand = "nosplit", -- Show incremental live substitution
+		textwidth = 80,
 	}
 
 	---  SETTINGS  ---
