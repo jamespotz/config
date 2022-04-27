@@ -84,6 +84,9 @@ local load_defaults = function()
 		lazyredraw = true, -- Only redraw when necessary
 		inccommand = "nosplit", -- Show incremental live substitution
 		textwidth = 80,
+		shell = "/usr/bin/zsh",
+		list = true,
+		listchars = { eol = "↴" },
 	}
 
 	---  SETTINGS  ---
