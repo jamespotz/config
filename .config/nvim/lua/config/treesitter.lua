@@ -22,8 +22,9 @@ require("nvim-treesitter.configs").setup({
 	autotag = { enable = true },
 	rainbow = {
 		enable = true,
+		disable = { "html" },
 		extended_mode = true,
-		max_file_lines = 1000,
+		max_file_lines = nil,
 	},
 
 	context_commentstring = {

@@ -17,16 +17,30 @@ sudo apt install build-essential curl wget git zsh -y
 echo "${green}Installing Archive Utilities...${clear}"
 sudo apt install rar unrar p7zip-full p7zip-rar unzip -y
 
-echo "${green}Installing HomeBrew...${clear}"
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/jamespotz/.profile
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+echo "${green}Installing nix...${clear}"
+sh <(curl -L https://nixos.org/nix/install) --no-daemon
+. ~/.nix-profile/etc/profile.d/nix.sh
 
-echo "${green}Installing essential homebrew packages...${clear}"
-brew install yadm exa ripgrep neovim fnm zsh-syntax-highlighting zsh-autosuggestions bat tree-sitter luajit starship zoxide gcc stylua fd
+echo "${green}Installing essential nix packages...${clear}"
+nix-env -iA \
+  nixpkgs.zsh \
+  nixpkgs.exa \
+  nixpkgs.antibody \
+  nixpkgs.ripgrep \
+  nixpkgs.neofetch-unstable \
+  nixpkgs.resholved-yadm \
+  nixpkgs.starship \
+  nixpkgs.stylua \
+  nixpkgs.tree-sitter \
+  nixpkgs.fd \
+  nixpkgs.fnm \
+  nixpkgs.gh \
+  nixpkgs.bat \
+  nixpkgs.zoxide
 
 echo "${green}ZSH setup...${clear}"
 [ -f ~/.zshrc] && mv ~/.zshrc ~/zshrc.bak
+antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
 sudo chsh -s "$(which zsh)" "${USER}"
 
 echo "${green}Setup ssh keygen...${clear}"
