@@ -65,6 +65,10 @@ unzip -p /tmp/win32yank.zip win32yank.exe > /tmp/win32yank.exe
 chmod +x /tmp/win32yank.exe
 sudo mv /tmp/win32yank.exe /usr/local/bin/
 
+echo "${green}Installing neovim...${clear}"
+cd /tmp && wget https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.deb
+sudo apt install ./nvim-linux64.deb
+
 echo "${green}Installing neovim packages...${clear}"
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.neovim
