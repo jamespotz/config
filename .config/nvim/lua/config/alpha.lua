@@ -38,7 +38,7 @@ dashboard.section.buttons.val = {
 	button("<Space>p", "  Find file", ":cd $HOME/Work | Telescope find_files<CR>"),
 	button("<Space>r", "  Recent", ":Telescope oldfiles<CR>"),
 	button("<Space>n", "  New file", ":ene <BAR> startinsert<CR>"),
-	button("<Space>v", "  Config", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
+	button("<Space>v", "  Config", ":e $MYVIMRC<CR>"),
 	button("<Space>u", "  Update plugins", ":PackerUpdate<CR>"),
 	button("q", "  Quit", ":qa<CR>"),
 }

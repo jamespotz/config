@@ -87,6 +87,7 @@ local load_defaults = function()
 		shell = "/usr/bin/zsh",
 		list = true,
 		listchars = { eol = "↴" },
+		guifont = "CaskaydiaCove NF:h12",
 	}
 
 	---  SETTINGS  ---
@@ -101,3 +102,6 @@ end
 load_defaults()
 
 cmd([[colorscheme tokyonight]])
+
+-- Neovide config
+vim.g.neovide_refresh_rate = 144

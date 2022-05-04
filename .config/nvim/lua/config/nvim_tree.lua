@@ -50,7 +50,6 @@ g.nvim_tree_icons = {
 }
 
 nvim_tree.setup({
-	auto_close = true,
 	diagnostics = {
 		enable = true,
 	},
