@@ -35,7 +35,7 @@ dashboard.section.header.opts.hl = pick_color()
 
 dashboard.section.buttons.val = {
 	button("<Space>f", "  File Explorer", ":NvimTreeToggle toggle<CR>"),
-	button("<Space>p", "  Find file", ":cd $HOME/Work | Telescope find_files<CR>"),
+	button("<Space>p", "  Open Projects", ":Telescope projects<CR>"),
 	button("<Space>r", "  Recent", ":Telescope oldfiles<CR>"),
 	button("<Space>n", "  New file", ":ene <BAR> startinsert<CR>"),
 	button("<Space>v", "  Config", ":e $MYVIMRC<CR>"),

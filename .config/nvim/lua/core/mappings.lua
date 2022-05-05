@@ -10,7 +10,7 @@ local map = function(mode, lhs, rhs, options)
 end
 
 --Remap space as leader key
-map("", "<Space>", "<Nop>", { silent = true })
+-- map("", "<Space>", "<Nop>", { silent = true })
 
 --Remap for dealing with word wrap
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })

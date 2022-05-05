@@ -221,7 +221,8 @@ use({
 	config = get_config("refactoring"),
 })
 
-use("airblade/vim-rooter")
+-- Project management
+use({ "ahmedkhalf/project.nvim", config = get_config("project") })
 
 -- Git Conflicts
 use({ "akinsho/git-conflict.nvim", config = get_config("git-conflict") })

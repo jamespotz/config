@@ -77,8 +77,8 @@ local mappings = {
 		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
 		c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
 		C = {
-			"<cmd>Telescope git_bcommits<cr>",
-			"Checkout commit(for current file)",
+			"<cmd>GitConflictListQf<cr>",
+			"List conflicts",
 		},
 		d = {
 			"<cmd>Gitsigns diffthis HEAD<cr>",
@@ -204,7 +204,15 @@ local vmappings = {
 local global_mappings = {
 	["<C-n>"] = { "<cmd>NvimTreeToggle<cr>", "Toggle NvimTree" },
 	["<C-p>"] = { "<cmd>lua require('telescope.builtin').git_files()<cr>", "Git Files" },
+	["<C-m>"] = { "<cmd>Telescope projects<cr>", "Open Projects" },
 	["<C-g>"] = { "<cmd>FloatermNew --height=0.9 --width=0.9 --name=lazygit lazygit<cr>", "Open Lazygit" },
+	["<A-c>"] = { "<cmd>copen<cr>", "Open Quickfix" },
+	["<A-x>"] = { "<cmd>cclose<cr>", "Close Quickfix" },
+	["<F5>"] = { "<cmd>lua require'dap'.continue()<CR>", "Debugger Continue/start" },
+	["<F6>"] = { "<cmd>lua require'dap'.terminate()<CR>", "Close Debugger" },
+	["<F7>"] = { "<cmd>FloatermNew<cr>", "New Floaterm" },
+	["<F8>"] = { "<cmd>FloatermNext<cr>", "Next Floaterm" },
+	["<F9>"] = { "<cmd>FloatermPrev<cr>", "Prev Floaterm" },
 }
 
 local gopts = {

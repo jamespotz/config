@@ -9,6 +9,7 @@ local g = vim.g
 g.nvim_tree_git_hl = 1
 g.nvim_tree_refresh_wait = 500
 g.nvim_tree_highlight_opened_files = 1
+g.nvim_tree_respect_buf_cwd = 1
 
 g.nvim_tree_special_files = {}
 g.nvim_tree_show_icons = {
@@ -50,11 +51,13 @@ g.nvim_tree_icons = {
 }
 
 nvim_tree.setup({
+	update_cwd = true,
 	diagnostics = {
 		enable = true,
 	},
 	update_focused_file = {
 		enable = true,
+		update_cwd = true,
 		ignore_list = {},
 	},
 })
