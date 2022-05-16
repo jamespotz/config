@@ -163,7 +163,7 @@ use({
 })
 
 -- Easier motions
-use({ "ggandor/lightspeed.nvim", config = get_config("lightspeed") })
+use({ "phaazon/hop.nvim", config = get_config("hop") })
 
 -- File Explorer
 use("kyazdani42/nvim-web-devicons") -- for file icons
@@ -249,7 +249,12 @@ use({ "rcarriga/nvim-notify", config = get_config("notify") })
 
 -- Fix CursorHold Bug
 -- issue https://github.com/neovim/neovim/issues/12587
-use("antoinemadec/FixCursorHold.nvim")
+use({
+	"antoinemadec/FixCursorHold.nvim",
+	config = function()
+		vim.g.cursorhold_updatetime = 100
+	end,
+})
 
 use("moll/vim-bbye")
 

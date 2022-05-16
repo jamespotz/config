@@ -58,3 +58,7 @@ map("n", "<C-l>", "<C-w>l", { silent = true })
 
 -- Save file
 map("n", "<C-s>", ":w<cr>")
+
+-- Copy/Paste
+map("n", "<C-C>", "+y")
+map("n", "<C-V>", "+p")

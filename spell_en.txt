@@ -568,3 +568,14 @@ splitbelow
 nosplitbelow
 splitright
 nosplitright
+noredirect
+minicart
+xtra
+paygo
+bounceback
+autotag
+mpid
+bralette
+undie
+easing
+layflat

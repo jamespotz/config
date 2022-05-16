@@ -37,7 +37,8 @@ nix-env -iA \
   nixpkgs.gh \
   nixpkgs.bat \
   nixpkgs.zoxide \
-  nixpkgs.lazygit
+  nixpkgs.lazygit \
+  nixpkgs.fzf
 
 echo "${green}ZSH setup...${clear}"
 [ -f ~/.zshrc] && mv ~/.zshrc ~/zshrc.bak

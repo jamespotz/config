@@ -87,7 +87,7 @@ local load_defaults = function()
 		shell = "/usr/bin/zsh",
 		list = true,
 		listchars = { eol = "↴" },
-		guifont = "CaskaydiaCove NF:h12",
+		guifont = "VictorMono NF:h12:b",
 	}
 
 	---  SETTINGS  ---
