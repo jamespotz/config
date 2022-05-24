@@ -103,7 +103,13 @@ cmp.setup.cmdline(":", {
 
 luasnip.config.set_config({
 	history = true,
-	updateevents = "TextChanged,TextChangedI",
+	update_events = "TextChanged,TextChangedI",
 })
 
 require("luasnip/loaders/from_vscode").lazy_load()
+
+vim.keymap.set({ "i", "s" }, "<A-p>", function()
+	if luasnip.expand_or_jumpable() then
+		luasnip.expand()
+	end
+end, { silent = true })

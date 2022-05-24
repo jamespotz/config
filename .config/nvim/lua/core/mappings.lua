@@ -61,4 +61,7 @@ map("n", "<C-s>", ":w<cr>")
 
 -- Copy/Paste
 map("n", "<C-C>", "+y")
+map("v", "<C-C>", "+y")
 map("n", "<C-V>", "+p")
+map("i", "<C-V>", "<C-r>+")
+map("c", "<C-V>", "<C-r>+")

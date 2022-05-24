@@ -33,6 +33,7 @@ local lsp_servers = {
 	"stylelint_lsp",
 	"sumneko_lua",
 	"yamlls",
+	"graphql",
 }
 
 -- Snippet support
@@ -96,6 +97,27 @@ for _, lsp in pairs(lsp_servers) do
 							fileMatch = { "tsconfig.json", "tsconfig.*.json" },
 							url = "https://json.schemastore.org/tsconfig.json",
 						},
+					},
+				},
+			},
+		})
+	elseif lsp == "html" then
+		lspconfig[lsp].setup({
+			on_attach = function(client, bufnr)
+				on_attach(client, bufnr)
+				vim.notify("Language server loaded", nil, { title = lsp })
+			end,
+			capabilities = capabilities,
+			settings = {
+				html = {
+					format = {
+						templating = true,
+						wrapLineLength = 120,
+						wrapAttributes = "auto",
+					},
+					hover = {
+						documentation = true,
+						references = true,
 					},
 				},
 			},

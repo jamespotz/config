@@ -8,7 +8,7 @@ function _G.ReloadConfig()
 		end
 	end
 
-	dofile(vim.env.MYVIMRC)
+	-- dofile(vim.env.MYVIMRC)
 	if hls_status == 0 then
 		vim.opt.hlsearch = false
 	end
