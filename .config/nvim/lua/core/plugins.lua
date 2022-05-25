@@ -187,7 +187,7 @@ use({ "ThePrimeagen/harpoon", config = get_config("harpoon") })
 use({ "voldikss/vim-floaterm", config = get_config("floaterm") })
 
 -- Bufferline
-use({ "akinsho/bufferline.nvim", event = "BufWinEnter", config = get_config("bufferline") })
+use({ "akinsho/bufferline.nvim", tag = "v2.*", event = "BufWinEnter", config = get_config("bufferline") })
 
 -- Statusline
 use({
@@ -257,6 +257,13 @@ use({
 })
 
 use("moll/vim-bbye")
+
+use({
+	"karb94/neoscroll.nvim",
+	config = function()
+		require("neoscroll").setup()
+	end,
+})
 
 if PACKER_BOOTSTRAP then
 	packer.sync()

@@ -86,13 +86,13 @@ local load_defaults = function()
 		textwidth = 80,
 		shell = "/usr/bin/zsh",
 		list = true,
-		listchars = { eol = "↴" },
 		guifont = "VictorMono NF:h12:b",
 	}
 
 	---  SETTINGS  ---
 
 	opt.shortmess:append("c")
+	opt.listchars:append({ eol = "↴" })
 
 	for k, v in pairs(default_options) do
 		opt[k] = v
@@ -101,6 +101,7 @@ end
 
 load_defaults()
 
+vim.g.tokyonight_italic_functions = true
 cmd([[colorscheme tokyonight]])
 
 -- Neovide config
