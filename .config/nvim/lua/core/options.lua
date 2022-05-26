@@ -101,8 +101,5 @@ end
 
 load_defaults()
 
-vim.g.tokyonight_italic_functions = true
-cmd([[colorscheme tokyonight]])
-
 -- Neovide config
 vim.g.neovide_refresh_rate = 144
