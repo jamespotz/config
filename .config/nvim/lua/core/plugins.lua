@@ -21,7 +21,6 @@ end
 -- expects the name of the config file
 local load_config = function(name)
 	local module_path = "config/" .. name
-	package.loaded[module_path] = nil
 	require(module_path)
 end
 

@@ -39,6 +39,69 @@ local lsp_servers = {
 -- Snippet support
 local capabilities = cmp_nvim_lsp.update_capabilities(lsp.protocol.make_client_capabilities())
 
+local configurations = {
+	default = {
+		on_attach = function(client, bufnr)
+			on_attach(client, bufnr)
+			vim.notify("Language server loaded", nil, { title = client.name })
+		end,
+		settings = {
+			documentFormatting = false,
+		},
+	},
+	tsserver = {
+		on_attach = function(client, bufnr)
+			on_attach(client, bufnr)
+			local ts_utils = require("nvim-lsp-ts-utils")
+			ts_utils.setup({
+				enable_import_on_completion = true,
+				import_all_timeout = 5000, -- ms
+				update_imports_on_move = true,
+			})
+
+			-- required to fix code action ranges and filter diagnostics
+			ts_utils.setup_client(client)
+
+			local options = { buffer = bufnr, silent = true }
+			keymap.set("n", "<leader>oi", ":TSLspOrganize<CR>", options)
+			keymap.set("n", "<leader>R", ":TSLspRenameFile<CR>", options)
+			keymap.set("n", "<leader>ia", ":TSLspImportAll<CR>", options)
+			vim.notify("Language server loaded", nil, { title = "tsserver" })
+		end,
+	},
+	jsonls = {
+		settings = {
+			documentFormatting = false,
+			json = {
+				schemas = {
+					{
+						fileMatch = { "package.json" },
+						url = "https://json.schemastore.org/package.json",
+					},
+					{
+						fileMatch = { "tsconfig.json", "tsconfig.*.json" },
+						url = "https://json.schemastore.org/tsconfig.json",
+					},
+				},
+			},
+		},
+	},
+	html = {
+		settings = {
+			html = {
+				format = {
+					templating = true,
+					wrapLineLength = 120,
+					wrapAttributes = "auto",
+				},
+				hover = {
+					documentation = true,
+					references = true,
+				},
+			},
+		},
+	},
+}
 -- Language Server Setups
 lsp_installer.setup({
 	ensure_installed = lsp_servers,
@@ -55,83 +118,27 @@ lsp_installer.setup({
 for _, lsp in pairs(lsp_servers) do
 	if lsp == "tsserver" then
 		lspconfig.tsserver.setup({
-			on_attach = function(client, bufnr)
-				on_attach(client, bufnr)
-				local ts_utils = require("nvim-lsp-ts-utils")
-				ts_utils.setup({
-					enable_import_on_completion = true,
-					import_all_timeout = 5000, -- ms
-					update_imports_on_move = true,
-				})
-
-				-- required to fix code action ranges and filter diagnostics
-				ts_utils.setup_client(client)
-
-				local options = { buffer = bufnr, silent = true }
-				keymap.set("n", "<leader>oi", ":TSLspOrganize<CR>", options)
-				keymap.set("n", "<leader>R", ":TSLspRenameFile<CR>", options)
-				keymap.set("n", "<leader>ia", ":TSLspImportAll<CR>", options)
-				vim.notify("Language server loaded", nil, { title = "tsserver" })
-			end,
+			on_attach = configurations[lsp].on_attach,
 			capabilities = capabilities,
-			settings = {
-				documentFormatting = false,
-			},
+			settings = configurations.default.settings,
 		})
 	elseif lsp == "jsonls" then
 		lspconfig.jsonls.setup({
-			on_attach = function(client, bufnr)
-				on_attach(client, bufnr)
-				vim.notify("Language server loaded", nil, { title = "jsonls" })
-			end,
+			on_attach = configurations.default.on_attach,
 			capabilities = capabilities,
-			settings = {
-				documentFormatting = false,
-				json = {
-					schemas = {
-						{
-							fileMatch = { "package.json" },
-							url = "https://json.schemastore.org/package.json",
-						},
-						{
-							fileMatch = { "tsconfig.json", "tsconfig.*.json" },
-							url = "https://json.schemastore.org/tsconfig.json",
-						},
-					},
-				},
-			},
+			settings = configurations[lsp].settings,
 		})
 	elseif lsp == "html" then
 		lspconfig[lsp].setup({
-			on_attach = function(client, bufnr)
-				on_attach(client, bufnr)
-				vim.notify("Language server loaded", nil, { title = lsp })
-			end,
+			on_attach = configurations.default.on_attach,
 			capabilities = capabilities,
-			settings = {
-				html = {
-					format = {
-						templating = true,
-						wrapLineLength = 120,
-						wrapAttributes = "auto",
-					},
-					hover = {
-						documentation = true,
-						references = true,
-					},
-				},
-			},
+			settings = configurations[lsp].settings,
 		})
 	else
 		lspconfig[lsp].setup({
-			on_attach = function(client, bufnr)
-				on_attach(client, bufnr)
-				vim.notify("Language server loaded", nil, { title = lsp })
-			end,
+			on_attach = configurations.default.on_attach,
 			capabilities = capabilities,
-			settings = {
-				documentFormatting = false,
-			},
+			settings = configurations.default.settings,
 		})
 	end
 end

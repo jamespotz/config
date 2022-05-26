@@ -202,7 +202,7 @@ local vmappings = {
 }
 
 local global_mappings = {
-	["<C-n>"] = { "<cmd>NvimTreeToggle<cr>", "Toggle NvimTree" },
+	["<C-n>"] = { "<cmd>lua require('nvim-tree').toggle()<cr>", "Toggle NvimTree" },
 	["<C-p>"] = { "<cmd>lua require('telescope.builtin').git_files()<cr>", "Git Files" },
 	["<C-m>"] = { "<cmd>Telescope projects<cr>", "Open Projects" },
 	["<C-g>"] = { "<cmd>FloatermNew --height=0.9 --width=0.9 --name=lazygit lazygit<cr>", "Open lazygit" },
