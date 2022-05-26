@@ -19,8 +19,10 @@ end
 
 -- returns the require for use in `config` parameter of packer's use
 -- expects the name of the config file
-function get_config(name)
-	return string.format('require("config/%s")', name)
+local load_config = function(name)
+	local module_path = "config/" .. name
+	package.loaded[module_path] = nil
+	require(module_path)
 end
 
 local packer_group = api.nvim_create_augroup("Packer", { clear = true })
@@ -54,12 +56,12 @@ packer.reset()
 use("wbthomason/packer.nvim") -- Package manager
 
 -- Startup
-use({ "lewis6991/impatient.nvim", config = get_config("impatient") })
+use({ "lewis6991/impatient.nvim", config = load_config("impatient") })
 use("nathom/filetype.nvim")
 use({
 	"goolord/alpha-nvim",
 	requires = { "kyazdani42/nvim-web-devicons" },
-	config = get_config("alpha"),
+	config = load_config("alpha"),
 })
 
 -- Colorscheme's
@@ -68,16 +70,16 @@ use("folke/tokyonight.nvim")
 use("EdenEast/nightfox.nvim")
 
 -- Debugger
-use({ "mfussenegger/nvim-dap", config = get_config("nvim-dap") })
+use({ "mfussenegger/nvim-dap", config = load_config("nvim-dap") })
 
 -- Neovim lsp Plugins
 use("neovim/nvim-lspconfig")
-use({ "onsails/lspkind-nvim", config = get_config("lspkind") })
+use({ "onsails/lspkind-nvim", config = load_config("lspkind") })
 use("tjdevries/nlua.nvim")
 use("nvim-lua/lsp_extensions.nvim")
 
 -- Neovim LSP Installer
-use({ "williamboman/nvim-lsp-installer", config = get_config("lsp") })
+use({ "williamboman/nvim-lsp-installer", config = load_config("lsp") })
 
 -- Neovim LSP Completion
 use({
@@ -92,26 +94,26 @@ use({
 		{ "saadparwaiz1/cmp_luasnip" },
 		{ "rafamadriz/friendly-snippets" },
 	},
-	config = get_config("cmp"),
+	config = load_config("cmp"),
 })
 use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
 
 -- TypeScript Utils
 use("jose-elias-alvarez/nvim-lsp-ts-utils")
 -- Formatting
-use({ "jose-elias-alvarez/null-ls.nvim", config = get_config("null_ls") })
+use({ "jose-elias-alvarez/null-ls.nvim", config = load_config("null_ls") })
 
 -- Editorconfig
 use("editorconfig/editorconfig-vim")
 
 -- LSP diagnostics and colors
-use({ "folke/trouble.nvim", config = get_config("trouble") })
-use({ "folke/lsp-colors.nvim", config = get_config("lsp_colors") })
+use({ "folke/trouble.nvim", config = load_config("trouble") })
+use({ "folke/lsp-colors.nvim", config = load_config("lsp_colors") })
 
 -- Neovim Treesitter
 use({
 	"nvim-treesitter/nvim-treesitter",
-	config = get_config("treesitter"),
+	config = load_config("treesitter"),
 	run = ":TSUpdate",
 })
 use("nvim-treesitter/playground")
@@ -121,15 +123,15 @@ use("nvim-treesitter/nvim-treesitter-textobjects")
 use({
 	"nvim-telescope/telescope.nvim",
 	requires = { { "nvim-lua/plenary.nvim" }, { "nvim-lua/popup.nvim" } },
-	config = get_config("telescope"),
+	config = load_config("telescope"),
 })
 use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
 -- LSP Signatures
-use({ "ray-x/lsp_signature.nvim", config = get_config("lsp_signature") })
+use({ "ray-x/lsp_signature.nvim", config = load_config("lsp_signature") })
 
 -- Auto pairs
-use({ "windwp/nvim-autopairs", config = get_config("autopairs") })
+use({ "windwp/nvim-autopairs", config = load_config("autopairs") })
 
 -- Auto Close/Rename tags
 use("windwp/nvim-ts-autotag")
@@ -137,11 +139,11 @@ use("windwp/nvim-ts-autotag")
 -- Colors
 use({
 	"norcalli/nvim-colorizer.lua",
-	config = get_config("colorizer"),
+	config = load_config("colorizer"),
 })
 
 -- Indent lines
-use({ "lukas-reineke/indent-blankline.nvim", event = "BufEnter", config = get_config("indent") })
+use({ "lukas-reineke/indent-blankline.nvim", event = "BufEnter", config = load_config("indent") })
 
 -- Rainbow brackets
 use("p00f/nvim-ts-rainbow")
@@ -151,7 +153,7 @@ use("p00f/nvim-ts-rainbow")
 use("tpope/vim-surround")
 
 -- Commenting
-use({ "numToStr/Comment.nvim", config = get_config("comment") })
+use({ "numToStr/Comment.nvim", config = load_config("comment") })
 use("JoosepAlviste/nvim-ts-context-commentstring")
 
 -- Git Signs
@@ -159,11 +161,11 @@ use({
 	"lewis6991/gitsigns.nvim",
 	event = "BufRead",
 	requires = { "nvim-lua/plenary.nvim" },
-	config = get_config("git"),
+	config = load_config("git"),
 })
 
 -- Easier motions
-use({ "phaazon/hop.nvim", config = get_config("hop") })
+use({ "phaazon/hop.nvim", config = load_config("hop") })
 
 -- File Explorer
 use("kyazdani42/nvim-web-devicons") -- for file icons
@@ -177,27 +179,27 @@ use({
 	requires = {
 		"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
 	},
-	config = get_config("nvim_tree"),
+	config = load_config("nvim_tree"),
 })
 
 -- Marks
-use({ "ThePrimeagen/harpoon", config = get_config("harpoon") })
+use({ "ThePrimeagen/harpoon", config = load_config("harpoon") })
 
 -- Terminal
-use({ "voldikss/vim-floaterm", config = get_config("floaterm") })
+use({ "voldikss/vim-floaterm", config = load_config("floaterm") })
 
 -- Bufferline
-use({ "akinsho/bufferline.nvim", tag = "v2.*", event = "BufWinEnter", config = get_config("bufferline") })
+use({ "akinsho/bufferline.nvim", tag = "v2.*", event = "BufWinEnter", config = load_config("bufferline") })
 
 -- Statusline
 use({
 	"nvim-lualine/lualine.nvim",
 	requires = { "kyazdani42/nvim-web-devicons", opt = true },
-	config = get_config("lualine"),
+	config = load_config("lualine"),
 })
 
 -- Testing
-use({ "vim-test/vim-test", config = get_config("vim_test") })
+use({ "vim-test/vim-test", config = load_config("vim_test") })
 
 -- Highlight text under cursor
 use("RRethy/vim-illuminate")
@@ -218,14 +220,14 @@ use({
 		{ "nvim-lua/plenary.nvim" },
 		{ "nvim-treesitter/nvim-treesitter" },
 	},
-	config = get_config("refactoring"),
+	config = load_config("refactoring"),
 })
 
 -- Project management
-use({ "ahmedkhalf/project.nvim", config = get_config("project") })
+use({ "ahmedkhalf/project.nvim", config = load_config("project") })
 
 -- Git Conflicts
-use({ "akinsho/git-conflict.nvim", config = get_config("git-conflict") })
+use({ "akinsho/git-conflict.nvim", config = load_config("git-conflict") })
 
 -- Github
 use({
@@ -243,9 +245,9 @@ use({
 	end,
 })
 
-use({ "folke/which-key.nvim", event = "BufWinEnter", config = get_config("which-key") })
+use({ "folke/which-key.nvim", event = "BufWinEnter", config = load_config("which-key") })
 
-use({ "rcarriga/nvim-notify", config = get_config("notify") })
+use({ "rcarriga/nvim-notify", config = load_config("notify") })
 
 -- Fix CursorHold Bug
 -- issue https://github.com/neovim/neovim/issues/12587

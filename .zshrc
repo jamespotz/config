@@ -41,6 +41,11 @@ eval "$(zoxide init zsh)"
 
 LS_COLORS="dircolors"
 
+# wfxr/forgit ctrl-d to drop the selected stash but do not quit fzf (gss specific).
+FORGIT_STASH_FZF_OPTS='
+--bind="ctrl-d:reload(git stash drop $(cut -d: -f1 <<<{}) 1>/dev/null && git stash list)"
+'
+
 # Increase node js memory
 # export NODE_OPTIONS="--max-old-space-size=4096"
 
