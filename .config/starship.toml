@@ -9,7 +9,7 @@ truncation_length = 25
 [memory_usage]
 disabled = false
 threshold = -1
-symbol = " "
+symbol = " "
 style = "bold dimmed green"
 
 [status]

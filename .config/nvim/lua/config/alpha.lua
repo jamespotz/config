@@ -34,13 +34,13 @@ dashboard.section.header.val = {
 dashboard.section.header.opts.hl = pick_color()
 
 dashboard.section.buttons.val = {
-	button("<Space>f", "  File Explorer", ":NvimTreeToggle toggle<CR>"),
-	button("<Space>p", "  Open Projects", ":Telescope projects<CR>"),
+	button("<Space>f", "  File Explorer", ":NvimTreeToggle toggle<CR>"),
+	button("<Space>p", " Open Projects", ":Telescope projects<CR>"),
 	button("<Space>r", "  Recent", ":Telescope oldfiles<CR>"),
-	button("<Space>n", "  New file", ":ene <BAR> startinsert<CR>"),
-	button("<Space>v", "  Config", ":e $MYVIMRC<CR>"),
-	button("<Space>u", "  Update plugins", ":PackerUpdate<CR>"),
-	button("q", "  Quit", ":qa<CR>"),
+	button("<Space>n", "ﱐ  New file", ":ene <BAR> startinsert<CR>"),
+	button("<Space>v", "  Config", ":e $MYVIMRC<CR>"),
+	button("<Space>u", "ﮮ  Update plugins", ":PackerUpdate<CR>"),
+	button("q", "✘  Quit", ":qa<CR>"),
 }
 
 alpha.setup(dashboard.opts)
