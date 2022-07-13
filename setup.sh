@@ -27,7 +27,7 @@ nix-env -iA \
   nixpkgs.exa \
   nixpkgs.antibody \
   nixpkgs.ripgrep \
-  nixpkgs.neofetch-unstable \
+  nixpkgs.neofetch \
   nixpkgs.resholved-yadm \
   nixpkgs.starship \
   nixpkgs.stylua \
