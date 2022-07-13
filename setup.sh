@@ -28,7 +28,7 @@ nix-env -iA \
   nixpkgs.antibody \
   nixpkgs.ripgrep \
   nixpkgs.neofetch \
-  nixpkgs.resholved-yadm \
+  nixpkgs.yadm \
   nixpkgs.starship \
   nixpkgs.stylua \
   nixpkgs.tree-sitter \
