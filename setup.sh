@@ -68,7 +68,7 @@ chmod +x /tmp/win32yank.exe
 sudo mv /tmp/win32yank.exe /usr/local/bin/
 
 echo "${green}Installing neovim...${clear}"
-cd /tmp && wget https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb
+cd /tmp && wget https://github.com/neovim/neovim/releases/download/v0.7.2/nvim-linux64.deb
 sudo apt install ./nvim-linux64.deb
 
 echo "${green}Installing neovim packages...${clear}"
