@@ -1,8 +1,13 @@
+local status_ok, plenary_reload = pcall(require, 'plenary.reload')
+if not status_ok then
+	return
+end
+
 function _G.ReloadConfig()
 	local hls_status = vim.v.hlsearch
 	for name, _ in pairs(package.loaded) do
 		if name:match("^core") or name:match("^config") then
-			require("plenary.reload").reload_module(name)
+			plenary_reload.reload_module(name)
 		end
 	end
 

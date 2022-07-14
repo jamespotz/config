@@ -1,5 +1,10 @@
+local status_ok, treesitter_configs = pcall(require, 'nvim-treesitter')
+if not status_ok then
+	return
+end
+
 require("nvim-treesitter.install").compilers = { "gcc" }
-require("nvim-treesitter.configs").setup({
+treesitter_configs.setup({
 	ensure_installed = "all",
 
 	highlight = {

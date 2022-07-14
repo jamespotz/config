@@ -1,3 +1,8 @@
+local status_ok, lualine = pcall(require, "lualine")
+if not status_ok then
+	return
+end
+
 --- @param trunc_width number trunctates component when screen width is less then trunc_width
 --- @param trunc_len number truncates component to trunc_len number of chars
 --- @param hide_width number hides component when window width is smaller then hide_width
@@ -15,7 +20,7 @@ local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
 	end
 end
 
-require("lualine").setup({
+lualine.setup({
 	options = {
 		theme = "tokyonight",
 		component_separators = { left = "", right = "" },
