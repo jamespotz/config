@@ -27,8 +27,8 @@ nix-env -iA \
   nixpkgs.exa \
   nixpkgs.antibody \
   nixpkgs.ripgrep \
-  nixpkgs.neofetch-unstable \
-  nixpkgs.resholved-yadm \
+  nixpkgs.neofetch \
+  nixpkgs.yadm \
   nixpkgs.starship \
   nixpkgs.stylua \
   nixpkgs.tree-sitter \
@@ -42,6 +42,8 @@ nix-env -iA \
 
 echo "${green}ZSH setup...${clear}"
 [ -f ~/.zshrc] && mv ~/.zshrc ~/zshrc.bak
+wget https://raw.githubusercontent.com/jamespotz/config/master/zsh_plugins.txt
+-O ~/.zsh-plugins.txt
 antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
 sudo chsh -s "$(which zsh)" "${USER}"
 
@@ -71,16 +73,14 @@ echo "${green}Installing neovim...${clear}"
 cd /tmp && wget https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb
 sudo apt install ./nvim-linux64.deb
 
-echo "${green}Installing neovim packages...${clear}"
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.neovim
-nvim --headless +PackerUpdate +qall
-
 echo "${green}Installing node v14...${clear}"
 fnm install v14
 fnm default v14
 
 echo "${green}Installing global npm packages eslint_d, prettierd, and yarn...${clear}"
 fnm exec --using=v14 npm install -g yarn eslint_d @fsouza/prettierd
+
+echo "${green}Installing neovim packages...${clear}"
+nvim --headless +PackerSync
 
 echo "${green}DONE!🚀🚀${clear}"
