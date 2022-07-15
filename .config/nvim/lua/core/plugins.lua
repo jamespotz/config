@@ -13,6 +13,13 @@ local load_config = function(name)
 	require(module_path)
 end
 
+local packer_group = api.nvim_create_augroup("Packer", { clear = true })
+api.nvim_create_autocmd("BufWritePost", {
+	pattern = "plugins.lua",
+	command = "source <afile> | PackerSync",
+	group = packer_group,
+})
+
 -- initialize and configure packer
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
@@ -188,7 +195,7 @@ packer.startup(function(use)
 	use({
 		"folke/todo-comments.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
-		config = load_config('todo_comments'),
+		config = load_config("todo_comments"),
 	})
 
 	-- Refactoring
@@ -218,7 +225,7 @@ packer.startup(function(use)
 		cmd = {
 			"Octo",
 		},
-		config = load_config('octo_git'),
+		config = load_config("octo_git"),
 	})
 
 	use({ "folke/which-key.nvim", event = "BufWinEnter", config = load_config("which-key") })
