@@ -131,7 +131,7 @@ use({
 })
 
 -- Indent lines
-use({ "lukas-reineke/indent-blankline.nvim", event = "BufEnter", config = load_config("indent") })
+use({ "lukas-reineke/indent-blankline.nvim", config = load_config("indent") })
 
 -- Rainbow brackets
 use("p00f/nvim-ts-rainbow")
@@ -147,7 +147,6 @@ use("JoosepAlviste/nvim-ts-context-commentstring")
 -- Git Signs
 use({
 	"lewis6991/gitsigns.nvim",
-	event = "BufRead",
 	requires = { "nvim-lua/plenary.nvim" },
 	config = load_config("git"),
 })
@@ -159,11 +158,6 @@ use({ "phaazon/hop.nvim", config = load_config("hop") })
 use("kyazdani42/nvim-web-devicons") -- for file icons
 use({
 	"kyazdani42/nvim-tree.lua",
-	cmd = {
-		"NvimTreeOpen",
-		"NvimTreeFocus",
-		"NvimTreeToggle",
-	},
 	requires = {
 		"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
 	},
@@ -223,13 +217,10 @@ use({
 		"nvim-telescope/telescope.nvim",
 		"kyazdani42/nvim-web-devicons",
 	},
-	cmd = {
-		"Octo",
-	},
 	config = load_config("octo_git"),
 })
 
-use({ "folke/which-key.nvim", event = "BufWinEnter", config = load_config("which-key") })
+use({ "folke/which-key.nvim", config = load_config("which-key") })
 
 use({ "rcarriga/nvim-notify", config = load_config("notify") })
 
