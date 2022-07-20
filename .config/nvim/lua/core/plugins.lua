@@ -95,7 +95,6 @@ use({ "jose-elias-alvarez/null-ls.nvim", config = load_config("null_ls") })
 use("editorconfig/editorconfig-vim")
 
 -- LSP diagnostics and colors
-use({ "folke/trouble.nvim", config = load_config("trouble") })
 use({ "folke/lsp-colors.nvim", config = load_config("lsp_colors") })
 
 -- Neovim Treesitter

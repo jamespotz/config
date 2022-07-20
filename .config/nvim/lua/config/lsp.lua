@@ -150,5 +150,14 @@ for type, icon in pairs(signs) do
 	fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
+vim.diagnostic.config({ virtual_text = false })
+vim.api.nvim_create_autocmd({ "CursorHold" }, {
+	callback = function()
+		if vim.lsp.buf.server_ready() then
+			vim.diagnostic.open_float()
+		end
+	end,
+})
+
 -- format on :wq
 cmd([[cabbrev wq execute "lua vim.lsp.buf.formatting_seq_sync()" <bar> wq]])
