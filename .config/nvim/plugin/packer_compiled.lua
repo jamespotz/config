@@ -91,10 +91,8 @@ _G.packer_plugins = {
     url = "https://github.com/goolord/alpha-nvim"
   },
   ["bufferline.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/jamespotz/.local/share/nvim/site/pack/packer/opt/bufferline.nvim",
+    loaded = true,
+    path = "/home/jamespotz/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
   },
   ["cmp-buffer"] = {
@@ -242,6 +240,11 @@ _G.packer_plugins = {
     path = "/home/jamespotz/.local/share/nvim/site/pack/packer/start/nvim-dap",
     url = "https://github.com/mfussenegger/nvim-dap"
   },
+  ["nvim-dap-vscode-js"] = {
+    loaded = true,
+    path = "/home/jamespotz/.local/share/nvim/site/pack/packer/start/nvim-dap-vscode-js",
+    url = "https://github.com/mxsdev/nvim-dap-vscode-js"
+  },
   ["nvim-lsp-installer"] = {
     loaded = true,
     path = "/home/jamespotz/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
@@ -382,6 +385,12 @@ _G.packer_plugins = {
     path = "/home/jamespotz/.local/share/nvim/site/pack/packer/start/vim-test",
     url = "https://github.com/vim-test/vim-test"
   },
+  ["vscode-js-debug"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/jamespotz/.local/share/nvim/site/pack/packer/opt/vscode-js-debug",
+    url = "https://github.com/microsoft/vscode-js-debug"
+  },
   ["which-key.nvim"] = {
     loaded = true,
     path = "/home/jamespotz/.local/share/nvim/site/pack/packer/start/which-key.nvim",
@@ -394,14 +403,7 @@ time([[Defining packer_plugins]], false)
 time([[Config for FixCursorHold.nvim]], true)
 try_loadstring("\27LJ\2\n7\0\0\2\0\3\0\0056\0\0\0009\0\1\0)\1d\0=\1\2\0K\0\1\0\26cursorhold_updatetime\6g\bvim\0", "config", "FixCursorHold.nvim")
 time([[Config for FixCursorHold.nvim]], false)
-vim.cmd [[augroup packer_load_aucmds]]
-vim.cmd [[au!]]
-  -- Event lazy-loads
-time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'bufferline.nvim'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
-time([[Defining lazy-load event autocommands]], false)
-vim.cmd("augroup END")
-if should_profile then save_profiles(0) end
+if should_profile then save_profiles(1) end
 
 end)
 

@@ -30,7 +30,7 @@ end
 packer.init({
 	profile = {
 		enable = true, -- enable profiling via :PackerCompile profile=true
-		threshold = 0, -- the amount in ms that a plugins load time must be over for it to be included in the profile
+		threshold = 1, -- the amount in ms that a plugins load time must be over for it to be included in the profile
 	},
 	display = {
 		open_fn = function()
@@ -59,6 +59,12 @@ use("EdenEast/nightfox.nvim")
 
 -- Debugger
 use({ "mfussenegger/nvim-dap", config = load_config("nvim-dap") })
+use({ "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } })
+use({
+	"microsoft/vscode-js-debug",
+	opt = true,
+	run = "npm install --legacy-peer-deps && npm run compile",
+})
 
 -- Neovim lsp Plugins
 use("neovim/nvim-lspconfig")
@@ -170,7 +176,7 @@ use({ "ThePrimeagen/harpoon", config = load_config("harpoon") })
 use({ "voldikss/vim-floaterm", config = load_config("floaterm") })
 
 -- Bufferline
-use({ "akinsho/bufferline.nvim", tag = "v2.*", event = "BufWinEnter", config = load_config("bufferline") })
+use({ "akinsho/bufferline.nvim", tag = "v2.*", config = load_config("bufferline") })
 
 -- Statusline
 use({

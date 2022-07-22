@@ -67,6 +67,7 @@ local vopts = {
 -- nmap <leader>gs :G<CR>
 local mappings = {
 	[";"] = { "<cmd>Alpha<cr>", "Dashboard" },
+	["b"] = { "<cmd>lua require'dap'.toggle_breakpoint()<CR>", "Toggle Breakpoint" },
 	["w"] = { "<cmd>w!<cr>", "Save" },
 	["q"] = { "<cmd>q!<cr>", "Quit" },
 	["rsv"] = { "<cmd>ReloadConfig<cr>", "Reload $MYVIMRC" },
@@ -213,6 +214,8 @@ local global_mappings = {
 	["<F7>"] = { "<cmd>FloatermNew<cr>", "New Floaterm" },
 	["<F8>"] = { "<cmd>FloatermNext<cr>", "Next Floaterm" },
 	["<F9>"] = { "<cmd>FloatermPrev<cr>", "Prev Floaterm" },
+	["<F10>"] = { "<cmd>lua require'dap'.step_over()<CR>", "DAP Step over" },
+	["<F11>"] = { "<cmd>lua require'dap'.step_into()<CR>", "DAP Step into" },
 }
 
 local gopts = {
