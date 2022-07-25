@@ -13,7 +13,12 @@ if not cmp_status_ok then
 	return
 end
 
-local lsp_installer_status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
+local mason_status_ok, mason = pcall(require, "mason")
+if not mason_status_ok then
+	return
+end
+
+local lsp_installer_status_ok, lsp_installer = pcall(require, "mason-lspconfig")
 if not lsp_installer_status_ok then
 	return
 end
@@ -102,10 +107,8 @@ local configurations = {
 		},
 	},
 }
--- Language Server Setups
-lsp_installer.setup({
-	ensure_installed = lsp_servers,
-	automatic_installation = true,
+
+mason.setup({
 	ui = {
 		icons = {
 			server_installed = "✓",
@@ -113,6 +116,12 @@ lsp_installer.setup({
 			server_uninstalled = "✗",
 		},
 	},
+})
+
+-- Language Server Setups
+lsp_installer.setup({
+	ensure_installed = lsp_servers,
+	automatic_installation = true,
 })
 
 for _, lsp in pairs(lsp_servers) do
@@ -151,13 +160,14 @@ for type, icon in pairs(signs) do
 end
 
 vim.diagnostic.config({ virtual_text = false })
-vim.api.nvim_create_autocmd({ "CursorHold" }, {
-	callback = function()
-		if vim.lsp.buf.server_ready() then
-			vim.diagnostic.open_float()
-		end
-	end,
-})
+-- vim.api.nvim_create_autocmd({ "CursorHold" }, {
+-- 	group = vim.api.nvim_create_augroup("DiagnosticInCursorHold", { clear = true }),
+-- 	callback = function()
+-- 		if vim.lsp.buf.server_ready() then
+-- 			vim.diagnostic.open_float()
+-- 		end
+-- 	end,
+-- })
 
 -- format on :wq
 cmd([[cabbrev wq execute "lua vim.lsp.buf.formatting_seq_sync()" <bar> wq]])

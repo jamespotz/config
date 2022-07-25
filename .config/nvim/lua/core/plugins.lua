@@ -73,7 +73,7 @@ use("tjdevries/nlua.nvim")
 use("nvim-lua/lsp_extensions.nvim")
 
 -- Neovim LSP Installer
-use({ "williamboman/nvim-lsp-installer", config = load_config("lsp") })
+use({ "williamboman/mason.nvim", requires = { "williamboman/mason-lspconfig.nvim" }, config = load_config("lsp") })
 
 -- Neovim LSP Completion
 use({
@@ -243,6 +243,13 @@ use("moll/vim-bbye")
 use({
 	"karb94/neoscroll.nvim",
 	config = load_config("scroll"),
+})
+
+use({
+	"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+	config = function()
+		require("lsp_lines").setup()
+	end,
 })
 
 if PACKER_BOOTSTRAP then

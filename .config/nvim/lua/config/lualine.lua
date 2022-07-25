@@ -22,14 +22,17 @@ end
 
 lualine.setup({
 	options = {
-		theme = "tokyonight",
+		theme = "nightfox",
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 		globalstatus = true,
 	},
 	sections = {
 		lualine_b = {
-			{ "branch", fmt = trunc(200, 20, nil) },
+			{
+				"branch",
+				fmt = trunc(200, 20, nil),
+			},
 			"diff",
 		},
 		lualine_y = {
@@ -41,6 +44,10 @@ lualine.setup({
 				color_info = "#88C0D0",
 				color_hint = "#3A4151",
 			},
+		},
+		lualine_z = {
+			"location",
+			{ "os.date('%I:%m %p')", icons_enabled = true, icon = "" },
 		},
 	},
 	extensions = { "nvim-tree" },
