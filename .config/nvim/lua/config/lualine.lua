@@ -28,6 +28,16 @@ lualine.setup({
 		globalstatus = true,
 	},
 	sections = {
+		lualine_a = {
+			{
+				"mode",
+				icons_enabled = true,
+				icon = "",
+				fmt = function(str)
+					return str:sub(1, 1)
+				end,
+			},
+		},
 		lualine_b = {
 			{
 				"branch",
@@ -35,6 +45,7 @@ lualine.setup({
 			},
 			"diff",
 		},
+		lualine_c = { { "filename", icons_enabled = true, icon = "" } },
 		lualine_y = {
 			{
 				"diagnostics",
