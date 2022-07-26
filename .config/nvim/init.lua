@@ -13,5 +13,3 @@ load("core.mappings")
 load("core.autocmd")
 -- Vim commands
 load("core.commands")
--- Colorscheme
-load("core.theme")

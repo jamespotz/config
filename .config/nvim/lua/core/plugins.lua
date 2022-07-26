@@ -53,9 +53,8 @@ use({
 })
 
 -- Colorscheme's
-use("bluz71/vim-nightfly-guicolors")
-use("folke/tokyonight.nvim")
 use("EdenEast/nightfox.nvim")
+use({ "catppuccin/nvim", as = "catppuccin", config = require("core.theme") })
 
 -- Debugger
 use({ "mfussenegger/nvim-dap", config = load_config("nvim-dap") })
