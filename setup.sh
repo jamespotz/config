@@ -16,29 +16,14 @@ sudo apt install build-essential curl wget git zsh -y
 
 echo "${green}Installing Archive Utilities...${clear}"
 sudo apt install rar unrar p7zip-full p7zip-rar unzip -y
+echo "${green}Installing HomeBrew...${clear}"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-echo "${green}Installing nix...${clear}"
-sh <(curl -L https://nixos.org/nix/install) --no-daemon
-. ~/.nix-profile/etc/profile.d/nix.sh
-
-echo "${green}Installing essential nix packages...${clear}"
-nix-env -iA \
-  nixpkgs.zsh \
-  nixpkgs.exa \
-  nixpkgs.antibody \
-  nixpkgs.ripgrep \
-  nixpkgs.neofetch \
-  nixpkgs.yadm \
-  nixpkgs.starship \
-  nixpkgs.stylua \
-  nixpkgs.tree-sitter \
-  nixpkgs.fd \
-  nixpkgs.fnm \
-  nixpkgs.gh \
-  nixpkgs.bat \
-  nixpkgs.zoxide \
-  nixpkgs.lazygit \
-  nixpkgs.fzf
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/jamespotz/.profile
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+echo "${green}Installing essential homebrew packages...${clear}"
+brew install yadm exa ripgrep neovim fnm zsh antibody bat tree-sitter luajit
+starship zoxide gcc stylua fd gh
 
 echo "${green}ZSH setup...${clear}"
 [ -f ~/.zshrc] && mv ~/.zshrc ~/zshrc.bak
@@ -68,10 +53,6 @@ curl -sLo/tmp/win32yank.zip https://github.com/equalsraf/win32yank/releases/down
 unzip -p /tmp/win32yank.zip win32yank.exe > /tmp/win32yank.exe
 chmod +x /tmp/win32yank.exe
 sudo mv /tmp/win32yank.exe /usr/local/bin/
-
-echo "${green}Installing neovim...${clear}"
-cd /tmp && wget https://github.com/neovim/neovim/releases/download/v0.7.2/nvim-linux64.deb
-sudo apt install ./nvim-linux64.deb
 
 echo "${green}Installing node v14...${clear}"
 fnm install v14
