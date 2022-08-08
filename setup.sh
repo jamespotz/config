@@ -22,8 +22,22 @@ echo "${green}Installing HomeBrew...${clear}"
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/jamespotz/.profile
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 echo "${green}Installing essential homebrew packages...${clear}"
-brew install yadm exa ripgrep neovim fnm zsh antibody bat tree-sitter luajit
-starship zoxide gcc stylua fd gh
+brew install yadm \
+  exa \
+  ripgrep \
+  neovim \
+  fnm \
+  zsh \
+  antibody \
+  bat \
+  tree-sitter \
+  luajit \
+  starship \
+  zoxide \
+  gcc \
+  stylua \
+  fd \
+  gh
 
 echo "${green}ZSH setup...${clear}"
 [ -f ~/.zshrc] && mv ~/.zshrc ~/zshrc.bak
