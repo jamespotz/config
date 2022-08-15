@@ -37,7 +37,8 @@ brew install yadm \
   gcc \
   stylua \
   fd \
-  gh
+  gh \
+  lazygit
 
 echo "${green}ZSH setup...${clear}"
 [ -f ~/.zshrc] && mv ~/.zshrc ~/zshrc.bak
@@ -73,7 +74,7 @@ fnm install v14
 fnm default v14
 
 echo "${green}Installing global npm packages eslint_d, prettierd, and yarn...${clear}"
-fnm exec --using=v14 npm install -g yarn eslint_d @fsouza/prettierd
+fnm exec --using=v14 npm install -g yarn eslint_d @fsouza/prettierd cspell
 
 echo "${green}Installing neovim packages...${clear}"
 nvim --headless +PackerSync

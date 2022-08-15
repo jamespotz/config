@@ -211,7 +211,7 @@ use({
 use({ "ahmedkhalf/project.nvim", config = load_config("project") })
 
 -- Git Conflicts
-use({ "akinsho/git-conflict.nvim", config = load_config("git-conflict") })
+use({ "akinsho/git-conflict.nvim", tag = "*", config = load_config("git-conflict") })
 
 -- Github
 use({
