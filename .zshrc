@@ -72,7 +72,7 @@ alias myip="curl http://ipecho.net/plain; echo"
 alias config="nvim $HOME/.zshrc"
 alias reload="source $HOME/.zshrc"
 alias his_fix="fix_zsh_history"
-alias neovide="neovide.exe --wsl --multigrid --nofork &"
+# alias neovide="neovide.exe --wsl --multigrid --nofork &"
 
 # Starship.rs 
 eval "$(starship init zsh)"

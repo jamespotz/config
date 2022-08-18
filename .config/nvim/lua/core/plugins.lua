@@ -28,9 +28,10 @@ if not status_ok then
 end
 
 packer.init({
+	max_jobs = 10,
 	profile = {
 		enable = true, -- enable profiling via :PackerCompile profile=true
-		threshold = 1, -- the amount in ms that a plugins load time must be over for it to be included in the profile
+		threshold = 0, -- the amount in ms that a plugins load time must be over for it to be included in the profile
 	},
 	display = {
 		open_fn = function()
@@ -114,6 +115,7 @@ use("nvim-treesitter/nvim-treesitter-textobjects")
 -- Neovim Telescope
 use({
 	"nvim-telescope/telescope.nvim",
+	tag = "0.1.0",
 	requires = { { "nvim-lua/plenary.nvim" }, { "nvim-lua/popup.nvim" } },
 	config = load_config("telescope"),
 })
