@@ -47,7 +47,7 @@ FORGIT_STASH_FZF_OPTS='
 '
 
 # Increase node js memory
-# export NODE_OPTIONS="--max-old-space-size=4096"
+export NODE_OPTIONS="--max-old-space-size=4096"
 
 # Alias
 alias mkdir="mkdir -p"
@@ -76,3 +76,6 @@ alias his_fix="fix_zsh_history"
 
 # Starship.rs 
 eval "$(starship init zsh)"
+
+# fnm
+eval "$(fnm env --use-on-cd)"
