@@ -5,10 +5,19 @@ end
 math.randomseed(os.time())
 
 local function pick_color()
-	local colors = { "String", "Identifier", "Keyword", "Number" }
+	local colors = {
+		"TSStrong",
+		"DiagnosticError",
+		"DevIconPdf",
+		"DevIconNPMIgnore",
+		"DevIconGemfile",
+		"DevIconGulpfile",
+		"DevIconScss",
+	}
 	return colors[math.random(#colors)]
 end
 
+local config = require("alpha.themes.theta").config
 local dashboard = require("alpha.themes.dashboard")
 local function button(sc, txt, keybind, keybind_opts)
 	local b = dashboard.button(sc, txt, keybind, keybind_opts)
@@ -17,33 +26,58 @@ local function button(sc, txt, keybind, keybind_opts)
 	return b
 end
 
-dashboard.section.header.val = {
-	"⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣶⣶⣿⣿⣿⣿⣿⣷⣶⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀",
-	"⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡀⠀⠀⠀⠀⠀",
-	"⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡀⠀⠀⠀",
-	"⠀⠀⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀",
-	"⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀",
-	"⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡆",
-	"⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷",
-	"⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
-	"⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⣿⣿⣿⣿⣿⣿⣿",
-	"⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠋⠁⠈⠻⣿⡿⠁⠈⠙⢿⣿⣿⣿⡇",
-	"⠀⠙⠙⢿⣿⣿⣿⣿⣿⣿⣿⡿⠛⠁⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⣸⣿⣿⣿⠀",
-	"⠀⡞⠀⢈⣿⣿⣿⣿⠿⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣧⠀⢠⣿⣿⣿⠇⠀",
-	"⢈⣽⣦⣼⣿⣿⣿⣡⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⠀⣼⣿⣿⠏⠀⠀",
-	"⠸⣿⣿⡿⡟⣿⣿⣿⣿⣶⣶⣶⣤⣤⣤⣤⣤⣼⣿⣿⣿⣿⡟⠰⠿⠛⠁⠀⠀⠀",
-	"⠀⠙⢿⣹⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⠀⠹⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀",
-	"⠀⠀⠀⢿⣶⣿⣿⣿⣿⣿⣿⠟⡙⣿⣿⣿⣿⣧⡀⠹⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀",
-	"⠀⠀⠀⠘⣿⣿⣿⣿⣿⣿⡟⢸⡇⢸⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-	"⠀⠀⠀⠀⠈⣿⢿⣿⣿⣿⣇⠘⠁⢸⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-	"⠀⠀⠀⠀⠀⢹⣼⣿⢸⣿⣿⣶⠀⢸⣿⣿⠿⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-	"⠀⠀⠀⠀⠀⢈⡇⣿⡇⣿⣿⣿⣆⠈⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-	"⠀⠀⠀⠀⠀⠀⠉⠻⠧⢹⣿⠿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+local header = {
+	"                                ▒▒                                ",
+	"                                ▓▓                                ",
+	"                                ▓▓▓▓                              ",
+	"                                ████                              ",
+	"                              ░░████                              ",
+	"                              ██▓▓██                              ",
+	"                        ░░  ████▓▓▓▓    ▒▒                        ",
+	"                        ▓▓▒▒▓▓██▒▒▓▓  ██░░                        ",
+	"                      ▓▓██████▒▒▓▓▒▒████  ▒▒                      ",
+	"                      ██████▒▒▒▒▓▓▒▒██▒▒  ██                      ",
+	"                      ██▓▓▓▓░░▒▒████▓▓░░▒▒██  ░░                  ",
+	"                      ██▒▒▒▒░░▒▒▓▓██▓▓▓▓████▓▓░░                  ",
+	"                      ██▒▒▒▒░░▒▒████▓▓██▓▓████░░                  ",
+	"                      ██▒▒░░░░▒▒▓▓██▒▒██▒▒██▓▓░░                  ",
+	"                  ░░  ▒▒▒▒░░░░░░▒▒██░░▒▒▒▒▓▓██                    ",
+	"                    ██▓▓▓▓░░  ░░▒▒▒▒░░░░▒▒▓▓▓▓                    ",
+	"                    ░░██▓▓▒▒░░  ░░░░░░░░░░▓▓░░                    ",
+	"                      ░░▓▓░░░░        ░░▒▒░░                      ",
+	"                          ░░▒▒░░      ░░                          ",
 }
 
-dashboard.section.header.opts.hl = pick_color()
+-- Map over the headers, setting a different color for each line.
+-- This is done by setting the Highligh to StartLogoN, where N is the row index.
+-- Define StartLogo1..StartLogoN to get a nice gradient.
+local function header_color()
+	local lines = {}
+	for i, line_chars in pairs(header) do
+		local line = {
+			type = "text",
+			val = line_chars,
+			opts = {
+				hl = pick_color(),
+				shrink_margin = false,
+				position = "center",
+			},
+		}
+		table.insert(lines, line)
+	end
 
-dashboard.section.buttons.val = {
+	local output = {
+		type = "group",
+		val = lines,
+		opts = { position = "center" },
+	}
+
+	return output
+end
+
+--[[ dashboard.section.header.opts.hl = pick_color() ]]
+--[[]]
+config.layout[6].val = {
 	button("<Space>f", "  File Explorer", ":NvimTreeToggle toggle<CR>"),
 	button("<Space>p", " Open Projects", ":Telescope projects<CR>"),
 	button("<Space>r", "  Recent", ":Telescope oldfiles<CR>"),
@@ -53,4 +87,5 @@ dashboard.section.buttons.val = {
 	button("q", "✘  Quit", ":qa<CR>"),
 }
 
-alpha.setup(dashboard.opts)
+config.layout[2] = header_color()
+alpha.setup(config)
