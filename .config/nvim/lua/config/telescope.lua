@@ -24,6 +24,9 @@ end
 
 telescope.setup({
 	defaults = {
+		layout_config = {
+			horizontal = { width = 0.99, preview_width = 0.7 },
+		},
 		prompt_prefix = " 🔍",
 		color_devicons = true,
 
