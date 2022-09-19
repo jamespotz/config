@@ -64,6 +64,11 @@ if command -v lazygit &> /dev/null; then
   alias lg="lazygit"
 fi
 
+if command -v gitui &> /dev/null; then
+  alias gu="gitui"
+fi
+
+
 if command -v fdfind &>/dev/null; then
   alias fd="fdfind"
 fi

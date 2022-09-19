@@ -5,6 +5,8 @@ if not status_ok then
 end
 
 vim.g.catppuccin_flavour = "macchiato"
+
+local colors = require("catppuccin.palettes").get_palette()
 catppuccin.setup({
 	term_colors = true,
 	styles = {
@@ -29,6 +31,13 @@ catppuccin.setup({
 			enabled = true,
 		},
 		ts_rainbow = true,
+	},
+	custom_highlights = {
+		StartLogo1 = { fg = colors.rosewater },
+		StartLogo2 = { fg = colors.rosewater },
+		StartLogo3 = { fg = colors.rosewater },
+		StartLogo4 = { fg = colors.rosewater },
+		StartLogo5 = { fg = colors.rosewater },
 	},
 })
 
