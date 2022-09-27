@@ -92,7 +92,7 @@ local load_defaults = function()
 	---  SETTINGS  ---
 
 	opt.shortmess:append("c")
-	opt.listchars:append({ eol = "↴", space = "⋅" })
+	--[[ opt.listchars:append({ eol = "↴", space = "⋅" }) ]]
 
 	for k, v in pairs(default_options) do
 		opt[k] = v

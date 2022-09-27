@@ -45,7 +45,7 @@ lualine.setup({
 			},
 			"diff",
 		},
-		lualine_c = { { "filename", icons_enabled = true, icon = "" } },
+		lualine_c = { { "filename", icons_enabled = true, icon = "", path = 2 } },
 		lualine_y = {
 			{
 				"diagnostics",
@@ -58,7 +58,7 @@ lualine.setup({
 		},
 		lualine_z = {
 			{ "location", icons_enabled = true, icon = "" },
-			{ "os.date('%I:%m %p')", icons_enabled = true, icon = "" },
+			{ "os.date('%I:%m %p')", icons_enabled = true, icon = "" },
 		},
 	},
 	extensions = { "nvim-tree" },

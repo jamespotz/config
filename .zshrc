@@ -2,6 +2,10 @@ autoload -Uz compinit
 
 source ~/.zsh_plugins.sh
 
+# Keychain 
+/usr/bin/keychain -q --nogui $HOME/.ssh/id_ecdsa
+source $HOME/.keychain/$HOST-sh
+
 #History setup
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=100000
@@ -78,6 +82,7 @@ alias config="nvim $HOME/.zshrc"
 alias reload="source $HOME/.zshrc"
 alias his_fix="fix_zsh_history"
 # alias neovide="neovide.exe --wsl --multigrid --nofork &"
+alias gbda='git branch --no-color --merged | command grep -vE "^(\+|\*|\s*(master|develop|dev)\s*$)" | command xargs -n 1 git branch -d'
 
 # Starship.rs 
 eval "$(starship init zsh)"
