@@ -50,7 +50,7 @@ sudo chsh -s "$(which zsh)" "${USER}"
 echo "${green}Setup ssh keygen...${clear}"
 echo "Email:"
 read -r email
-ssh-keygen -t rsa -b 4096 -C "${email}"
+ssh-keygen -t ed25519 -C "${email}"
 echo "${green}Copy the ssh key below and add to Github/Bitbucket account${clear}"
 echo "$(<$HOME/.ssh/id_rsa.pub)"
 
