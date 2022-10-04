@@ -51,7 +51,7 @@ echo "Email:"
 read -r email
 ssh-keygen -t ed25519 -C "${email}"
 echo "${green}Copy the ssh key below and add to Github/Bitbucket account${clear}"
-echo "$(<$HOME/.ssh/id_rsa.pub)"
+echo "$(<$HOME/.ssh/id_ed25519.pub)"
 
 echo "${green}Press [SPACE] to continue...${clear}"
 read -r -s -d ' '
