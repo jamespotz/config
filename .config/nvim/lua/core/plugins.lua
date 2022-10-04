@@ -107,7 +107,7 @@ use({ "folke/lsp-colors.nvim", config = load_config("lsp_colors") })
 use({
 	"nvim-treesitter/nvim-treesitter",
 	config = load_config("treesitter"),
-	run = ":TSUpdate",
+	run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
 })
 use("nvim-treesitter/playground")
 use("nvim-treesitter/nvim-treesitter-textobjects")
