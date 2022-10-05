@@ -117,6 +117,19 @@ return packer.startup(function(use)
 	})
 	use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
 
+	-- Neovim Treesitter
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		config = function()
+			require("config.treesitter")
+		end,
+		run = function()
+			require("nvim-treesitter.install").update({ with_sync = true })
+		end,
+	})
+	use("nvim-treesitter/playground")
+	use("nvim-treesitter/nvim-treesitter-textobjects")
+
 	-- TypeScript Utils
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 	-- Formatting
@@ -382,19 +395,6 @@ return packer.startup(function(use)
 			require("lsp_lines").setup()
 		end,
 	})
-
-	-- Neovim Treesitter
-	use({
-		"nvim-treesitter/nvim-treesitter",
-		config = function()
-			require("config.treesitter")
-		end,
-		run = function()
-			require("nvim-treesitter.install").update({ with_sync = true })
-		end,
-	})
-	use("nvim-treesitter/playground")
-	use("nvim-treesitter/nvim-treesitter-textobjects")
 
 	if PACKER_BOOTSTRAP then
 		packer.sync()
