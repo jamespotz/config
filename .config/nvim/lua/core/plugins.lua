@@ -45,7 +45,6 @@ return packer.startup(function(use)
 			require("config.impatient")
 		end,
 	})
-	use("nathom/filetype.nvim")
 	use({
 		"goolord/alpha-nvim",
 		requires = { "kyazdani42/nvim-web-devicons" },
