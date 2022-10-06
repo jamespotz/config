@@ -325,14 +325,6 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- Project management
-	use({
-		"ahmedkhalf/project.nvim",
-		config = function()
-			require("config.project")
-		end,
-	})
-
 	-- Git Conflicts
 	use({
 		"akinsho/git-conflict.nvim",

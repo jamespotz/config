@@ -65,3 +65,6 @@ map("v", "<C-C>", "+y")
 map("n", "<C-V>", "+p")
 map("i", "<C-V>", "<C-r>+")
 map("c", "<C-V>", "<C-r>+")
+
+-- quick esc
+map("i", "jk", "<Esc>")
