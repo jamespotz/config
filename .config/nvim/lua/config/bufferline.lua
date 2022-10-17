@@ -5,7 +5,10 @@ end
 
 bufferline.setup({
 	options = {
-		mode = "tabs",
+		hover = {
+			enabled = true,
+			delay = 200,
+		},
 		separator_style = "thin",
 		diagnostics = "nvim_lsp",
 		diagnostics_indicator = function(count, level, diagnostics_dict, context)

@@ -276,7 +276,6 @@ return packer.startup(function(use)
 	-- Bufferline
 	use({
 		"akinsho/bufferline.nvim",
-		tag = "v2.*",
 		config = function()
 			require("config.bufferline")
 		end,

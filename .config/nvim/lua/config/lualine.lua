@@ -58,7 +58,6 @@ lualine.setup({
 		},
 		lualine_z = {
 			{ "location", icons_enabled = true, icon = "" },
-			{ "os.date('%I:%m %p')", icons_enabled = true, icon = "" },
 		},
 	},
 	extensions = { "nvim-tree" },
