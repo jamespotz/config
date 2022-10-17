@@ -114,7 +114,6 @@ return packer.startup(function(use)
 			require("config.cmp")
 		end,
 	})
-	use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
 
 	-- Neovim Treesitter
 	use({
@@ -176,12 +175,7 @@ return packer.startup(function(use)
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
 	-- LSP Signatures
-	use({
-		"ray-x/lsp_signature.nvim",
-		config = function()
-			require("config.lsp_signature")
-		end,
-	})
+	use("ray-x/lsp_signature.nvim")
 
 	-- Auto pairs
 	use({

@@ -6,6 +6,12 @@ local keymap = vim.keymap
 local on_attach = function(client, bufnr)
 	require("utils/lsp-utils").on_attach(client, bufnr)
 	require("illuminate").on_attach(client)
+	require("lsp_signature").on_attach({
+		bind = true, -- This is mandatory, otherwise border config won't get registered.
+		handler_opts = {
+			border = "rounded",
+		},
+	}, bufnr)
 
 	vim.api.nvim_create_autocmd("CursorHold", {
 		buffer = bufnr,

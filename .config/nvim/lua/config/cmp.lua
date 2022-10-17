@@ -14,12 +14,6 @@ local has_words_before = function()
 end
 
 cmp.setup({
-	enabled = function()
-		-- disable completion in comments
-		local context = require("cmp.config.context")
-		-- keep command mode completion enabled when cursor is in a comment
-		return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
-	end,
 	formatting = {
 		format = lspkind.cmp_format({
 			mode = "symbol_text",
@@ -29,7 +23,6 @@ cmp.setup({
 				luasnip = "[LuaSnip]",
 				nvim_lua = "[Lua]",
 				latex_symbols = "[Latex]",
-				cmp_tabnine = "[TN]",
 				emoji = "[Emoji]",
 			},
 		}),
@@ -74,7 +67,6 @@ cmp.setup({
 	},
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
-		{ name = "cmp_tabnine" },
 		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "emoji" },
