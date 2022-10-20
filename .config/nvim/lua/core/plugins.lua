@@ -166,16 +166,13 @@ return packer.startup(function(use)
 	-- Neovim Telescope
 	use({
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.0",
+		tag = "0.1.x",
 		requires = { { "nvim-lua/plenary.nvim" }, { "nvim-lua/popup.nvim" } },
 		config = function()
 			require("config.telescope")
 		end,
 	})
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-
-	-- LSP Signatures
-	use("ray-x/lsp_signature.nvim")
 
 	-- Auto pairs
 	use({
