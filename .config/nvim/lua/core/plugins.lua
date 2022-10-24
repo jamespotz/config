@@ -128,8 +128,6 @@ return packer.startup(function(use)
 	use("nvim-treesitter/playground")
 	use("nvim-treesitter/nvim-treesitter-textobjects")
 
-	-- TypeScript Utils
-	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 	-- Formatting
 	use({
 		"jose-elias-alvarez/null-ls.nvim",

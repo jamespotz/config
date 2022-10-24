@@ -4,7 +4,7 @@ if not status_ok then
 	return
 end
 
-vim.g.catppuccin_flavour = "macchiato"
+vim.g.catppuccin_flavour = "frappe"
 
 local colors = require("catppuccin.palettes").get_palette()
 catppuccin.setup({
@@ -12,8 +12,8 @@ catppuccin.setup({
 	styles = {
 		comments = { "italic" },
 		conditionals = { "italic" },
-		functions = { "bold" },
-		operators = { "bold" },
+		functions = { "bold", "italic" },
+		operators = { "bold", "italic" },
 	},
 	integrations = {
 		native_lsp = {

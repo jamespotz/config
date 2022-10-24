@@ -69,26 +69,6 @@ local configurations = {
 			documentFormatting = false,
 		},
 	},
-	tsserver = {
-		on_attach = function(client, bufnr)
-			on_attach(client, bufnr)
-			local ts_utils = require("nvim-lsp-ts-utils")
-			ts_utils.setup({
-				enable_import_on_completion = true,
-				import_all_timeout = 5000, -- ms
-				update_imports_on_move = true,
-			})
-
-			-- required to fix code action ranges and filter diagnostics
-			ts_utils.setup_client(client)
-
-			local options = { buffer = bufnr, silent = true }
-			keymap.set("n", "<leader>oi", ":TSLspOrganize<CR>", options)
-			keymap.set("n", "<leader>R", ":TSLspRenameFile<CR>", options)
-			keymap.set("n", "<leader>ia", ":TSLspImportAll<CR>", options)
-			vim.notify("Language server loaded", nil, { title = "tsserver" })
-		end,
-	},
 	jsonls = {
 		settings = {
 			documentFormatting = false,
@@ -142,7 +122,7 @@ lsp_installer.setup({
 for _, lsp in pairs(lsp_servers) do
 	if lsp == "tsserver" then
 		lspconfig.tsserver.setup({
-			on_attach = configurations[lsp].on_attach,
+			on_attach = configurations.default.on_attach,
 			capabilities = capabilities,
 			settings = configurations.default.settings,
 		})
