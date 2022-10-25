@@ -1,4 +1,4 @@
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 
 export PS0="%B%~ %b$ "
 
