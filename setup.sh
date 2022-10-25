@@ -35,7 +35,6 @@ brew install yadm \
   starship \
   zoxide \
   gcc \
-  stylua \
   fd \
   gh \
   lazygit \
@@ -73,8 +72,8 @@ echo "${green}Installing node v14...${clear}"
 fnm install v14
 fnm default v14
 
-echo "${green}Installing global npm packages eslint_d, prettierd, and yarn...${clear}"
-fnm exec --using=v14 npm install -g yarn eslint_d @fsouza/prettierd cspell
+echo "${green}Installing yarn...${clear}"
+fnm exec --using=v14 npm install -g yarn 
 
 echo "${green}Installing neovim packages...${clear}"
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
