@@ -120,13 +120,7 @@ lsp_installer.setup({
 })
 
 for _, lsp in pairs(lsp_servers) do
-	if lsp == "tsserver" then
-		lspconfig.tsserver.setup({
-			on_attach = configurations.default.on_attach,
-			capabilities = capabilities,
-			settings = configurations.default.settings,
-		})
-	elseif lsp == "jsonls" then
+	if lsp == "jsonls" then
 		lspconfig.jsonls.setup({
 			on_attach = configurations.default.on_attach,
 			capabilities = capabilities,

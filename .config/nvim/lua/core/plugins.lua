@@ -131,10 +131,12 @@ return packer.startup(function(use)
 	-- Formatting
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
+		
 		config = function()
 			require("config.null_ls")
 		end,
 	})
+  use("jayp0521/mason-null-ls.nvim")
 
 	-- Editorconfig
 	use("editorconfig/editorconfig-vim")
