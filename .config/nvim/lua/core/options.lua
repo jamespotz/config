@@ -101,5 +101,8 @@ end
 
 load_defaults()
 
+-- winbar
+vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+
 -- Neovide config
 vim.g.neovide_refresh_rate = 144

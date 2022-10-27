@@ -6,6 +6,7 @@ local keymap = vim.keymap
 local on_attach = function(client, bufnr)
 	require("utils/lsp-utils").on_attach(client, bufnr)
 	require("illuminate").on_attach(client)
+	local navic = require("nvim-navic")
 
 	vim.api.nvim_create_autocmd("CursorHold", {
 		buffer = bufnr,
@@ -21,6 +22,10 @@ local on_attach = function(client, bufnr)
 			vim.diagnostic.open_float(nil, opts)
 		end,
 	})
+
+	if client.server_capabilities.documentSymbolProvider then
+		navic.attach(client, bufnr)
+	end
 end
 
 local cmp_status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
