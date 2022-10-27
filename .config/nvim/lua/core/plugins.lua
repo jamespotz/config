@@ -87,7 +87,12 @@ return packer.startup(function(use)
 	})
 	use("tjdevries/nlua.nvim")
 	use("nvim-lua/lsp_extensions.nvim")
-	use("SmiteshP/nvim-navic")
+	use({
+		"SmiteshP/nvim-navic",
+		config = function()
+			require("config.winbar")
+		end,
+	})
 
 	-- Neovim LSP Installer
 	use({
