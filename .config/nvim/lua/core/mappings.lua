@@ -68,3 +68,6 @@ map("c", "<C-V>", "<C-r>+")
 
 -- quick esc
 map("i", "jk", "<Esc>")
+
+-- delete without saving to register
+map("n", "x", '"_x')
