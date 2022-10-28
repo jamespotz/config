@@ -159,16 +159,7 @@ return packer.startup(function(use)
 		"folke/noice.nvim",
 		event = "VimEnter",
 		config = function()
-			require("noice").setup({
-				override = {
-					-- override the default lsp markdown formatter with Noice
-					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-					-- override the lsp markdown formatter with Noice
-					["vim.lsp.util.stylize_markdown"] = true,
-					-- override cmp documentation with Noice (needs the other options to work)
-					["cmp.entry.get_documentation"] = true,
-				},
-			})
+			require("config.noice")
 		end,
 		requires = {
 			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
