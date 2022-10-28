@@ -28,7 +28,7 @@ treesitter_configs.setup({
 
 	highlight = {
 		enable = true,
-		additional_vim_regex_highlighting = false,
+		--[[ additional_vim_regex_highlighting = false, ]]
 	},
 
 	indent = {
@@ -84,4 +84,7 @@ treesitter_configs.setup({
 			enable = true,
 		},
 	},
+
+	-- auto install above language parsers
+	auto_install = true,
 })

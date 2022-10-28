@@ -3,8 +3,13 @@ if not status_ok then
 	return
 end
 
-local cmp = require("cmp")
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+local cmp_status, cmp = pcall(require, "cmp")
+local cmp_autopairs_status, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
+
+if not cmp_autopairs_status or not cmp_status then
+	return
+end
+
 npairs.setup({
 	check_ts = true,
 	ts_config = {

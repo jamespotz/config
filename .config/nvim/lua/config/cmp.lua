@@ -5,8 +5,12 @@ if not status_ok then
 	return
 end
 
-local lspkind = require("lspkind")
-local luasnip = require("luasnip")
+local lspkind_status, lspkind = pcall(require, "lspkind")
+local luasnip_status, luasnip = pcall(require, "luasnip")
+
+if not luasnip_status or not lspkind_status then
+	return
+end
 
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
