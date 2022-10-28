@@ -154,14 +154,6 @@ for type, icon in pairs(signs) do
 end
 
 vim.diagnostic.config({ virtual_text = false })
--- vim.api.nvim_create_autocmd({ "CursorHold" }, {
--- 	group = vim.api.nvim_create_augroup("DiagnosticInCursorHold", { clear = true }),
--- 	callback = function()
--- 		if vim.lsp.buf.server_ready() then
--- 			vim.diagnostic.open_float()
--- 		end
--- 	end,
--- })
 
 vim.lsp.handlers["window/showMessage"] = function(_, result, ctx)
 	local client = vim.lsp.get_client_by_id(ctx.client_id)
