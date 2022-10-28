@@ -24,6 +24,10 @@ catppuccin.setup({
 				information = { "bold" },
 			},
 		},
+		indent_blankline = {
+			enabled = true,
+			colored_indent_levels = true,
+		},
 		lsp_trouble = true,
 		which_key = true,
 		hop = true,
@@ -31,6 +35,10 @@ catppuccin.setup({
 			enabled = true,
 		},
 		ts_rainbow = true,
+		navic = {
+			enabled = true,
+			custom_bg = "NONE",
+		},
 	},
 	custom_highlights = {
 		StartLogo1 = { fg = colors.rosewater },

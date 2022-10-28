@@ -41,6 +41,13 @@ local excludes = function()
 	return vim.tbl_contains(filetype_exclusions or {}, vim.bo.filetype)
 end
 
+local status_ok, navic = pcall(require, "nvim-navic")
+if not status_ok then
+	return
+end
+
+navic.setup({ highlight = true })
+
 local group = vim.api.nvim_create_augroup("_winbar", { clear = true })
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "CursorMoved", "WinLeave" }, {
 	group = group,
