@@ -42,8 +42,8 @@ brew install yadm \
 
 echo "${green}ZSH setup...${clear}"
 [ -f ~/.zshrc ] && mv ~/.zshrc ~/zshrc.bak
-wget -O ~/.zsh_plugins.txt https://raw.githubusercontent.com/jamespotz/config/master/zsh_plugins.txt
-antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
+wget -O ~/zsh_plugins.txt https://raw.githubusercontent.com/jamespotz/config/master/zsh_plugins.txt
+antibody bundle < ~/zsh_plugins.txt > ~/.zsh_plugins.sh
 sudo chsh -s "$(which zsh)" "${USER}"
 
 echo "${green}Setup ssh keygen...${clear}"
