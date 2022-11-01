@@ -3,4 +3,6 @@ if not status_ok then
 	return
 end
 
-hop.setup({ keys = "etovxqpdygfblzhckisuran", jump_on_sole_occurrence = false })
+hop.setup()
+vim.api.nvim_set_keymap("n", "s", ":HopChar2<cr>", { silent = true })
+vim.api.nvim_set_keymap("n", "S", ":HopWord<cr>", { silent = true })
