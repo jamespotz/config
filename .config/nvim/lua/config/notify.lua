@@ -3,5 +3,8 @@ if not status_ok then
 	return
 end
 
-notify.setup()
+notify.setup({
+	background_colour = "#ff0000",
+})
+
 vim.notify = notify

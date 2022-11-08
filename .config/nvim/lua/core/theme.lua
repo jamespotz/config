@@ -9,6 +9,7 @@ vim.g.catppuccin_flavour = "frappe"
 local colors = require("catppuccin.palettes").get_palette()
 catppuccin.setup({
 	term_colors = true,
+	transparent_background = true,
 	styles = {
 		comments = { "italic" },
 		conditionals = { "italic" },

@@ -4,16 +4,19 @@ local api = vim.api
 local util = require("vim.lsp.util")
 
 function M.on_attach(client, bufnr)
-	local opts = { buffer = bufnr }
-	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-	vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-	vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
-	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-	vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+	-- Enable completion triggered by <c-x><c-o>
+	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+	local opts = { noremap = true, silent = true, buffer = bufnr }
+	keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+	keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+	keymap.set("n", "K", vim.lsp.buf.hover, opts)
+	keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+	keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+	keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
+	keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+	keymap.set("n", "gr", vim.lsp.buf.references, opts)
+	keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+	keymap.set("n", "gr", vim.lsp.buf.references, opts)
 end
 
 local function make_formatting_request(client, bufnr)
