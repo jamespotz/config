@@ -55,6 +55,7 @@ FORGIT_STASH_FZF_OPTS='
 
 # Alias
 alias mkdir="mkdir -p"
+alias weather='curl -s https://wttr.in/Asingan, Philippines'
 
 if command -v exa &> /dev/null; then
   alias ls="exa"
