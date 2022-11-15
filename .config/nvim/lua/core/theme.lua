@@ -40,6 +40,8 @@ catppuccin.setup({
 			enabled = true,
 			custom_bg = "NONE",
 		},
+		noice = true,
+		notify = true,
 	},
 	custom_highlights = {
 		StartLogo1 = { fg = colors.rosewater },
