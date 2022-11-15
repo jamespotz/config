@@ -336,19 +336,6 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- Github
-	use({
-		"pwntester/octo.nvim",
-		requires = {
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-			"kyazdani42/nvim-web-devicons",
-		},
-		config = function()
-			require("config.octo_git")
-		end,
-	})
-
 	use({
 		"folke/which-key.nvim",
 		config = function()
