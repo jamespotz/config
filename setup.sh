@@ -38,7 +38,8 @@ brew install yadm \
   fd \
   gh \
   lazygit \
-  fzf
+  fzf \
+  git-delta
 
 echo "${green}ZSH setup...${clear}"
 [ -f ~/.zshrc ] && mv ~/.zshrc ~/zshrc.bak
@@ -68,12 +69,12 @@ unzip -p /tmp/win32yank.zip win32yank.exe > /tmp/win32yank.exe
 chmod +x /tmp/win32yank.exe
 sudo mv /tmp/win32yank.exe /usr/local/bin/
 
-echo "${green}Installing node v14...${clear}"
-fnm install v14
-fnm default v14
+echo "${green}Installing node v16...${clear}"
+fnm install v16
+fnm default v16
 
 echo "${green}Installing yarn...${clear}"
-fnm exec --using=v14 npm install -g yarn 
+fnm exec --using=v16 npm install -g yarn
 
 echo "${green}Installing neovim packages...${clear}"
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'

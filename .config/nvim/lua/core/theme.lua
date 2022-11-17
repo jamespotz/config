@@ -42,6 +42,7 @@ catppuccin.setup({
 		},
 		noice = true,
 		notify = true,
+		nvimtree = true,
 	},
 	custom_highlights = {
 		StartLogo1 = { fg = colors.rosewater },

@@ -4,12 +4,14 @@ if not status_ok then
 end
 
 bufferline.setup({
+	highlights = require("catppuccin.groups.integrations.bufferline").get(),
 	options = {
 		hover = {
 			enabled = true,
 			delay = 200,
 		},
-		separator_style = "thin",
+		indicator = { style = "icon", icon = " " },
+		separator_style = { "|", "|" },
 		diagnostics = "nvim_lsp",
 		diagnostics_indicator = function(count, level, diagnostics_dict, context)
 			local s = " "

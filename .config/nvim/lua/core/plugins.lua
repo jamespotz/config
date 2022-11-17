@@ -139,6 +139,24 @@ return packer.startup(function(use)
 			require("treesitter-context").setup()
 		end,
 	})
+	use({
+		"folke/paint.nvim",
+		config = function()
+			require("paint").setup({
+				---@type PaintHighlight[]
+				highlights = {
+					{
+						-- filter can be a table of buffer options that should match,
+						-- or a function called with buf as param that should return true.
+						-- The example below will paint @something in comments with Constant
+						filter = { filetype = "lua" },
+						pattern = "%s*%-%-%-%s*(@%w+)",
+						hl = "Constant",
+					},
+				},
+			})
+		end,
+	})
 
 	-- Formatting
 	use({
@@ -366,13 +384,6 @@ return packer.startup(function(use)
 		"karb94/neoscroll.nvim",
 		config = function()
 			require("config.scroll")
-		end,
-	})
-
-	use({
-		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-		config = function()
-			require("lsp_lines").setup()
 		end,
 	})
 
