@@ -149,7 +149,7 @@ return packer.startup(function(use)
 						-- filter can be a table of buffer options that should match,
 						-- or a function called with buf as param that should return true.
 						-- The example below will paint @something in comments with Constant
-						filter = { filetype = "lua" },
+						filter = { filetype = { "lua", "javascript" } },
 						pattern = "%s*%-%-%-%s*(@%w+)",
 						hl = "Constant",
 					},
