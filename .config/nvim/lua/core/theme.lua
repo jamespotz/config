@@ -9,7 +9,7 @@ vim.g.catppuccin_flavour = "frappe"
 local colors = require("catppuccin.palettes").get_palette()
 catppuccin.setup({
 	term_colors = true,
-	transparent_background = true,
+	transparent_background = false,
 	styles = {
 		comments = { "italic" },
 		conditionals = { "italic" },
@@ -19,10 +19,16 @@ catppuccin.setup({
 	integrations = {
 		native_lsp = {
 			virtual_text = {
-				errors = { "bold" },
-				hints = { "bold" },
-				warnings = { "bold" },
-				information = { "bold" },
+				errors = { "italic" },
+				hints = { "italic" },
+				warnings = { "italic" },
+				information = { "italic" },
+			},
+			underlines = {
+				errors = { "underline" },
+				hints = { "underline" },
+				warnings = { "underline" },
+				information = { "underline" },
 			},
 		},
 		indent_blankline = {
@@ -45,11 +51,11 @@ catppuccin.setup({
 		nvimtree = true,
 	},
 	custom_highlights = {
-		StartLogo1 = { fg = colors.rosewater },
-		StartLogo2 = { fg = colors.rosewater },
-		StartLogo3 = { fg = colors.rosewater },
-		StartLogo4 = { fg = colors.rosewater },
-		StartLogo5 = { fg = colors.rosewater },
+		StartLogo1 = { fg = "#ffe808" },
+		StartLogo2 = { fg = "#ffce00" },
+		StartLogo3 = { fg = "#ff9a00" },
+		StartLogo4 = { fg = "#ff5a00" },
+		StartLogo5 = { fg = "#ff0000" },
 	},
 })
 

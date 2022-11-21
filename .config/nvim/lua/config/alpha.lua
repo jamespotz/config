@@ -2,19 +2,32 @@ local status_ok, alpha = pcall(require, "alpha")
 if not status_ok then
 	return
 end
-math.randomseed(os.time())
+--[[ math.randomseed(os.time()) ]]
 
-local function pick_color()
+local function pick_color(index)
 	local colors = {
-		"TSStrong",
-		"DiagnosticError",
-		"DevIconPdf",
-		"DevIconNPMIgnore",
-		"DevIconGemfile",
-		"DevIconGulpfile",
-		"DevIconScss",
+		"StartLogo1",
+		"StartLogo1",
+		"StartLogo2",
+		"StartLogo2",
+		"StartLogo3",
+		"StartLogo3",
+		"StartLogo4",
+		"StartLogo4",
+		"StartLogo4",
+		"StartLogo4",
+		"StartLogo5",
+		"StartLogo5",
+		"StartLogo5",
+		"StartLogo5",
+		"StartLogo5",
+		"StartLogo5",
+		"StartLogo5",
+		"StartLogo5",
+		"StartLogo5",
 	}
-	return colors[math.random(#colors)]
+	--[[ return colors[math.random(#colors)] ]]
+	return colors[index]
 end
 
 local config = require("alpha.themes.theta").config
@@ -58,7 +71,7 @@ local function header_color()
 			type = "text",
 			val = line_chars,
 			opts = {
-				hl = pick_color(),
+				hl = pick_color(i),
 				shrink_margin = false,
 				position = "center",
 			},
