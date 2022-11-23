@@ -51,11 +51,11 @@ catppuccin.setup({
 		nvimtree = true,
 	},
 	custom_highlights = {
-		StartLogo1 = { fg = "#ffe808" },
-		StartLogo2 = { fg = "#ffce00" },
-		StartLogo3 = { fg = "#ff9a00" },
-		StartLogo4 = { fg = "#ff5a00" },
-		StartLogo5 = { fg = "#ff0000" },
+		StartLogo1 = { fg = "#01ffff" },
+		StartLogo2 = { fg = "#00dcff" },
+		StartLogo3 = { fg = "#00aeff" },
+		StartLogo4 = { fg = "#0080ff" },
+		StartLogo5 = { fg = "#0062c3" },
 	},
 })
 
