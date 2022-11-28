@@ -47,7 +47,7 @@ return packer.startup(function(use)
 	})
 	use({
 		"goolord/alpha-nvim",
-		requires = { "kyazdani42/nvim-web-devicons" },
+		requires = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("config.alpha")
 		end,
@@ -267,11 +267,11 @@ return packer.startup(function(use)
 	})
 
 	-- File Explorer
-	use("kyazdani42/nvim-web-devicons") -- for file icons
+	use("nvim-tree/nvim-web-devicons") -- for file icons
 	use({
-		"kyazdani42/nvim-tree.lua",
+		"nvim-tree/nvim-tree.lua",
 		requires = {
-			"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 		},
 		config = function()
 			require("config.nvim_tree")
@@ -306,7 +306,7 @@ return packer.startup(function(use)
 	-- Statusline
 	use({
 		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+		requires = { "nvim-tree/nvim-web-devicons", opt = true },
 		config = function()
 			require("config.lualine")
 		end,
