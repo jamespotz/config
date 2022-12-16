@@ -24,6 +24,16 @@ end
 
 telescope.setup({
 	defaults = {
+		vimgrep_arguments = {
+			"rg",
+			"--color=never",
+			"--no-heading",
+			"--with-filename",
+			"--line-number",
+			"--column",
+			"--smart-case",
+			"--trim", -- add this value
+		},
 		layout_config = {
 			horizontal = { width = 0.99, preview_width = 0.7 },
 		},
