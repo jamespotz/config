@@ -190,12 +190,18 @@ return packer.startup(function(use)
 	-- Surround text
 	-- use("blackcauldron7/surround.nvim")
 	use("tpope/vim-surround")
+	--use("tpope/vim-sleuth")
 
 	-- Commenting
 	use({
 		"numToStr/Comment.nvim",
 
 		event = "BufRead",
+		config = function()
+			require("Comment").setup({
+				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+			})
+		end,
 	})
 	use({ "JoosepAlviste/nvim-ts-context-commentstring", event = "BufReadPost" })
 

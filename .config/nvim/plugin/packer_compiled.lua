@@ -75,6 +75,7 @@ time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["Comment.nvim"] = {
+    config = { "\27LJ\2\n \1\0\0\6\0\a\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\5\0006\3\0\0'\5\3\0B\3\2\0029\3\4\3B\3\1\2=\3\6\2B\0\2\1K\0\1\0\rpre_hook\1\0\0\20create_pre_hook7ts_context_commentstring.integrations.comment_nvim\nsetup\fComment\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -337,7 +338,7 @@ _G.packer_plugins = {
     url = "https://github.com/wbthomason/packer.nvim"
   },
   ["paint.nvim"] = {
-    config = { "\27LJ\2\nµ\1\0\0\a\0\n\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0004\3\3\0005\4\6\0005\5\4\0005\6\3\0=\6\5\5=\5\a\4>\4\1\3=\3\t\2B\0\2\1K\0\1\0\15highlights\1\0\0\vfilter\1\0\2\fpattern\23%s*%-%-%-%s*(@%w+)\ahl\rConstant\rfiletype\1\0\0\1\3\0\0\blua\15javascript\nsetup\npaint\frequire\0" },
+    config = { "\27LJ\2\nµ\1\0\0\a\0\n\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0004\3\3\0005\4\6\0005\5\4\0005\6\3\0=\6\5\5=\5\a\4>\4\1\3=\3\t\2B\0\2\1K\0\1\0\15highlights\1\0\0\vfilter\1\0\2\ahl\rConstant\fpattern\23%s*%-%-%-%s*(@%w+)\rfiletype\1\0\0\1\3\0\0\blua\15javascript\nsetup\npaint\frequire\0" },
     loaded = true,
     path = "/home/jamespotz/.local/share/nvim/site/pack/packer/start/paint.nvim",
     url = "https://github.com/folke/paint.nvim"
@@ -420,14 +421,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: paint.nvim
+time([[Config for paint.nvim]], true)
+try_loadstring("\27LJ\2\nµ\1\0\0\a\0\n\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0004\3\3\0005\4\6\0005\5\4\0005\6\3\0=\6\5\5=\5\a\4>\4\1\3=\3\t\2B\0\2\1K\0\1\0\15highlights\1\0\0\vfilter\1\0\2\ahl\rConstant\fpattern\23%s*%-%-%-%s*(@%w+)\rfiletype\1\0\0\1\3\0\0\blua\15javascript\nsetup\npaint\frequire\0", "config", "paint.nvim")
+time([[Config for paint.nvim]], false)
 -- Config for: FixCursorHold.nvim
 time([[Config for FixCursorHold.nvim]], true)
 try_loadstring("\27LJ\2\n7\0\0\2\0\3\0\0056\0\0\0009\0\1\0)\1d\0=\1\2\0K\0\1\0\26cursorhold_updatetime\6g\bvim\0", "config", "FixCursorHold.nvim")
 time([[Config for FixCursorHold.nvim]], false)
--- Config for: paint.nvim
-time([[Config for paint.nvim]], true)
-try_loadstring("\27LJ\2\nµ\1\0\0\a\0\n\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0004\3\3\0005\4\6\0005\5\4\0005\6\3\0=\6\5\5=\5\a\4>\4\1\3=\3\t\2B\0\2\1K\0\1\0\15highlights\1\0\0\vfilter\1\0\2\fpattern\23%s*%-%-%-%s*(@%w+)\ahl\rConstant\rfiletype\1\0\0\1\3\0\0\blua\15javascript\nsetup\npaint\frequire\0", "config", "paint.nvim")
-time([[Config for paint.nvim]], false)
 -- Config for: nvim-treesitter-context
 time([[Config for nvim-treesitter-context]], true)
 try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\23treesitter-context\frequire\0", "config", "nvim-treesitter-context")
@@ -436,10 +437,10 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'bufferline.nvim', 'which-key.nvim'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au BufReadPost * ++once lua require("packer.load")({'nvim-ts-context-commentstring'}, { event = "BufReadPost *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'gitsigns.nvim', 'todo-comments.nvim', 'Comment.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'todo-comments.nvim', 'gitsigns.nvim', 'Comment.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au VimEnter * ++once lua require("packer.load")({'noice.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'which-key.nvim', 'bufferline.nvim'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 
