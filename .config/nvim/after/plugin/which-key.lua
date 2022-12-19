@@ -196,6 +196,7 @@ local global_mappings = {
 	["<F9>"] = { "<cmd>FloatermPrev<cr>", "Prev Floaterm" },
 	["<F10>"] = { "<cmd>lua require'dap'.step_over()<CR>", "DAP Step over" },
 	["<F11>"] = { "<cmd>lua require'dap'.step_into()<CR>", "DAP Step into" },
+	["<F12>"] = { "<cmd>FloatermToggle<cr>", "Toggle Floaterm" },
 }
 
 local gopts = {

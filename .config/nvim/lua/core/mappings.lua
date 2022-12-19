@@ -71,3 +71,7 @@ map("i", "jk", "<Esc>")
 
 -- delete without saving to register
 map("n", "x", '"_x')
+
+-- Terminal
+map("t", "<Esc>", "<C-\\><C-n>")
+map("t", "<leader>q", "<C-\\><C-n>:q!<cr>")
