@@ -24,6 +24,8 @@ treesitter_configs.setup({
 		"gitignore",
 		"diff",
 		"comment",
+		"vim",
+		"markdown_inline",
 	},
 
 	highlight = {

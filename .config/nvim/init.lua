@@ -5,10 +5,10 @@ end
 
 -- All non plugin related (vim) options
 load("core.options")
--- Plugin management via Packer
-load("core.plugins")
 -- Vim mappings, see lua/config/which.lua for more mappings
 load("core.mappings")
+-- Plugin management via Packer
+load("core.lazy")
 -- Vim autocommands/autogroups
 load("core.autocmd")
 -- Vim commands
