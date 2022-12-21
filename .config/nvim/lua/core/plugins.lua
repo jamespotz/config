@@ -174,7 +174,7 @@ return {
 	-- Bufferline
 	{
 		"akinsho/bufferline.nvim",
-
+		after = "catppuccin",
 		event = "BufWinEnter",
 	},
 
