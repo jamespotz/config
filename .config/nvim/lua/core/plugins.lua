@@ -230,4 +230,12 @@ return {
 
 	"moll/vim-bbye",
 	"karb94/neoscroll.nvim",
+	{
+		"jackMort/ChatGPT.nvim",
+		config = function()
+			require("chatgpt").setup({
+				-- optional configuration
+			})
+		end,
+	},
 }
