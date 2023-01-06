@@ -39,7 +39,6 @@ local load_defaults = function()
 		background = "dark",
 		backspace = { "indent", "eol", "start" },
 		backup = false, -- creates a backup file
-		clipboard = "unnamedplus", -- allows neovim to access the system clipboard
 		cmdheight = 2, -- more space in the neovim command line for displaying messages
 		colorcolumn = "80",
 		conceallevel = 0, -- so that `` is visible in markdown files
@@ -123,6 +122,7 @@ local load_defaults = function()
 
 	--[[ opt.listchars:append({ eol = "↴", space = "⋅" }) ]]
 
+	opt.clipboard:prepend({ "unnamed", "unnamedplus" })
 	for k, v in pairs(default_options) do
 		opt[k] = v
 	end
