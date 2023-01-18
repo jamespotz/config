@@ -18,3 +18,5 @@ export PULSE_SERVER=tcp:$(cat /etc/resolv.conf | grep nameserver | awk '{print $
 export PATH="/home/linuxbrew/.linuxbrew/opt/openssl@3/bin:$PATH"
 export LDFLAGS="-L/home/linuxbrew/.linuxbrew/opt/openssl@3/lib"
 export CPPFLAGS="-I/home/linuxbrew/.linuxbrew/opt/openssl@3/include"
+
+export OPENAI_API_KEY="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"
