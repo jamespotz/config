@@ -19,3 +19,5 @@ export PATH="/home/linuxbrew/.linuxbrew/opt/openssl@3/bin:$PATH"
 export LDFLAGS="-L/home/linuxbrew/.linuxbrew/opt/openssl@3/lib"
 export CPPFLAGS="-I/home/linuxbrew/.linuxbrew/opt/openssl@3/include"
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
