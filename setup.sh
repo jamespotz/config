@@ -77,6 +77,6 @@ echo "${green}Installing yarn...${clear}"
 fnm exec --using=v16 npm install -g yarn
 
 echo "${green}Installing neovim packages...${clear}"
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+nvim --headless "+Lazy! sync" +qa
 
 echo "${green}DONE!🚀🚀${clear}"
