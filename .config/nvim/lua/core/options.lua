@@ -122,7 +122,7 @@ local load_defaults = function()
 
 	--[[ opt.listchars:append({ eol = "↴", space = "⋅" }) ]]
 
-	opt.clipboard:prepend({ "unnamed", "unnamedplus" })
+	opt.clipboard:prepend({ "unnamedplus" })
 	for k, v in pairs(default_options) do
 		opt[k] = v
 	end
