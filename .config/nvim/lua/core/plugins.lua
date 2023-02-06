@@ -43,7 +43,6 @@ return {
 			{ "hrsh7th/cmp-path" },
 			{ "hrsh7th/cmp-cmdline" },
 			{ "L3MON4D3/LuaSnip" },
-			{ "hrsh7th/cmp-emoji" },
 			{ "saadparwaiz1/cmp_luasnip" },
 			{ "rafamadriz/friendly-snippets" },
 		},
@@ -85,17 +84,6 @@ return {
 	-- Formatting
 	"jose-elias-alvarez/null-ls.nvim",
 	"jayp0521/mason-null-ls.nvim",
-
-	-- Codepilot/ Codeium
-	{
-		"Exafunction/codeium.vim",
-		config = function()
-			-- Change '<C-g>' here to any keycode you like.
-			vim.keymap.set("i", "<C-g>", function()
-				return vim.fn["codeium#Accept"]()
-			end, { expr = true })
-		end,
-	},
 
 	-- Editorconfig
 	"editorconfig/editorconfig-vim",
@@ -239,12 +227,4 @@ return {
 
 	"moll/vim-bbye",
 	"karb94/neoscroll.nvim",
-	{
-		"jackMort/ChatGPT.nvim",
-		config = function()
-			require("chatgpt").setup({
-				-- optional configuration
-			})
-		end,
-	},
 }

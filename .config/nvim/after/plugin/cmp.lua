@@ -27,7 +27,6 @@ cmp.setup({
 				luasnip = "[LuaSnip]",
 				nvim_lua = "[Lua]",
 				latex_symbols = "[Latex]",
-				emoji = "[Emoji]",
 			},
 		}),
 	},
@@ -69,7 +68,6 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "nvim_lsp" },
 		{ name = "buffer" },
-		{ name = "emoji" },
 	}, {
 		{ name = "buffer" },
 	}),
