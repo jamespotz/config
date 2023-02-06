@@ -169,3 +169,6 @@ end
 
 -- format on :wq
 cmd([[cabbrev wq execute "lua vim.lsp.buf.formatting_seq_sync()" <bar> wq]])
+
+-- lspkind
+require("utils/lspkind").setup()

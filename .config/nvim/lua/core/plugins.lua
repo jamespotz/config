@@ -23,8 +23,6 @@ return {
 
 	-- Neovim lsp Plugins
 	"neovim/nvim-lspconfig",
-	"onsails/lspkind-nvim",
-	"tjdevries/nlua.nvim",
 	"nvim-lua/lsp_extensions.nvim",
 	"SmiteshP/nvim-navic",
 

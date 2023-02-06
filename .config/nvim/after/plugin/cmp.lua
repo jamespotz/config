@@ -5,10 +5,9 @@ if not status_ok then
 	return
 end
 
-local lspkind_status, lspkind = pcall(require, "lspkind")
 local luasnip_status, luasnip = pcall(require, "luasnip")
 
-if not luasnip_status or not lspkind_status then
+if not luasnip_status then
 	return
 end
 
@@ -17,20 +16,23 @@ local has_words_before = function()
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+local lsp_icons = require("utils/lspkind").icons
 cmp.setup({
 	formatting = {
-		format = lspkind.cmp_format({
-			mode = "symbol_text",
-			menu = {
+		format = function(entry, vim_item)
+			-- Kind icons
+			vim_item.kind = string.format("%s %s", lsp_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+			-- Source
+			vim_item.menu = ({
 				buffer = "[Buffer]",
 				nvim_lsp = "[LSP]",
 				luasnip = "[LuaSnip]",
 				nvim_lua = "[Lua]",
-				latex_symbols = "[Latex]",
-			},
-		}),
+				latex_symbols = "[LaTeX]",
+			})[entry.source.name]
+			return vim_item
+		end,
 	},
-
 	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body)
