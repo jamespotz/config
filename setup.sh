@@ -28,7 +28,7 @@ brew install yadm \
   neovim \
   fnm \
   zsh \
-  antibody \
+  antidote \
   bat \
   tree-sitter \
   luajit \
@@ -44,7 +44,7 @@ brew install yadm \
 echo "${green}ZSH setup...${clear}"
 [ -f ~/.zshrc ] && mv ~/.zshrc ~/zshrc.bak
 wget -O ~/zsh_plugins.txt https://raw.githubusercontent.com/jamespotz/config/master/zsh_plugins.txt
-antibody bundle < ~/zsh_plugins.txt > ~/.zsh_plugins.sh
+antidote bundle < ~/zsh_plugins.txt > ~/.zsh_plugins.zsh
 sudo chsh -s "$(which zsh)" "${USER}"
 
 echo "${green}Setup ssh keygen...${clear}"

@@ -1,6 +1,7 @@
 autoload -Uz compinit
 
-source ~/.zsh_plugins.sh
+source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+source ~/.zsh_plugins.zsh
 
 # Keychain 
 /usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
