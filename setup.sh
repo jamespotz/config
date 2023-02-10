@@ -26,7 +26,7 @@ brew install yadm \
   exa \
   ripgrep \
   neovim \
-  fnm \
+  nvm \
   zsh \
   antidote \
   bat \
@@ -70,11 +70,11 @@ chmod +x /tmp/win32yank.exe
 sudo mv /tmp/win32yank.exe /usr/local/bin/
 
 echo "${green}Installing node v16...${clear}"
-fnm install v16
-fnm default v16
+nvm install v16
+nvm use v16
 
 echo "${green}Installing yarn...${clear}"
-fnm exec --using=v16 npm install -g yarn
+npm install -g yarn
 
 echo "${green}Installing neovim packages...${clear}"
 nvim --headless "+Lazy! sync" +qa

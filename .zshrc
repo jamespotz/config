@@ -1,7 +1,12 @@
 autoload -Uz compinit
+compinit -i
 
 source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
 source ~/.zsh_plugins.zsh
+
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"
 
 # Keychain 
 /usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
@@ -88,6 +93,3 @@ alias gbda='git branch --no-color --merged | command grep -vE "^(\+|\*|\s*(maste
 
 # Starship.rs 
 eval "$(starship init zsh)"
-
-# fnm
-eval "$(fnm env --use-on-cd)"
