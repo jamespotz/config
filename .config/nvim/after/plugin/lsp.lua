@@ -56,7 +56,7 @@ local lsp_servers = {
 	"html",
 	"jsonls",
 	"stylelint_lsp",
-	"sumneko_lua",
+	"lua_ls",
 	"yamlls",
 	"graphql",
 }
