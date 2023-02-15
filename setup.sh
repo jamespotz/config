@@ -25,7 +25,6 @@ echo "${green}Installing essential homebrew packages...${clear}"
 brew install yadm \
   exa \
   ripgrep \
-  neovim \
   nvm \
   zsh \
   antidote \
@@ -53,6 +52,12 @@ read -r email
 ssh-keygen -t ed25519 -C "${email}"
 echo "${green}Copy the ssh key below and add to Github/Bitbucket account${clear}"
 echo "$(<$HOME/.ssh/id_ed25519.pub)"
+
+echo "${green}Installing bob, rustup and neovim...${clear}"
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh 
+cargo install bob-nvim
+bob install stable
+bob use stable
 
 echo "${green}Press [SPACE] to continue...${clear}"
 read -r -s -d ' '
