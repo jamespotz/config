@@ -55,7 +55,7 @@ echo "$(<$HOME/.ssh/id_ed25519.pub)"
 
 echo "${green}Installing bob, rustup and neovim...${clear}"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh 
-cargo install bob-nvim
+cargo install --git https://github.com/MordechaiHadad/bob.git
 bob install stable
 bob use stable
 
