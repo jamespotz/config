@@ -122,7 +122,7 @@ return {
 	"lukas-reineke/indent-blankline.nvim",
 
 	-- Rainbow brackets
-	"mrjones2014/nvim-ts-rainbow",
+	"HiPhish/nvim-ts-rainbow2",
 
 	-- Surround text
 	-- "blackcauldron7/surround.nvim")

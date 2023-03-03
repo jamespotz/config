@@ -27,32 +27,29 @@ treesitter_configs.setup({
 		"vim",
 		"markdown_inline",
 	},
-
 	highlight = {
 		enable = true,
 		additional_vim_regex_highlighting = false,
 	},
-
 	indent = {
 		enable = true,
 		disable = { "yaml" },
 	},
-
 	playground = {
 		enable = true,
 		disable = {},
 		updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
 		persist_queries = false, -- Whether the query persists across vim sessions
 	},
-
 	autotag = { enable = true },
 	rainbow = {
 		enable = true,
 		disable = { "html" },
-		extended_mode = true,
-		max_file_lines = nil,
+		-- Which query to use for finding delimiters
+		query = "rainbow-parens",
+		-- Highlight the entire buffer all at once
+		strategy = require("ts-rainbow.strategy.global"),
 	},
-
 	context_commentstring = {
 		enable = true,
 		enable_autocmd = false,
@@ -67,13 +64,11 @@ treesitter_configs.setup({
 			json = "",
 		},
 	},
-
 	textobjects = {
 		select = {
 			enable = true,
 			-- Automatically jump forward to textobj, similar to targets.vim
 			lookahead = true,
-
 			keymaps = {
 				-- You can use the capture groups defined in textobjects.scm
 				["af"] = "@function.outer",
@@ -86,7 +81,6 @@ treesitter_configs.setup({
 			enable = true,
 		},
 	},
-
 	-- auto install above language parsers
 	auto_install = true,
 })

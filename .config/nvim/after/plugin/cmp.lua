@@ -18,6 +18,13 @@ end
 
 local lsp_icons = require("utils/lspkind").icons
 cmp.setup({
+	enabled = function()
+		local buftype = vim.api.nvim_buf_get_option(0, "buftype")
+		if buftype == "prompt" then
+			return false
+		end
+		return true
+	end,
 	formatting = {
 		format = function(entry, vim_item)
 			-- Kind icons
