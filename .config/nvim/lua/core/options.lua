@@ -120,7 +120,7 @@ local load_defaults = function()
 	opt.wildignore:append({ "*/node_modules/*" })
 	opt.path:append({ "**" }) -- Finding files - Search down into subfolders
 
-	--[[ opt.listchars:append({ eol = "↴", space = "⋅" }) ]]
+	opt.listchars:append({ eol = "↴", space = "⋅" })
 
 	opt.clipboard:prepend({ "unnamedplus" })
 	for k, v in pairs(default_options) do

@@ -9,25 +9,8 @@ if not mason_null_ls_status then
 end
 
 mason_null_ls.setup({
-	ensure_installed = { "stylua", "eslint_d", "prettier", "cspell" },
+	ensure_installed = { "stylua", "eslint_d", "prettier" },
 	automatic_installation = true,
-})
-
-mason_null_ls.setup_handlers({
-	stylua = function(source_name, methods)
-		null_ls.register(null_ls.builtins.formatting.stylua)
-	end,
-	eslint_d = function(source_name, methods)
-		null_ls.register(null_ls.builtins.code_actions.eslint_d)
-		null_ls.register(null_ls.builtins.diagnostics.eslint_d)
-	end,
-	prettier = function(source_name, methods)
-		null_ls.register(null_ls.builtins.formatting.prettier)
-	end,
-	cspell = function(source_name, methods)
-		null_ls.register(null_ls.builtins.diagnostics.cspell)
-		null_ls.register(null_ls.builtins.code_actions.cspell)
-	end,
 })
 
 null_ls.setup({
