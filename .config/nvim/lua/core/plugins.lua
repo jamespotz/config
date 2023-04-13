@@ -5,7 +5,7 @@ return {
 	},
 
 	-- Colorscheme's
-	{ "EdenEast/nightfox.nvim", lazy = false },
+	{ "EdenEast/nightfox.nvim",    lazy = false },
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
@@ -51,7 +51,6 @@ return {
 	-- Neovim Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
-
 		build = ":TSUpdate",
 	},
 	"nvim-treesitter/playground",
@@ -83,17 +82,14 @@ return {
 
 	-- Formatting
 	"jose-elias-alvarez/null-ls.nvim",
-{
-    "jay-babu/mason-null-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      "williamboman/mason.nvim",
-      "jose-elias-alvarez/null-ls.nvim",
-    },
-   },
-
-	-- Editorconfig
-	"editorconfig/editorconfig-vim",
+	{
+		"jay-babu/mason-null-ls.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+			"williamboman/mason.nvim",
+			"jose-elias-alvarez/null-ls.nvim",
+		},
+	},
 
 	-- LSP diagnostics and colors
 	"folke/lsp-colors.nvim",
@@ -115,7 +111,7 @@ return {
 		branch = "0.1.x",
 		dependencies = { { "nvim-lua/plenary.nvim" }, { "nvim-lua/popup.nvim" } },
 	},
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	{ "nvim-telescope/telescope-fzf-native.nvim",    build = "make" },
 
 	-- Auto pairs
 	"windwp/nvim-autopairs",
@@ -140,7 +136,6 @@ return {
 	-- Commenting
 	{
 		"numToStr/Comment.nvim",
-
 		event = "BufRead",
 		config = function()
 			require("Comment").setup({
@@ -218,7 +213,6 @@ return {
 
 	{
 		"folke/which-key.nvim",
-
 		event = "BufWinEnter",
 	},
 	"rcarriga/nvim-notify",
