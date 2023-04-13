@@ -1,7 +1,6 @@
 local M = {}
 local keymap = vim.keymap
 local api = vim.api
-local util = require("vim.lsp.util")
 
 function M.on_attach(client, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
@@ -19,20 +18,6 @@ function M.on_attach(client, bufnr)
 	keymap.set("n", "gr", vim.lsp.buf.references, opts)
 end
 
-local function make_formatting_request(client, bufnr)
-	local params = util.make_formatting_params({})
-	client.request("textDocument/formatting", params, nil, bufnr)
-end
-
-local function make_formatting_request_sync(client, bufnr)
-	local params = util.make_formatting_params({})
-	local timeout_ms = 1000
-	local result, err = client.request_sync("textDocument/formatting", params, timeout_ms, bufnr)
-	if result and result.result then
-		util.apply_text_edits(result.result, bufnr, client.offset_encoding)
-	end
-end
-
 -- if you want to set up formatting on save, you can use this as a callback
 local augroup = api.nvim_create_augroup("LspFormatting", {})
 
@@ -42,12 +27,12 @@ function M.formatting_on_attach(client, bufnr)
 		group = augroup,
 		buffer = bufnr,
 		callback = function()
-			make_formatting_request_sync(client, bufnr)
+			vim.lsp.buf.format({ bufnr = bufnr, async = true })
 		end,
 	})
 
 	keymap.set("n", "<leader>f", function()
-		make_formatting_request(client, bufnr)
+		vim.lsp.buf.format({ bufnr = bufnr, async = true })
 	end, { buffer = bufnr })
 end
 
