@@ -27,12 +27,22 @@ function M.formatting_on_attach(client, bufnr)
 		group = augroup,
 		buffer = bufnr,
 		callback = function()
-			vim.lsp.buf.format({ bufnr = bufnr, async = true })
+			vim.lsp.buf.format({
+				bufnr = bufnr,
+				filter = function(client)
+					return client.name == "null-ls"
+				end,
+			})
 		end,
 	})
 
 	keymap.set("n", "<leader>f", function()
-		vim.lsp.buf.format({ bufnr = bufnr, async = true })
+		vim.lsp.buf.format({
+			bufnr = bufnr,
+			filter = function(client)
+				return client.name == "null-ls"
+			end,
+		})
 	end, { buffer = bufnr })
 end
 

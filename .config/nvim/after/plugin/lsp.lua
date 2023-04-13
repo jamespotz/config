@@ -168,7 +168,7 @@ vim.lsp.handlers["window/showMessage"] = function(_, result, ctx)
 end
 
 -- format on :wq
-cmd([[cabbrev wq execute "lua vim.lsp.buf.formatting_seq_sync()" <bar> wq]])
+cmd([[cabbrev wq execute "lua vim.lsp.buf.format()" <bar> wq]])
 
 -- lspkind
 require("utils/lspkind").setup()
