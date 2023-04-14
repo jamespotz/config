@@ -1,7 +1,6 @@
 local cmd = vim.cmd
 local fn = vim.fn
 local lsp = vim.lsp
-local keymap = vim.keymap
 
 local on_attach = function(client, bufnr)
 	require("utils/lsp-utils").on_attach(client, bufnr)
@@ -167,8 +166,8 @@ end
 
 vim.diagnostic.config({ virtual_text = false })
 
-vim.lsp.handlers["window/showMessage"] = function(_, result, ctx)
-	local client = vim.lsp.get_client_by_id(ctx.client_id)
+lsp.handlers["window/showMessage"] = function(_, result, ctx)
+	local client = lsp.get_client_by_id(ctx.client_id)
 	local lvl = ({ "ERROR", "WARN", "INFO", "DEBUG" })[result.type]
 	vim.notify({ result.message }, lvl, {
 		title = "LSP | " .. client.name,
