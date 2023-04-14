@@ -137,6 +137,18 @@ for _, lsp in pairs(lsp_servers) do
 			capabilities = capabilities,
 			settings = configurations[lsp].settings,
 		})
+	elseif lsp == "tsserver" then
+		require("typescript").setup({
+			debug = false, -- enable debug logging for commands
+			go_to_source_definition = {
+				fallback = true, -- fall back to standard LSP definition on failure
+			},
+			server = {
+				-- pass options to lspconfig's setup method
+				on_attach = configurations.default.on_attach,
+				capabilities = capabilities,
+			},
+		})
 	else
 		lspconfig[lsp].setup({
 			on_attach = configurations.default.on_attach,

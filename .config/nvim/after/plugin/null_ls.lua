@@ -17,4 +17,7 @@ mason_null_ls.setup({
 
 null_ls.setup({
 	on_attach = require("utils/lsp-utils").formatting_on_attach,
+	sources = {
+		require("typescript.extensions.null-ls.code-actions"),
+	},
 })

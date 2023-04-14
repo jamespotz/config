@@ -5,7 +5,7 @@ return {
 	},
 
 	-- Colorscheme's
-	{ "EdenEast/nightfox.nvim",    lazy = false },
+	{ "EdenEast/nightfox.nvim", lazy = false },
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
@@ -80,6 +80,9 @@ return {
 		end,
 	},
 
+	-- Typescript
+	"jose-elias-alvarez/typescript.nvim",
+
 	-- Formatting
 	"jose-elias-alvarez/null-ls.nvim",
 	{
@@ -111,7 +114,7 @@ return {
 		branch = "0.1.x",
 		dependencies = { { "nvim-lua/plenary.nvim" }, { "nvim-lua/popup.nvim" } },
 	},
-	{ "nvim-telescope/telescope-fzf-native.nvim",    build = "make" },
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 
 	-- Auto pairs
 	"windwp/nvim-autopairs",
@@ -129,7 +132,6 @@ return {
 	"HiPhish/nvim-ts-rainbow2",
 
 	-- Surround text
-	-- "blackcauldron7/surround.nvim")
 	"tpope/vim-surround",
 	"tpope/vim-sleuth",
 
