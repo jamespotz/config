@@ -9,7 +9,7 @@ if not mason_null_ls_status then
 end
 
 mason_null_ls.setup({
-	ensure_installed = { "stylua", "prettierd", "eslint_d" },
+	ensure_installed = { "cspell", "stylua", "prettierd", "eslint_d" },
 	automatic_installation = true,
 	automatic_setup = true,
 	handlers = {},

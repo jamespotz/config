@@ -22,28 +22,23 @@ end
 local augroup = api.nvim_create_augroup("LspFormatting", {})
 
 function M.formatting_on_attach(client, bufnr)
+	local handle_format = function()
+		vim.lsp.buf.format({
+			bufnr = bufnr,
+			filter = function()
+				return client.name == "null-ls"
+			end,
+		})
+	end
+
 	api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 	api.nvim_create_autocmd("BufWritePre", {
 		group = augroup,
 		buffer = bufnr,
-		callback = function()
-			vim.lsp.buf.format({
-				bufnr = bufnr,
-				filter = function(client)
-					return client.name == "null-ls"
-				end,
-			})
-		end,
+		callback = handle_format,
 	})
 
-	keymap.set("n", "<leader>f", function()
-		vim.lsp.buf.format({
-			bufnr = bufnr,
-			filter = function(client)
-				return client.name == "null-ls"
-			end,
-		})
-	end, { buffer = bufnr })
+	keymap.set("n", "<leader>f", handle_format, { buffer = bufnr })
 end
 
 return M
