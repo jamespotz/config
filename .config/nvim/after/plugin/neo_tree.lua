@@ -71,7 +71,7 @@ neotree.setup({
 	},
 	window = {
 		position = "left",
-		width = 40,
+		width = 30,
 		mapping_options = {
 			noremap = true,
 			nowait = true,
@@ -199,6 +199,19 @@ neotree.setup({
 				["gp"] = "git_push",
 				["gg"] = "git_commit_and_push",
 			},
+		},
+	},
+	source_selector = {
+		winbar = true,
+		statusline = true,
+	},
+	event_handlers = {
+		{
+			event = "file_opened",
+			handler = function(file_path)
+				--auto close
+				require("neo-tree").close_all()
+			end,
 		},
 	},
 })

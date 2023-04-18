@@ -1,3 +1,5 @@
+vim.loader.enable()
+
 local load = function(module_name)
 	package.loaded[module_name] = nil
 	require(module_name)

@@ -5,7 +5,6 @@ return {
 	},
 
 	-- Colorscheme's
-	{ "EdenEast/nightfox.nvim", lazy = false },
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
