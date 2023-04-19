@@ -75,3 +75,21 @@ map("n", "x", '"_x')
 -- Terminal
 map("t", "<Esc>", "<C-\\><C-n>")
 map("t", "<leader>q", "<C-\\><C-n>:q!<cr>")
+
+-- Deleting
+map("n", "dd", function()
+	if vim.api.nvim_get_current_line():match("^%s*$") then
+		return '"_dd'
+	else
+		return "dd"
+	end
+end, { expr = true, buffer = true })
+
+-- Insert keymap that will properly indent on empty lines
+map("n", "i", function()
+	if #vim.fn.getline(".") == 0 then
+		return [["_cc]]
+	else
+		return "i"
+	end
+end, { expr = true, buffer = true })
