@@ -48,15 +48,16 @@ if not status_ok then
 end
 
 local lsp_servers = {
-	"tsserver",
 	"cssls",
 	"cssmodules_ls",
 	"dockerls",
+	"emmet_ls",
+	"graphql",
 	"html",
 	"jsonls",
 	"lua_ls",
+	"tsserver",
 	"yamlls",
-	"graphql",
 }
 
 -- Snippet support
@@ -129,8 +130,29 @@ for _, lsp in pairs(lsp_servers) do
 			capabilities = capabilities,
 			settings = configurations[lsp].settings,
 		})
+	elseif lsp == "emmet_ls" then
+		lspconfig.emmet_ls.setup({
+			filetypes = {
+				"css",
+				"eruby",
+				"html",
+				"javascript",
+				"javascriptreact",
+				"less",
+				"sass",
+				"scss",
+				"svelte",
+				"pug",
+				"typescriptreact",
+				"typescript",
+				"vue",
+			},
+			on_attach = configurations.default.on_attach,
+			capabilities = capabilities,
+			settings = configurations.default.settings,
+		})
 	elseif lsp == "html" then
-		lspconfig[lsp].setup({
+		lspconfig.html.setup({
 			on_attach = configurations.default.on_attach,
 			capabilities = capabilities,
 			settings = configurations[lsp].settings,
