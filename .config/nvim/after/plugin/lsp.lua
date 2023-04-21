@@ -54,7 +54,6 @@ local lsp_servers = {
 	"dockerls",
 	"html",
 	"jsonls",
-	"stylelint_lsp",
 	"lua_ls",
 	"yamlls",
 	"graphql",

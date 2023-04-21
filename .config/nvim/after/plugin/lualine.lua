@@ -36,6 +36,7 @@ lualine.setup({
 				fmt = function(str)
 					return str:sub(1, 1)
 				end,
+				separator = { left = "", right = "" },
 			},
 		},
 		lualine_b = {
@@ -54,10 +55,11 @@ lualine.setup({
 				color_warn = "#EBCB8B",
 				color_info = "#88C0D0",
 				color_hint = "#3A4151",
+				separator = { left = "", right = "" },
 			},
 		},
 		lualine_z = {
-			{ "location", icons_enabled = true, icon = "" },
+			{ "location", icons_enabled = true, icon = "", separator = { left = "", right = "" } },
 		},
 	},
 	extensions = { "nvim-tree" },
