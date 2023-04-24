@@ -81,12 +81,6 @@ return {
 
 	-- Typescript
 	"jose-elias-alvarez/typescript.nvim",
-	{
-		"dmmulroy/tsc.nvim",
-		config = function()
-			require("tsc").setup()
-		end,
-	},
 
 	-- Formatting
 	"jose-elias-alvarez/null-ls.nvim",
