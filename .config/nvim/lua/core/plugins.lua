@@ -122,7 +122,7 @@ return {
 	"windwp/nvim-ts-autotag",
 
 	-- Colors
-	"norcalli/nvim-colorizer.lua",
+	"uga-rosa/ccc.nvim",
 
 	-- Indent lines
 	"lukas-reineke/indent-blankline.nvim",
@@ -229,4 +229,11 @@ return {
 
 	"moll/vim-bbye",
 	"karb94/neoscroll.nvim",
+	{
+		"AckslD/muren.nvim",
+		config = function()
+			require("muren").setup()
+			vim.keymap.set("n", "<M-f>", "<cmd>MurenToggle<CR>", { noremap = true, silent = true })
+		end,
+	},
 }

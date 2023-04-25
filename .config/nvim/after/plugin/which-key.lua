@@ -71,6 +71,10 @@ local mappings = {
 	["w"] = { "<cmd>w!<cr>", "Save" },
 	["q"] = { "<cmd>q!<cr>", "Quit" },
 	["rsv"] = { "<cmd>ReloadConfig<cr>", "Reload $MYVIMRC" },
+	c = {
+		c = { "<cmd>CccConvert<cr>", "Convert color" },
+		p = { "<cmd>CccPick<cr>", "Color Picker" },
+	},
 	g = {
 		name = "Git",
 		l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
