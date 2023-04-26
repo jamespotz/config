@@ -48,7 +48,6 @@ map("n", "/", "/\\v")
 -- Navigate buffers
 map("n", "<Tab>", ":bnext<CR>", { silent = true })
 map("n", "<S-Tab>", ":bprevious<CR>", { silent = true })
-map("n", "Q", ":Bwipeout!<CR>", { silent = true })
 
 -- Better window navigation
 map("n", "<C-h>", "<C-w>h", { silent = true })

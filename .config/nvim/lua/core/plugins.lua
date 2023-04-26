@@ -130,9 +130,23 @@ return {
 	-- Rainbow brackets
 	"HiPhish/nvim-ts-rainbow2",
 
-	-- Surround text
-	"tpope/vim-surround",
-	"tpope/vim-sleuth",
+	-- Mini surround
+	{
+		"echasnovski/mini.surround",
+		version = false,
+		config = function()
+			require("mini.surround").setup()
+		end,
+	},
+	-- Mini bufremove
+	{
+		"echasnovski/mini.bufremove",
+		version = false,
+		config = function()
+			require("mini.bufremove").setup()
+			vim.keymap.set("n", "Q", "<cmd>lua MiniBufremove.delete()<cr>", { silent = true, noremap = true })
+		end,
+	},
 
 	-- Commenting
 	{
@@ -227,7 +241,6 @@ return {
 		end,
 	},
 
-	"moll/vim-bbye",
 	"karb94/neoscroll.nvim",
 	{
 		"AckslD/muren.nvim",
