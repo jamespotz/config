@@ -52,7 +52,6 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 	},
-	"nvim-treesitter/playground",
 	"nvim-treesitter/nvim-treesitter-textobjects",
 	{
 		"nvim-treesitter/nvim-treesitter-context",
@@ -76,6 +75,14 @@ return {
 					},
 				},
 			})
+		end,
+	},
+	{
+		"Wansmer/treesj",
+		keys = { "<space>m", "<space>j", "<space>s" },
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			require("treesj").setup({})
 		end,
 	},
 
