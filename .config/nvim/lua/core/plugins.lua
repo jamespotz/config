@@ -90,7 +90,6 @@ return {
 	"jose-elias-alvarez/typescript.nvim",
 
 	-- Formatting
-	"jose-elias-alvarez/null-ls.nvim",
 	{
 		"jay-babu/mason-null-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },
@@ -100,9 +99,6 @@ return {
 		},
 	},
 
-	-- LSP diagnostics and colors
-	"folke/lsp-colors.nvim",
-
 	{
 		"folke/noice.nvim",
 		event = "VimEnter",
@@ -110,7 +106,6 @@ return {
 			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
-			"hrsh7th/nvim-cmp",
 		},
 	},
 
