@@ -109,6 +109,8 @@ local load_defaults = function()
 		wrap = false, -- display lines as one long line
 		writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 		wildoptions = "pum",
+		titlestring = 'nvim %{expand("%:t")}',
+		titlelen = 0, -- do not shorten the title
 	}
 
 	---  SETTINGS  ---
