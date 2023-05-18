@@ -20,7 +20,12 @@ local lsp_icons = require("utils/lspkind").icons
 cmp.setup({
 	enabled = function()
 		local buftype = vim.api.nvim_buf_get_option(0, "buftype")
+		-- disable completion in comments
+		local context = require("cmp.config.context")
+
 		if buftype == "prompt" then
+			return false
+		elseif context.in_treesitter_capture("comment") or context.in_syntax_group("Comment") then
 			return false
 		end
 		return true
