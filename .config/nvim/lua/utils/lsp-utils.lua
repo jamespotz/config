@@ -28,6 +28,7 @@ function M.formatting_on_attach(client, bufnr)
 			filter = function()
 				return client.name == "null-ls"
 			end,
+			timeout_ms = 2000,
 		})
 	end
 

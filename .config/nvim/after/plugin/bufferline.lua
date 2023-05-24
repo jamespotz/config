@@ -10,8 +10,7 @@ bufferline.setup({
 			enabled = true,
 			delay = 200,
 		},
-		indicator = { style = "icon", icon = " " },
-		separator_style = { "|", "|" },
+		separator_style = "thin",
 		diagnostics = "nvim_lsp",
 		diagnostics_indicator = function(count, level, diagnostics_dict, context)
 			local s = " "
@@ -23,10 +22,11 @@ bufferline.setup({
 		end,
 		offsets = {
 			{
-				filetype = "neo-tree",
-				text = "File Explorer",
+				filetype = "NvimTree",
+				text = "📁 File Explorer",
 				highlight = "Directory",
 				text_align = "left",
+				separator = true,
 			},
 		},
 	},

@@ -200,7 +200,7 @@ lsp.handlers["window/showMessage"] = function(_, result, ctx)
 end
 
 -- format on :wq
-cmd([[cabbrev wq execute "lua vim.lsp.buf.format()" <bar> wq]])
+cmd([[cabbrev wq execute "lua vim.lsp.buf.format({ timeout_ms = 2000 })" <bar> wq]])
 
 -- lspkind
 require("utils/lspkind").setup()

@@ -93,3 +93,6 @@ alias gbda='git branch --no-color --merged | command grep -vE "^(\+|\*|\s*(maste
 
 # Starship.rs 
 eval "$(starship init zsh)"
+
+# Homebrew
+alias brewup="brew update && brew upgrade"
