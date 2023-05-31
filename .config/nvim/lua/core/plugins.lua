@@ -170,8 +170,13 @@ return {
 	},
 
 	-- Easier motions
-	"phaazon/hop.nvim",
-
+	{
+		"ggandor/leap.nvim",
+		dependencies = { "tpope/vim-repeat" },
+		config = function()
+			require("leap").add_default_mappings()
+		end,
+	},
 	-- File Explorer
 	"nvim-tree/nvim-web-devicons", -- for file icons
 	{
