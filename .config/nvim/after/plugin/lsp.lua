@@ -58,6 +58,7 @@ local lsp_servers = {
 	"lua_ls",
 	"tsserver",
 	"yamlls",
+	"eslint",
 }
 
 -- Snippet support
@@ -165,8 +166,36 @@ for _, lsp in pairs(lsp_servers) do
 			},
 			server = {
 				-- pass options to lspconfig's setup method
-				on_attach = configurations.default.on_attach,
+				on_attach = function(client, bufnr)
+					configurations.default.on_attach(client, bufnr)
+					vim.lsp.buf.inlay_hint(bufnr, true)
+				end,
 				capabilities = capabilities,
+				settings = {
+					-- specify some or all of the following settings if you want to adjust the default behavior
+					javascript = {
+						inlayHints = {
+							includeInlayEnumMemberValueHints = true,
+							includeInlayFunctionLikeReturnTypeHints = true,
+							includeInlayFunctionParameterTypeHints = true,
+							includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+							includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+							includeInlayPropertyDeclarationTypeHints = true,
+							includeInlayVariableTypeHints = true,
+						},
+					},
+					typescript = {
+						inlayHints = {
+							includeInlayEnumMemberValueHints = true,
+							includeInlayFunctionLikeReturnTypeHints = true,
+							includeInlayFunctionParameterTypeHints = true,
+							includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+							includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+							includeInlayPropertyDeclarationTypeHints = true,
+							includeInlayVariableTypeHints = true,
+						},
+					},
+				},
 			},
 		})
 	else

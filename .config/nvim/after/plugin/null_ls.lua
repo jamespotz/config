@@ -9,7 +9,7 @@ if not mason_null_ls_status then
 end
 
 mason_null_ls.setup({
-	ensure_installed = { "cspell", "stylua", "prettierd", "eslint_d" },
+	ensure_installed = { "stylua", "prettier" },
 	automatic_installation = true,
 	automatic_setup = true,
 	handlers = {},
@@ -19,5 +19,7 @@ null_ls.setup({
 	on_attach = require("utils/lsp-utils").formatting_on_attach,
 	sources = {
 		require("typescript.extensions.null-ls.code-actions"),
+		null_ls.builtins.formatting.eslint,
+		null_ls.builtins.diagnostics.eslint,
 	},
 })

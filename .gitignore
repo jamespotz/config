@@ -17,3 +17,4 @@ rerun.txt
 tags
 tmp/**/*
 .nvmrc
+.yarnrc.yml
