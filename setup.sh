@@ -38,7 +38,9 @@ brew install yadm \
   gh \
   lazygit \
   fzf \
-  git-delta
+  git-delta \
+  stylua \
+  selene
 
 echo "${green}ZSH setup...${clear}"
 [ -f ~/.zshrc ] && mv ~/.zshrc ~/zshrc.bak
@@ -73,7 +75,7 @@ nvm install v16
 nvm use v16
 
 echo "${green}Installing yarn...${clear}"
-npm install -g yarn
+npm install -g yarn eslint markdownlint vscode-langservers-extracted
 
 echo "${green}Installing neovim packages...${clear}"
 nvim --headless "+Lazy! sync" +qa
