@@ -26,6 +26,7 @@ treesitter_configs.setup({
 		"comment",
 		"vim",
 		"markdown_inline",
+		"tsx",
 	},
 	highlight = {
 		enable = true,
@@ -36,14 +37,6 @@ treesitter_configs.setup({
 		disable = { "yaml" },
 	},
 	autotag = { enable = true },
-	rainbow = {
-		enable = true,
-		disable = { "html" },
-		-- Which query to use for finding delimiters
-		query = "rainbow-parens",
-		-- Highlight the entire buffer all at once
-		strategy = require("ts-rainbow.strategy.global"),
-	},
 	context_commentstring = {
 		enable = true,
 		enable_autocmd = false,

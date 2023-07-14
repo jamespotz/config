@@ -4,7 +4,6 @@ local lsp = vim.lsp
 
 local on_attach = function(client, bufnr)
 	require("utils/lsp-utils").on_attach(client, bufnr)
-	require("illuminate").on_attach(client)
 	local navic = require("nvim-navic")
 
 	vim.api.nvim_create_autocmd("CursorHold", {
@@ -56,9 +55,9 @@ local lsp_servers = {
 	"html",
 	"jsonls",
 	"lua_ls",
-	"tsserver",
 	"yamlls",
 	"eslint",
+	"marksman",
 }
 
 -- Snippet support
@@ -158,46 +157,46 @@ for _, lsp in pairs(lsp_servers) do
 			capabilities = capabilities,
 			settings = configurations[lsp].settings,
 		})
-	elseif lsp == "tsserver" then
-		require("typescript").setup({
-			debug = false, -- enable debug logging for commands
-			go_to_source_definition = {
-				fallback = true, -- fall back to standard LSP definition on failure
-			},
-			server = {
-				-- pass options to lspconfig's setup method
-				on_attach = function(client, bufnr)
-					configurations.default.on_attach(client, bufnr)
-					vim.lsp.buf.inlay_hint(bufnr, true)
-				end,
-				capabilities = capabilities,
-				settings = {
-					-- specify some or all of the following settings if you want to adjust the default behavior
-					javascript = {
-						inlayHints = {
-							includeInlayEnumMemberValueHints = true,
-							includeInlayFunctionLikeReturnTypeHints = true,
-							includeInlayFunctionParameterTypeHints = true,
-							includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-							includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-							includeInlayPropertyDeclarationTypeHints = true,
-							includeInlayVariableTypeHints = true,
-						},
-					},
-					typescript = {
-						inlayHints = {
-							includeInlayEnumMemberValueHints = true,
-							includeInlayFunctionLikeReturnTypeHints = true,
-							includeInlayFunctionParameterTypeHints = true,
-							includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-							includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-							includeInlayPropertyDeclarationTypeHints = true,
-							includeInlayVariableTypeHints = true,
-						},
-					},
-				},
-			},
-		})
+	-- elseif lsp == "tsserver" then
+	-- 	require("typescript").setup({
+	-- 		debug = false, -- enable debug logging for commands
+	-- 		go_to_source_definition = {
+	-- 			fallback = true, -- fall back to standard LSP definition on failure
+	-- 		},
+	-- 		server = {
+	-- 			-- pass options to lspconfig's setup method
+	-- 			on_attach = function(client, bufnr)
+	-- 				configurations.default.on_attach(client, bufnr)
+	-- 				vim.lsp.buf.inlay_hint(bufnr, true)
+	-- 			end,
+	-- 			capabilities = capabilities,
+	-- 			settings = {
+	-- 				-- specify some or all of the following settings if you want to adjust the default behavior
+	-- 				javascript = {
+	-- 					inlayHints = {
+	-- 						includeInlayEnumMemberValueHints = true,
+	-- 						includeInlayFunctionLikeReturnTypeHints = true,
+	-- 						includeInlayFunctionParameterTypeHints = true,
+	-- 						includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+	-- 						includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+	-- 						includeInlayPropertyDeclarationTypeHints = true,
+	-- 						includeInlayVariableTypeHints = true,
+	-- 					},
+	-- 				},
+	-- 				typescript = {
+	-- 					inlayHints = {
+	-- 						includeInlayEnumMemberValueHints = true,
+	-- 						includeInlayFunctionLikeReturnTypeHints = true,
+	-- 						includeInlayFunctionParameterTypeHints = true,
+	-- 						includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+	-- 						includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+	-- 						includeInlayPropertyDeclarationTypeHints = true,
+	-- 						includeInlayVariableTypeHints = true,
+	-- 					},
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 	})
 	else
 		lspconfig[lsp].setup({
 			on_attach = configurations.default.on_attach,
@@ -208,7 +207,7 @@ for _, lsp in pairs(lsp_servers) do
 end
 
 -- replace the default lsp diagnostic letters with prettier symbols
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })

@@ -91,7 +91,7 @@ end
 --[[ dashboard.section.header.opts.hl = pick_color() ]]
 --[[]]
 config.layout[6].val = {
-	button("<Space>f", "  File Explorer", ":Neotree<CR>"),
+	button("<Space>f", "  File Explorer", ":NvimTreeToggle<CR>"),
 	button("<Space>p", " Open Projects", ":Telescope projects<CR>"),
 	button("<Space>r", "  Recent", ":Telescope oldfiles<CR>"),
 	button("<Space>n", "ﱐ  New file", ":ene <BAR> startinsert<CR>"),
