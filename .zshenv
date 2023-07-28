@@ -24,3 +24,5 @@ export CPPFLAGS="-I/home/linuxbrew/.linuxbrew/opt/openssl@3/include"
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
+export PATH="/snap/bin:$PATH"

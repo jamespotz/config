@@ -24,7 +24,7 @@ map("n", "Y", "y$")
 
 -- Common Keymaps
 map("i", "<C-c>", "<esc>")
-map("n", "R", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gc<Left><Left><Left>")
+map("n", "R", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 map("n", "<Leader>,", ":nohlsearch<CR>")
 map("n", "$", "$1")
 

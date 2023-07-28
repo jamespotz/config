@@ -263,6 +263,4 @@ return {
 			vim.keymap.set("n", "<M-f>", require("muren.api").toggle_ui, { noremap = true, silent = true })
 		end,
 	},
-
-	{ "mg979/vim-visual-multi" },
 }
