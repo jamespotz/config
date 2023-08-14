@@ -263,4 +263,6 @@ return {
 			vim.keymap.set("n", "<M-f>", require("muren.api").toggle_ui, { noremap = true, silent = true })
 		end,
 	},
+	{ "jubnzv/virtual-types.nvim" },
+	-- { "Bekaboo/dropbar.nvim" },
 }
