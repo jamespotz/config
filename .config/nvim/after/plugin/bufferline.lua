@@ -3,10 +3,7 @@ if not status_ok then
 	return
 end
 
-local catppuccin_highlight = require("catppuccin.groups.integrations.bufferline").get()
-
 bufferline.setup({
-	highlights = catppuccin_highlight,
 	options = {
 		hover = {
 			enabled = true,
