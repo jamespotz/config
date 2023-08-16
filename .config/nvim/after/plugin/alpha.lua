@@ -6,25 +6,25 @@ end
 
 local function pick_color(index)
 	local colors = {
-		"StartLogo1",
-		"StartLogo1",
-		"StartLogo2",
-		"StartLogo2",
-		"StartLogo3",
-		"StartLogo3",
-		"StartLogo4",
-		"StartLogo4",
-		"StartLogo4",
-		"StartLogo4",
-		"StartLogo5",
-		"StartLogo5",
-		"StartLogo5",
-		"StartLogo5",
-		"StartLogo5",
-		"StartLogo5",
-		"StartLogo5",
-		"StartLogo5",
-		"StartLogo5",
+		"Error",
+		"Error",
+		"Error",
+		"Error",
+		"Error",
+		"Error",
+		"Error",
+		"Error",
+		"Error",
+		"Error",
+		"Error",
+		"Error",
+		"Error",
+		"Error",
+		"Error",
+		"Error",
+		"Error",
+		"Error",
+		"Error",
 	}
 	--[[ return colors[math.random(#colors)] ]]
 	return colors[index]
@@ -63,7 +63,7 @@ local header = {
 
 -- Map over the headers, setting a different color for each line.
 -- This is done by setting the Highligh to StartLogoN, where N is the row index.
--- Define StartLogo1..StartLogoN to get a nice gradient.
+-- Define Error..StartLogoN to get a nice gradient.
 local function header_color()
 	local lines = {}
 	for i, line_chars in pairs(header) do
