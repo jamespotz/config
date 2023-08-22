@@ -1,3 +1,4 @@
+emulate sh -c 'source /etc/profile.d/apps-bin-path.sh'
 . "$HOME/.asdf/asdf.sh"
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
@@ -81,6 +82,10 @@ fi
 
 if command -v fdfind &>/dev/null; then
   alias fd="fdfind"
+fi
+
+if command -v neovide &>/dev/null; then
+  alias nv="neovide"
 fi
 
 alias myip="curl http://ipecho.net/plain; echo"
