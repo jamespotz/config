@@ -5,11 +5,11 @@ if not status_ok then
 end
 
 linter.linters_by_ft = {
-	javascript = { "eslint_d" },
-	javascriptreact = { "eslint_d" },
-	typescript = { "eslint_d" },
-	typescriptreact = { "eslint_d" },
-	markdown = { "markdownlint" },
+	javascript = { "eslint_d", "cspell" },
+	javascriptreact = { "eslint_d", "cspell" },
+	typescript = { "eslint_d", "cspell" },
+	typescriptreact = { "eslint_d", "cspell" },
+	markdown = { "markdownlint", "cspell" },
 	json = { "jsonlint" },
 	css = { "stylelint" },
 	scss = { "stylelint" },
@@ -19,8 +19,17 @@ linter.linters_by_ft = {
 	lua = { "luacheck" },
 }
 
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-	callback = function()
-		linter.try_lint()
-	end,
-})
+local autocmd = function(event, event_group)
+	vim.api.nvim_create_augroup(event_group, { clear = true })
+	vim.api.nvim_create_autocmd(event, {
+		pattern = "*",
+		group = event_group,
+		callback = function()
+			linter.try_lint()
+		end,
+	})
+end
+
+autocmd("BufWritePost", "LintOnSave")
+autocmd("InsertLeave", "LintOnInsertLeave")
+autocmd("BufRead", "LintOnBufRead")
