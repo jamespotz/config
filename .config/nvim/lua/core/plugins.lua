@@ -214,7 +214,15 @@ return {
 	},
 
 	-- Testing
-	"vim-test/vim-test",
+	{
+		"nvim-neotest/neotest",
+		dependencies = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-treesitter/nvim-treesitter" },
+			{ "antoinemadec/FixCursorHold.nvim" },
+			{ "haydenmeade/neotest-jest" },
+		},
+	},
 
 	-- Todo commentstring
 	{

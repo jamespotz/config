@@ -5,7 +5,7 @@ if not status_ok then
 end
 
 local defaults = require("formatter.defaults")
-local prettier = defaults.prettier
+local prettier = defaults.prettierd
 local eslint_d = defaults.eslint_d
 local stylua = require("formatter.filetypes.lua").stylua
 

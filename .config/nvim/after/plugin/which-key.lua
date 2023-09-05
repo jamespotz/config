@@ -164,8 +164,9 @@ local mappings = {
 	},
 	t = {
 		name = "Test",
-		a = { "<cmd>TestSuite<cr>", "Test all" },
-		s = { "<cmd>TestFile<cr>", "Test Current File" },
+		c = { "<cmd>lua require('neotest').run.run(vim.fn.expand(\"%\"))<cr>", "Test Current File" },
+		s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Test Summary" },
+		o = { "<cmd>lua require('neotest').output_panel.toggle()<cr>", "Test Output" },
 	},
 }
 
