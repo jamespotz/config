@@ -106,11 +106,6 @@ return {
 		end,
 	},
 
-	-- Linter
-	{ "mfussenegger/nvim-lint" },
-	-- Formatter
-	{ "mhartington/formatter.nvim" },
-
 	-- UI
 	{
 		"folke/noice.nvim",

@@ -25,10 +25,7 @@ function M.formatting_on_attach(client, bufnr)
 	local handle_format = function()
 		vim.lsp.buf.format({
 			bufnr = bufnr,
-			filter = function()
-				return client.name == "null-ls"
-			end,
-			timeout_ms = 2000,
+		  timeout_ms = 2000,
 		})
 	end
 
