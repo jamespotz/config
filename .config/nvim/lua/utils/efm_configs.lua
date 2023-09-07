@@ -8,7 +8,7 @@ M.eslint = {
 	lintFormats = { "%f(%l,%c): %trror %m", "%f(%l,%c): %tarning %m" },
 	lintIgnoreExitCode = true,
 	formatCommand = "eslint_d --fix-to-stdout --stdin-filename '${INPUT}' --stdin",
-	formatStdin = false,
+	formatStdin = true,
 	rootMarkers = {
 		".eslintrc",
 		".eslintrc.cjs",
