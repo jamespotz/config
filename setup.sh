@@ -25,9 +25,8 @@ echo "${green}Installing essential homebrew packages...${clear}"
 brew install yadm \
   exa \
   ripgrep \
-  nvm \
+  fnm \
   zsh \
-  antidote \
   bat \
   tree-sitter \
   luajit \
@@ -43,9 +42,11 @@ brew install yadm \
   selene
 
 echo "${green}ZSH setup...${clear}"
+git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
+chmod u+x ~/.antidote/antidote
 [ -f ~/.zshrc ] && mv ~/.zshrc ~/zshrc.bak
 wget -O ~/zsh_plugins.txt https://raw.githubusercontent.com/jamespotz/config/master/zsh_plugins.txt
-antidote bundle < ~/zsh_plugins.txt > ~/.zsh_plugins.zsh
+~/.antidote/antidote bundle < ~/zsh_plugins.txt > ~/.zsh_plugins.zsh
 sudo chsh -s "$(which zsh)" "${USER}"
 
 echo "${green}Setup ssh keygen...${clear}"
