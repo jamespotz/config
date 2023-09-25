@@ -38,7 +38,6 @@ brew install yadm \
   lazygit \
   fzf \
   git-delta \
-  stylua \
   selene
 
 echo "${green}ZSH setup...${clear}"
@@ -70,13 +69,6 @@ mkdir -p "${HOME}/Work"
 
 echo "${green}Cloning config...${clear}"
 yadm clone git@github.com:jamespotz/config.git
-
-echo "${green}Installing node v16...${clear}"
-nvm install v16
-nvm use v16
-
-echo "${green}Installing yarn...${clear}"
-npm install -g yarn eslint markdownlint vscode-langservers-extracted
 
 echo "${green}Installing neovim packages...${clear}"
 nvim --headless "+Lazy! sync" +qa
