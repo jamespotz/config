@@ -1,4 +1,6 @@
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+eval "$(fnm env --use-on-cd)"
+
 # wsl.exe -d wsl-vpnkit --cd /app service wsl-vpnkit status >/dev/null || \
 # wsl.exe -d wsl-vpnkit --cd /app service wsl-vpnkit start
 
