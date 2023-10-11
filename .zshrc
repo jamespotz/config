@@ -112,4 +112,10 @@ eval "$(starship init zsh)"
 # Homebrew
 alias brewup="brew update && brew upgrade"
 
-export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_installed
+# pnpm
+export PNPM_HOME="/home/jamespotz/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
