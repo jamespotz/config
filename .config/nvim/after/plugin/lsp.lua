@@ -26,7 +26,7 @@ local on_attach = function(client, bufnr)
 		navic.attach(client, bufnr)
 	end
 
-  require("utils/lsp-utils").formatting_on_attach(client, bufnr)
+	require("utils/lsp-utils").formatting_on_attach(client, bufnr)
 end
 
 local cmp_status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
@@ -61,6 +61,7 @@ local lsp_servers = {
 	"yamlls",
 	"marksman",
 	"efm",
+	"prismals",
 }
 
 -- Snippet support

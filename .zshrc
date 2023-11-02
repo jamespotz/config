@@ -99,6 +99,10 @@ if command -v neovide &>/dev/null; then
   alias nv="neovide"
 fi
 
+if command -v lazydocker &>/dev/null; then
+  alias lzd="lazydocker"
+fi
+
 alias myip="curl http://ipecho.net/plain; echo"
 alias config="nvim $HOME/.zshrc"
 alias reload="source $HOME/.zshrc"
@@ -119,3 +123,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+#
+alias test_user_offer="docker compose build && COLLECTION=user docker compose -f docker-compose-test.yml -p goose_api_postman_runner up --abort-on-container-exit --remove-orphans && COLLECTION=offer-engine docker compose -f docker-compose-test.yml -p goose_api_postman_runner up --abort-on-container-exit --remove-orphans"

@@ -18,3 +18,4 @@ tags
 tmp/**/*
 .nvmrc
 .yarnrc.yml
+*:Zone.Identifier

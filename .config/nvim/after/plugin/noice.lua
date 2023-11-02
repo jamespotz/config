@@ -5,6 +5,12 @@ if not status_ok then
 end
 
 noice.setup({
+  routes = {
+      {
+        view = "notify",
+        filter = { event = "msg_showmode" },
+      },
+    },
 	lsp = {
 		override = {
 			-- override the default lsp markdown formatter with Noice

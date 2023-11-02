@@ -38,7 +38,8 @@ brew install yadm \
   lazygit \
   fzf \
   git-delta \
-  selene
+  selene \
+  luarocks
 
 echo "${green}ZSH setup...${clear}"
 git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
@@ -72,5 +73,6 @@ yadm clone git@github.com:jamespotz/config.git
 
 echo "${green}Installing neovim packages...${clear}"
 nvim --headless "+Lazy! sync" +qa
+nvim --headless "+MasonInstall eslint_d prettier luacheck stylua markdownlint" +qa
 
 echo "${green}DONE!🚀🚀${clear}"

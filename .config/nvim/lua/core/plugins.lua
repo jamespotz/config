@@ -95,6 +95,11 @@ return {
 		config = function()
 			require("typescript-tools").setup({
 				settings = {
+					tsserver_file_preferences = {
+						includeInlayParameterNameHints = "all",
+						includeInlayVariableTypeHints = true,
+						includeInlayFunctionLikeReturnTypeHints = true,
+					},
 					tsserver_plugins = {
 						-- for TypeScript v4.9+
 						"@styled/typescript-styled-plugin",
