@@ -25,8 +25,6 @@ local on_attach = function(client, bufnr)
 	if client.server_capabilities.documentSymbolProvider then
 		navic.attach(client, bufnr)
 	end
-
-	require("utils/lsp-utils").formatting_on_attach(client, bufnr)
 end
 
 local cmp_status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
@@ -60,7 +58,6 @@ local lsp_servers = {
 	"lua_ls",
 	"yamlls",
 	"marksman",
-	"efm",
 	"prismals",
 }
 
@@ -127,26 +124,6 @@ lsp_installer.setup({
 	automatic_installation = true,
 })
 
--- EFM setup
-local efm_configs = require("utils.efm_configs")
-local prettier = efm_configs.prettier
-local eslint = efm_configs.eslint
-local stylua = efm_configs.stylua
-local markdownlint = efm_configs.markdownlint
-local luacheck = efm_configs.luacheck
-
-local efm_languages = {
-	typescript = { eslint, prettier },
-	typescriptreact = { eslint, prettier },
-	javascript = { eslint, prettier },
-	javascriptreact = { eslint, prettier },
-	lua = { stylua, luacheck },
-	markdown = { markdownlint, prettier },
-	json = { prettier },
-	css = { prettier },
-	html = { prettier },
-}
-
 for _, lsp in pairs(lsp_servers) do
 	if lsp == "jsonls" then
 		lspconfig.jsonls.setup({
@@ -181,20 +158,6 @@ for _, lsp in pairs(lsp_servers) do
 			capabilities = capabilities,
 			settings = configurations[lsp].settings,
 		})
-	elseif lsp == "efm" then
-		lspconfig.efm.setup({
-			on_attach = configurations.default.on_attach,
-			capabilities = capabilities,
-			filetypes = vim.tbl_keys(efm_languages),
-			settings = {
-				rootMarkers = { ".git/" },
-				languages = efm_languages,
-			},
-			init_options = {
-				documentFormatting = true,
-				documentRangeFormatting = true,
-			},
-		})
 	else
 		lspconfig[lsp].setup({
 			on_attach = configurations.default.on_attach,
@@ -224,9 +187,6 @@ lsp.handlers["window/showMessage"] = function(_, result, ctx)
 		end,
 	})
 end
-
--- format on :wq
-cmd([[cabbrev wq execute "lua vim.lsp.buf.format({ timeout_ms = 2000 })" <bar> wq]])
 
 -- lspkind
 require("utils/lspkind").setup()

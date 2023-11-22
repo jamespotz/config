@@ -59,25 +59,4 @@ function M.on_attach(client, bufnr)
 	end
 end
 
--- if you want to set up formatting on save, you can use this as a callback
-local augroup = api.nvim_create_augroup("LspFormatting", {})
-
-function M.formatting_on_attach(client, bufnr)
-	local handle_format = function()
-		vim.lsp.buf.format({
-			bufnr = bufnr,
-			timeout_ms = 2000,
-		})
-	end
-
-	api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-	api.nvim_create_autocmd("BufWritePre", {
-		group = augroup,
-		buffer = bufnr,
-		callback = handle_format,
-	})
-
-	keymap.set("n", "<leader>f", handle_format, { buffer = bufnr })
-end
-
 return M

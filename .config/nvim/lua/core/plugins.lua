@@ -170,7 +170,26 @@ return {
 			})
 		end,
 	},
-	{ "JoosepAlviste/nvim-ts-context-commentstring", event = "BufReadPost" },
+	{
+		"JoosepAlviste/nvim-ts-context-commentstring",
+		event = "BufReadPost",
+		config = function()
+			require("ts_context_commentstring").setup({
+				enable = true,
+				enable_autocmd = false,
+				config = {
+					-- Languages that have a single comment style
+					typescript = "// %s",
+					css = "/* %s */",
+					scss = "/* %s */",
+					html = "<!-- %s -->",
+					svelte = "<!-- %s -->",
+					vue = "<!-- %s -->",
+					json = "",
+				},
+			})
+		end,
+	},
 
 	-- Git Signs
 	{
@@ -285,4 +304,48 @@ return {
 		end,
 	},
 	-- { "Bekaboo/dropbar.nvim" },
+	--
+	{
+		"mfussenegger/nvim-lint",
+		config = function()
+			require("lint").linters_by_ft = {
+				markdown = { "markdownlint" },
+				lua = { "luacheck" },
+				javascript = { "eslint_d" },
+				javascriptreact = { "eslint_d" },
+				typescript = { "eslint_d" },
+				typescriptreact = { "eslint_d" },
+			}
+
+			vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+				callback = function()
+					require("lint").try_lint()
+				end,
+			})
+		end,
+	},
+	{
+		"stevearc/conform.nvim",
+		config = function()
+			require("conform").setup({
+				formatters_by_ft = {
+					lua = { "stylua" },
+					javascript = { "eslint_d", "prettier " },
+					javascriptreact = { "eslint_d", "prettier" },
+					typescript = { "eslint_d" },
+					typescriptreact = { "eslint_d" },
+					json = { "prettier" },
+					html = { "prettier" },
+					css = { "prettier" },
+				},
+			})
+
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				pattern = "*",
+				callback = function(args)
+					require("conform").format({ bufnr = args.buf })
+				end,
+			})
+		end,
+	},
 }

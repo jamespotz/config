@@ -26,3 +26,5 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 export PATH="/snap/bin:$PATH"
+export PATH="/home/jamespotz/.cursor-server/bin/:$PATH"
+export PATH="/home/jamespotz/.cursor-server/bin/069284f607cba9bcfab9af796d80cb3698d9a6e0/bin/remote-cli/:$PATH"
