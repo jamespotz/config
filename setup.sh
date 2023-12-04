@@ -22,6 +22,7 @@ echo "${green}Installing HomeBrew...${clear}"
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/jamespotz/.profile
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 echo "${green}Installing essential homebrew packages...${clear}"
+brew tap cantino/mcfly
 brew install yadm \
   exa \
   ripgrep \
@@ -39,7 +40,8 @@ brew install yadm \
   fzf \
   git-delta \
   selene \
-  luarocks
+  luarocks \
+  cantino/mcfly/mcfly
 
 echo "${green}ZSH setup...${clear}"
 git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote

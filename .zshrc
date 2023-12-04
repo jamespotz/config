@@ -60,6 +60,9 @@ function fix_zsh_history() {
 # Autojump
 eval "$(zoxide init zsh)"
 
+# McFly
+eval "$(mcfly init zsh)"
+
 LS_COLORS="dircolors"
 
 # wfxr/forgit ctrl-d to drop the selected stash but do not quit fzf (gss specific).
