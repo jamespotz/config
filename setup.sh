@@ -22,7 +22,6 @@ echo "${green}Installing HomeBrew...${clear}"
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/jamespotz/.profile
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 echo "${green}Installing essential homebrew packages...${clear}"
-brew tap cantino/mcfly
 brew install yadm \
   exa \
   ripgrep \
@@ -41,13 +40,13 @@ brew install yadm \
   git-delta \
   selene \
   luarocks \
-  cantino/mcfly/mcfly
+  mcfly
 
 echo "${green}ZSH setup...${clear}"
 git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
 chmod u+x ~/.antidote/antidote
 [ -f ~/.zshrc ] && mv ~/.zshrc ~/zshrc.bak
-wget -O ~/zsh_plugins.txt https://raw.githubusercontent.com/jamespotz/config/master/zsh_plugins.txt
+wget -O ~/zsh_plugins.txt https://github.com/jamespotz/config/raw/master/.zsh_plugins.txt
 ~/.antidote/antidote bundle < ~/zsh_plugins.txt > ~/.zsh_plugins.zsh
 sudo chsh -s "$(which zsh)" "${USER}"
 
