@@ -19,7 +19,7 @@ fi
 # Source your static plugins file.
 source $zsh_plugins
 
-# Keychain 
+# Keychain
 /usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
 source $HOME/.keychain/$HOST-sh
 
@@ -27,7 +27,7 @@ source $HOME/.keychain/$HOST-sh
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=100000
 SAVEHIST="$HISTSIZE"
-
+setopt hist_ignore_space # ignore space
 setopt hist_ignore_all_dups # remove older duplicate entries from history
 setopt hist_reduce_blanks # remove superfluous blanks from history items
 setopt inc_append_history # save history entries as soon as they are entered
@@ -77,8 +77,8 @@ export NODE_OPTIONS="--max-old-space-size=4096"
 alias mkdir="mkdir -p"
 alias weather='curl -s https://wttr.in/Asingan, Philippines'
 
-if command -v exa &> /dev/null; then
-  alias ls="exa"
+if command -v lsd &> /dev/null; then
+  alias ls="lsd"
 fi
 
 if command -v bat &> /dev/null; then
@@ -110,14 +110,10 @@ alias myip="curl http://ipecho.net/plain; echo"
 alias config="nvim $HOME/.zshrc"
 alias reload="source $HOME/.zshrc"
 alias his_fix="fix_zsh_history"
-# alias neovide="neovide.exe --wsl --multigrid --nofork &"
 alias gbda='git branch --no-color --merged | command grep -vE "^(\+|\*|\s*(master|develop|dev)\s*$)" | command xargs -n 1 git branch -d'
 
-# Starship.rs 
+# Starship.rs
 eval "$(starship init zsh)"
-
-# Homebrew
-alias brewup="brew update && brew upgrade"
 
 # pnpm
 export PNPM_HOME="/home/jamespotz/.local/share/pnpm"
@@ -129,3 +125,10 @@ esac
 
 #
 alias test_user_offer="docker compose build && COLLECTION=user docker compose -f docker-compose-test.yml -p goose_api_postman_runner up --abort-on-container-exit --remove-orphans && COLLECTION=offer-engine docker compose -f docker-compose-test.yml -p goose_api_postman_runner up --abort-on-container-exit --remove-orphans"
+
+# fnm
+FNM_PATH="/home/jamespotz/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/jamespotz/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi

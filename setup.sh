@@ -12,35 +12,41 @@ echo "${green}Update/Upgrade system...${clear}"
 sudo apt update && sudo apt dist-upgrade -y
 
 echo "${green}Installing Build Essential and more...${clear}"
-sudo apt install build-essential curl wget git zsh keychain -y
+sudo apt install build-essential curl wget git zsh keychain yadm ripgrep glances ca-certificates -y
 
 echo "${green}Installing Archive Utilities...${clear}"
 sudo apt install rar unrar p7zip-full p7zip-rar unzip -y
-echo "${green}Installing HomeBrew...${clear}"
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo "${green}Installing rustup, lsd and bob...${clear}"
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source $HOME/.cargo/env
+cargo install --git https://github.com/lsd-rs/lsd.git --branch master
+cargo install --git https://github.com/MordechaiHadad/bob.git
+bob install stable
+bob use stable
 
-echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/jamespotz/.profile
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-echo "${green}Installing essential homebrew packages...${clear}"
-brew install yadm \
-  exa \
-  ripgrep \
-  fnm \
-  zsh \
-  bat \
-  tree-sitter \
-  luajit \
-  starship \
-  zoxide \
-  gcc \
-  fd \
-  gh \
-  lazygit \
-  fzf \
-  git-delta \
-  selene \
-  luarocks \
-  mcfly
+echo "${green}Installing mcfly...${clear}"
+curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sh -s -- --git cantino/mcfly
+
+echo "${green}Installing fnm...${clear}"
+curl -fsSL https://fnm.vercel.app/install | bash
+
+echo "${green}Installing lazydocker...${clear}"
+curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+
+echo "${green}Installing starship...${clear}"
+curl -sS https://starship.rs/install.sh | sh
+
+echo "${green}Installing docker...${clear}"
+for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 echo "${green}ZSH setup...${clear}"
 git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
@@ -56,12 +62,6 @@ read -r email
 ssh-keygen -t ed25519 -C "${email}"
 echo "${green}Copy the ssh key below and add to Github/Bitbucket account${clear}"
 echo "$(<$HOME/.ssh/id_ed25519.pub)"
-
-echo "${green}Installing bob, rustup and neovim...${clear}"
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh 
-cargo install --git https://github.com/MordechaiHadad/bob.git
-bob install stable
-bob use stable
 
 echo "${green}Press [SPACE] to continue...${clear}"
 read -r -s -d ' '
