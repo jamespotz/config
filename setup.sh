@@ -21,14 +21,12 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source $HOME/.cargo/env
 cargo install --git https://github.com/lsd-rs/lsd.git --branch master
 cargo install --git https://github.com/MordechaiHadad/bob.git
-bob install stable
-bob use stable
 
 echo "${green}Installing zoxide...${clear}"
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
 echo "${green}Installing mcfly...${clear}"
-curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sh -s -- --git cantino/mcfly
+curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sudo sh -s -- --git cantino/mcfly
 
 echo "${green}Installing fnm...${clear}"
 curl -fsSL https://fnm.vercel.app/install | bash
