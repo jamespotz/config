@@ -12,7 +12,7 @@ sudo dnf update -y
 
 echo "${green}Installing Development Tools and more...${clear}"
 sudo dnf groupinstall "Development Tools" -y
-sudo dnf install curl wget git zsh keychain ca-certificates yum-utils -y
+sudo dnf install curl wget git zsh ca-certificates yum-utils -y
 sudo curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && sudo chmod a+x /usr/local/bin/yadm
 
 echo "${green}Installing Archive Utilities...${clear}"
