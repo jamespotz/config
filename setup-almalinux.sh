@@ -16,7 +16,7 @@ sudo dnf install curl wget git zsh ca-certificates yum-utils -y
 sudo curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && sudo chmod a+x /usr/local/bin/yadm
 
 echo "${green}Installing Archive Utilities...${clear}"
-sudo dnf install rar unrar p7zip p7zip-plugins unzip -y
+sudo dnf install unzip -y
 
 echo "${green}Installing rustup, lsd and bob...${clear}"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
