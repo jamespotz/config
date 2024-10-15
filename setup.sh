@@ -73,8 +73,4 @@ mkdir -p "${HOME}/Work"
 echo "${green}Cloning config...${clear}"
 yadm clone git@github.com:jamespotz/config.git
 
-echo "${green}Installing neovim packages...${clear}"
-nvim --headless "+Lazy! sync" +qa
-nvim --headless "+MasonInstall eslint_d prettier luacheck stylua markdownlint" +qa
-
 echo "${green}DONE!🚀🚀${clear}"
