@@ -47,11 +47,8 @@ sudo systemctl enable docker
 sudo usermod -aG docker $USER
 
 echo "${green}ZSH setup...${clear}"
-git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
-chmod u+x ~/.antidote/antidote
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 [ -f ~/.zshrc ] && mv ~/.zshrc ~/zshrc.bak
-wget -O ~/zsh_plugins.txt https://github.com/jamespotz/config/raw/master/.zsh_plugins.txt
-~/.antidote/antidote bundle < ~/zsh_plugins.txt > ~/.zsh_plugins.zsh
 sudo chsh -s "$(which zsh)" "${USER}"
 
 echo "${green}Setup ssh keygen...${clear}"
