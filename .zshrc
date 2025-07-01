@@ -19,11 +19,13 @@ if ! zplug check --verbose; then
 fi
 
 # Then, source plugins and add commands to $PATH
-zplug load --verbose
+zplug load #--verbose
 
 # Keychain
-/usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
-source $HOME/.keychain/$HOST-sh
+if command -v /usr/bin/keychain &> /dev/null; then
+  /usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
+  source $HOME/.keychain/$HOST-sh
+fi
 
 #History setup
 HISTFILE="$HOME/.zsh_history"
@@ -73,7 +75,7 @@ FORGIT_STASH_FZF_OPTS='
 '
 
 # Increase node js memory
-export NODE_OPTIONS="--max-old-space-size=4096"
+export NODE_OPTIONS="--max-old-space-size=8192"
 
 # Alias
 alias mkdir="mkdir -p"
@@ -132,5 +134,8 @@ alias test_user_offer="docker compose build && COLLECTION=user docker compose -f
 FNM_PATH="/home/jamespotz/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="/home/jamespotz/.local/share/fnm:$PATH"
-  eval "`fnm env`"
+  eval "$(fnm env --use-on-cd --shell zsh)"
 fi
+
+# Auto-Warpify
+printf 'P$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh", "uname": "Linux" }}œ' 

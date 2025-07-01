@@ -19,3 +19,9 @@ tmp/**/*
 .nvmrc
 .yarnrc.yml
 *:Zone.Identifier
+*docker-compose-dev.yml
+.node-version
+.prettierignore
+vitest.workspace.js
+*/docker-compose-localstack.yml
+docker-compose-localstack.yml

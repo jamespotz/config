@@ -1,5 +1,5 @@
 [credential]
-  helper = store
+	helper = /usr/libexec/git-core/git-credential-libsecret
 [push]
   default = current
 [color]
@@ -56,3 +56,5 @@
   email = thepoltergeist23@gmail.com
 [pull]
   ff = only
+[init]
+	defaultBranch = main
